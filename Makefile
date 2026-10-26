@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash eval-spend eval-reader eval-decision eval-lazy test app app-data capture
+.PHONY: setup data check split-hash eval eval-spend eval-reader eval-decision eval-lazy numbers test app app-data capture media pages-check
 
 setup:
 	uv sync
@@ -42,6 +42,13 @@ eval-lazy:
 	uv run python -I scripts/lazy_safe_eval.py
 	uv run python -I scripts/lazy_safe_chart.py
 
+# Every evaluation in order (eval-decision and eval-lazy use eval-spend's outputs), then eval/NUMBERS.md.
+eval: eval-spend eval-reader eval-decision eval-lazy numbers
+
+# eval/NUMBERS.md from eval/results; fails if README.md shows a headline differently.
+numbers:
+	uv run python -I scripts/numbers.py
+
 test:
 	uv run pytest -q tests
 
@@ -55,3 +62,12 @@ app:
 
 capture:
 	uv run python -I scripts/capture.py
+
+# Post media in docs/media: the summary graphic and the eval charts at 1600 px.
+media:
+	uv run python -I scripts/media.py
+
+# docs/ served from a /lekka/ subpath, as on GitHub Pages: fails on a missing file, a console
+# error or a request that leaves the local server.
+pages-check:
+	uv run python -I scripts/check_pages.py
