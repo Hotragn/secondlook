@@ -230,3 +230,32 @@ Washington's $700.08 deposit is applied to all three PEBB CDHPs; that is an appr
 - **Uncertainty:** 1,000 household-bootstrap resamples, 200 for the 90th-percentile regret.
 - **Approximations:** the event-to-row mapping approximations are listed in the script docstring and the JSON. Dental is excluded as not a medical-plan cost. The modelled events cover 88.4% of the test people's 2024 spending.
 - **No retuning:** after seeing results, the strategies were not tuned on this test set.
+
+## Step 4b: the lazy-safe check (pre-registered 2026-10-26, before any test scoring)
+
+**25. Design, fixed before the test set is scored.**
+- **Labels**, per person and menu (3 menus; 2024 events, the same pricing as benchmark C):
+  - `lazy_regret` = true cost of the lowest-premium plan minus the cheapest plan's true cost
+  - `at_risk_250` = `lazy_regret` > $250. This is the primary label.
+  - `at_risk_500` = `lazy_regret` > $500. This is the secondary label.
+- **Data:**
+  - Training: the 2,275 Step 2 training people × 3 menus = 6,825 rows, priced with their own 2024 events.
+  - Test: the 758 test people × 3 menus = 2,274 rows, scored exactly once.
+- **Features:** the 26 Step 2 year-1 features plus menu id (3 dummies).
+- **Models:**
+  - `TabPFNClassifier` v2 (seed 20261026)
+  - `LogisticRegression` (L2, C = 1, median imputation, standardised)
+  - `HistGradientBoostingClassifier` (defaults)
+  - rule: year-1 spend above $X
+  - rule: any chronic-condition flag
+- **Thresholds**, all chosen inside the training set:
+  - Each learned model's threshold is the 80th percentile of its 5-fold out-of-fold scores, grouped by household. That gives a 20% flag rate on training data.
+  - X for the spend rule is the training rows' 80th percentile of year-1 spend.
+  - The chronic-flag rule flags at its natural rate.
+- **Metrics on test:** AUC, PR-AUC, recall and precision at the training-chosen threshold, Brier score and a 5-bin calibration table. 95% CIs come from 1,000 household-bootstrap resamples.
+- **The policy, "lazy unless flagged":** the lowest-premium plan, except that flagged rows get the TabPFN expected-cost pick from benchmark C.
+  - **Primary:** flags from `TabPFNClassifier` on `at_risk_250`.
+  - **Also reported:** the same policy with each other flagger, and an oracle-flag reference that flags exactly the at-risk rows, to separate flag quality from pick quality.
+  - **Compared with:** lowest premium, same as last year and TabPFN expected cost.
+  - **Measured by:** share of rows given the cheapest plan, mean regret and 90th-percentile regret.
+- **Reporting:** results are reported whichever way they come out.
