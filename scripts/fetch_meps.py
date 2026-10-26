@@ -35,6 +35,12 @@ FILES = [
     ("HC-254E", "2024 Emergency Room Visits File", "h254e"),
     ("HC-254F", "2024 Outpatient Visits File", "h254f"),
     ("HC-254G", "2024 Office-Based Medical Provider Visits File", "h254g"),
+    # 2023 events, for the "same as last year" strategy in benchmark C (Step 4).
+    ("HC-248A", "2023 Prescribed Medicines File", "h248a"),
+    ("HC-248D", "2023 Hospital Inpatient Stays File", "h248d"),
+    ("HC-248E", "2023 Emergency Room Visits File", "h248e"),
+    ("HC-248F", "2023 Outpatient Visits File", "h248f"),
+    ("HC-248G", "2023 Office-Based Medical Provider Visits File", "h248g"),
 ]
 
 FIELDS = [
