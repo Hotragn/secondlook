@@ -52,7 +52,7 @@ numbers:
 test:
 	uv run pytest -q tests
 
-# Step 5: the site's data (docs/data/hindcast.json), the local app, and screenshots.
+# Step 5: the site's data (docs/data/secondlook.json), the local app, and screenshots.
 app-data:
 	uv run python -I scripts/build_app_data.py
 
@@ -67,7 +67,7 @@ capture:
 media:
 	uv run python -I scripts/media.py
 
-# docs/ served from a /hindcast/ subpath, as on GitHub Pages: fails on a missing file, a console
+# docs/ served from a /secondlook/ subpath, as on GitHub Pages: fails on a missing file, a console
 # error or a request that leaves the local server.
 pages-check:
 	uv run python -I scripts/check_pages.py

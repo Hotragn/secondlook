@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 MEDIA = DOCS / "media"
 RESULTS = ROOT / "eval" / "results"
-NAME = "Hindcast"
+NAME = "Second Look"
 WIDTH = 1600
 FONTS = [("Newsreader", 600, "Newsreader-600"), ("IBM Plex Sans", 400, "IBMPlexSans-400"),
          ("IBM Plex Sans", 500, "IBMPlexSans-500"), ("IBM Plex Mono", 400, "IBMPlexMono-400"),

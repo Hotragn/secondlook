@@ -95,7 +95,7 @@ def main() -> None:
         page.mouse.wheel(0, 500)
         page.wait_for_timeout(300)
         frame(page, frames)
-        gif(frames, "gif-1-person-to-result", "Pick a real person and Hindcast says whether the cheapest plan is safe for them.")
+        gif(frames, "gif-1-person-to-result", "Pick a real person and Second Look says whether the cheapest plan is safe for them.")
 
         for pid, slug in PEOPLE:
             pick_person(page, pid)
@@ -159,7 +159,7 @@ def main() -> None:
     made = {n for n, _ in CAPTIONS}
     kept = [line for line in (path.read_text().splitlines() if path.exists() else [])
             if (m := re.match(r"- `([^`]+)`", line)) and m.group(1) not in made and (MEDIA / m.group(1)).exists()]
-    path.write_text("# Hindcast screenshots and GIFs\n\nScreenshots and GIFs are made by `make capture` (scripts/capture.py); "
+    path.write_text("# Second Look screenshots and GIFs\n\nScreenshots and GIFs are made by `make capture` (scripts/capture.py); "
                     "other entries are added by hand.\n\n" + "\n".join([f"- `{n}`: {c}" for n, c in CAPTIONS] + kept) + "\n")
     for n, c in CAPTIONS:
         print(f"{n}: {c}")

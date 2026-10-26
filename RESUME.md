@@ -448,3 +448,16 @@ Pre-registered in DECISIONS 25 (`3d01df7`), scored once by `make eval-lazy`, whi
   - 41 tests pass.
   - No "Lekka" remains outside the history in DECISIONS.md and RESUME.md.
 - The repository is still `Hotragn/sameaslastyear-wip` and private. Renaming it to `Hotragn/hindcast` waits for the owner's approval.
+
+## STATUS: Rename to Second Look, and the launch video (2026-10-26, 05:35 UTC)
+- "Hindcast" is now "Second Look" everywhere public (DECISIONS 34). The tagline is unchanged.
+- **Launch video:** `docs/media/secondlook-launch.mp4` (H.264, 1920×1080, 21.25 s, 2.0 MB) and its poster `secondlook-launch.jpg`. Both were copied unchanged from `week3-post/brag-output` and are listed in `captions.md`. `make capture` now keeps caption lines it did not write.
+- **Checks:**
+  - `make capture` had no console errors, and `make media` re-rendered.
+  - `make pages-check` passes from `/secondlook/`.
+  - `make numbers` matches, and 41 tests pass.
+  - The header stays on one row at 320, 360 and 1180 px.
+  - No "Hindcast" or "Lekka" remains outside these history logs.
+- **Open:**
+  - The video's "That habit cost the most." slide overstates. Lowest deductible overpaid more (,078 against , `eval/results/step4_decision.json`). "Same as last year" is the costliest of the sensible picks.
+  - Renaming the repo, making it public, and Pages all wait for the owner.

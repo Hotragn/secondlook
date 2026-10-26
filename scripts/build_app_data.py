@@ -1,4 +1,4 @@
-"""Build docs/data/hindcast.json, everything the static site shows (Step 5).
+"""Build docs/data/secondlook.json, everything the static site shows (Step 5).
 
 Nothing is typed in by hand except question wording:
 - **Menus:** the three real 2027 menus (sameaslastyear.menus). Each plan fact carries its source line and page.
@@ -35,7 +35,7 @@ from sameaslastyear.scenarios import cost_matrix, donor_finder, load_events
 from sameaslastyear.spend import FEATURES, QUANTILES, SEED, feature_matrix, prepare_tabpfn_auth
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "docs" / "data" / "hindcast.json"
+OUT = ROOT / "docs" / "data" / "secondlook.json"
 RESULTS = ROOT / "eval" / "results"
 PEOPLE = {
     "2810297103": "Healthy single adult",

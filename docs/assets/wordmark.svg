@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 64" role="img" aria-label="Hindcast">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 277 64" role="img" aria-label="Second Look">
   <g stroke="#1E2521" stroke-width="4.5" stroke-linecap="round">
     <line x1="13" y1="16" x2="13" y2="48"/><line x1="22" y1="16" x2="22" y2="48"/>
     <line x1="31" y1="16" x2="31" y2="48"/><line x1="40" y1="16" x2="40" y2="48"/>
   </g>
   <line x1="7" y1="42" x2="47" y2="21" stroke="#2E6B57" stroke-width="5" stroke-linecap="round"/>
-  <text x="62" y="45" font-family="Newsreader, 'Source Serif 4', Georgia, serif" font-size="38" font-weight="600" letter-spacing="-0.5" fill="#1E2521">hindcast</text>
+  <text x="62" y="45" font-family="Newsreader, 'Source Serif 4', Georgia, serif" font-size="38" font-weight="600" letter-spacing="-0.5" fill="#1E2521">second look</text>
 </svg>

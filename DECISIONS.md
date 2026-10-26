@@ -317,3 +317,13 @@ Lekka tells you whether the cheapest plan is safe for you:
   - The site data is now `docs/data/hindcast.json`. `make pages-check` serves from `/hindcast/`, to match the planned repo name.
 - **Kept:** colours, fonts and the tally mark. Earlier entries here and in RESUME.md keep the old name as history.
 - **Not yet:** the repo stays `Hotragn/sameaslastyear-wip` until the owner approves the rename to `Hotragn/hindcast`.
+
+**34. Renamed to Second Look (the owner's choice, through the manager session).**
+- A plain-English name. The tagline stays: "Check your 2027 plan against what really happened."
+- **Changed:**
+  - The same places as DECISIONS 33.
+  - In the README, the hindcast-meaning line is replaced by "Second Look checks your plan choice against what really happened to 758 real people in 2024."
+  - The wordmark reads "second look"; its viewBox is 277 wide, measured.
+  - The site data is now `docs/data/secondlook.json`, and `make pages-check` serves from `/secondlook/`.
+- The two-word wordmark has `white-space: nowrap`. The header stays on one row at 320, 360 and 1180 px.
+- The launch video is the re-rendered `secondlook-launch.mp4` (21.25 s), with its poster `.jpg`. The earlier Hindcast render was never pushed.
