@@ -50,102 +50,19 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from sameaslastyear import costs, menus
-from sameaslastyear.costs import Event
+from sameaslastyear import menus
+from sameaslastyear.scenarios import (
+    DONORS, GENERIC_MAX, QUANTILES, RISK_CAP, choices, cost_matrix, household_counts, load_events, regret_metrics,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW = ROOT / "data" / "raw" / "meps"
 TABLE = ROOT / "data" / "derived" / "spend_panel28.parquet"
 PREDICTIONS = ROOT / "data" / "derived" / "step2_test_predictions.parquet"
 SPLIT = ROOT / "eval" / "spend_split.json"
 SPLIT_SHA256 = "d9577f32d9f4a365f1e4f5cd2f88f0ad796dfe87423a4d0862d1076edc4039aa"
 OUT = ROOT / "eval" / "results" / "step4_decision.json"
-SEED = 20261026
-BOOTSTRAP = 1000
-DONORS = 5
-RISK_CAP = 1000.0
-QUANTILES = ["q10", "q25", "q50", "q75", "q90"]
-GENERIC_MAX = 50.0
-PCP_DOCTORS = {6, 8, 10, 14, 21, 24}  # family, general, geriatrics, internal medicine, osteopathy, pediatrics
-PCP_PEOPLE = {7, 8, 11, 6, 13, 14}  # midwife, nurse/NP, PA, MH counselor, psychologist, social worker
-FILES = {2024: dict(ob="h254g", op="h254f", er="h254e", ip="h254d", rx="h254a"),
-         2023: dict(ob="h248g", op="h248f", er="h248e", ip="h248d", rx="h248a")}
 STRATEGIES = ["lowest_premium", "lowest_deductible", "same_as_last_year", "tabpfn_expected",
               "tabpfn_risk_capped", "oracle"]
-
-
-def month(s: pd.Series) -> pd.Series:
-    return s.where(s.between(1, 12), 6).astype(int)
-
-
-def office_category(df: pd.DataFrame) -> pd.Series:
-    cat = pd.Series("specialist", index=df.index)
-    cat[df["SEEDOC_M18"].eq(1) & df["DRSPLTY_M18"].isin(PCP_DOCTORS)] = "primary_care"
-    cat[df["SEEDOC_M18"].ne(1) & df["MEDPTYPE_M18"].isin(PCP_PEOPLE)] = "primary_care"
-    cat[df["VSTCTGRY"].eq(4)] = "primary_care"
-    cat[df["VSTCTGRY"].isin([1, 6, 9])] = "preventive"
-    cat[df["VSTCTGRY"].isin([7, 10]) | df["MEDPTYPE_M18"].isin([3, 9])] = "excluded"
-    return cat
-
-
-def load_events(year: int, people: set[str]) -> dict[str, list[Event]]:
-    f, yy = FILES[year], str(year)[2:]
-    frames = []
-    ob = pd.read_parquet(RAW / f"{f['ob']}.parquet", columns=["DUPERSID", "OBDATEMM", "VSTCTGRY", "SEEDOC_M18",
-                                                              "DRSPLTY_M18", "MEDPTYPE_M18", f"OBXP{yy}X"])
-    frames.append(pd.DataFrame({"id": ob["DUPERSID"], "cat": office_category(ob), "allowed": ob[f"OBXP{yy}X"],
-                                "month": month(ob["OBDATEMM"]), "nights": 0}))
-    op = pd.read_parquet(RAW / f"{f['op']}.parquet", columns=["DUPERSID", "OPDATEMM", "SURGPROC", f"OPXP{yy}X"])
-    frames.append(pd.DataFrame({"id": op["DUPERSID"], "allowed": op[f"OPXP{yy}X"], "month": month(op["OPDATEMM"]),
-                                "cat": np.where(op["SURGPROC"].eq(1), "outpatient_facility", "specialist"), "nights": 0}))
-    er = pd.read_parquet(RAW / f"{f['er']}.parquet", columns=["DUPERSID", "ERDATEMM", "ERHEVIDX", f"ERXP{yy}X"])
-    admitted = er["ERHEVIDX"].astype(str).str.strip().ne("-1")
-    frames.append(pd.DataFrame({"id": er["DUPERSID"], "allowed": er[f"ERXP{yy}X"], "month": month(er["ERDATEMM"]),
-                                "cat": np.where(admitted, "emergency_room_admitted", "emergency_room"), "nights": 0}))
-    ip = pd.read_parquet(RAW / f"{f['ip']}.parquet", columns=["DUPERSID", "IPBEGMM", "NUMNIGHX", f"IPXP{yy}X"])
-    frames.append(pd.DataFrame({"id": ip["DUPERSID"], "cat": "inpatient_facility", "allowed": ip[f"IPXP{yy}X"],
-                                "month": month(ip["IPBEGMM"]), "nights": ip["NUMNIGHX"].clip(lower=1).astype(int)}))
-    rx = pd.read_parquet(RAW / f"{f['rx']}.parquet", columns=["DUPERSID", "RXBEGMM", f"RXXP{yy}X"])
-    frames.append(pd.DataFrame({"id": rx["DUPERSID"], "allowed": rx[f"RXXP{yy}X"], "month": month(rx["RXBEGMM"]),
-                                "cat": np.where(rx[f"RXXP{yy}X"] <= GENERIC_MAX, "generic_drugs", "preferred_brand_drugs"),
-                                "nights": 0}))
-    ev = pd.concat(frames, ignore_index=True)
-    ev = ev[ev["id"].isin(people) & ev["allowed"].gt(0) & ev["cat"].ne("excluded")]
-    out = {p: [] for p in people}
-    for row in ev.itertuples(index=False):
-        out[row.id].append(Event(row.cat, float(row.allowed), int(row.month), int(row.nights)))
-    return out
-
-
-def cost_matrix(plans: list, events: dict, ids: list[str]) -> np.ndarray:
-    return np.array([[costs.annual_cost(p, events[i]) for p in plans] for i in ids])
-
-
-def household_counts(households: np.ndarray) -> np.ndarray:
-    rng = np.random.default_rng(SEED)
-    n = households.max() + 1
-    draws = rng.integers(0, n, size=(BOOTSTRAP, n))
-    return np.stack([np.bincount(d, minlength=n) for d in draws])
-
-
-def metrics(regret: np.ndarray, hit: np.ndarray, household: np.ndarray, counts: np.ndarray) -> dict:
-    """Mean regret, P90 regret and hit rate with household-bootstrap 95% CIs (rows = people)."""
-    n_h = counts.shape[1]
-    hs = np.bincount(household, minlength=n_h)
-    out = {}
-    for name, x in (("hit_rate", hit.astype(float)), ("mean_regret", regret)):
-        sums = np.bincount(household, weights=x, minlength=n_h)
-        boot = (counts @ sums) / (counts @ hs)
-        out[name] = {"value": float(x.mean()), "ci95": [float(v) for v in np.percentile(boot, [2.5, 97.5])]}
-    order = np.argsort(household, kind="stable")
-    by_h = np.split(regret[order], np.cumsum(hs)[:-1])
-    p90 = []
-    for c in counts[:200]:  # P90 needs the resampled people themselves; 200 resamples keep it fast
-        sample = np.concatenate([np.repeat(by_h[h], k) for h, k in enumerate(c) if k])
-        p90.append(np.percentile(sample, 90))
-    out["p90_regret"] = {"value": float(np.percentile(regret, 90)),
-                         "ci95": [float(v) for v in np.percentile(p90, [2.5, 97.5])], "resamples": 200}
-    return out
 
 
 def main() -> None:
@@ -162,17 +79,6 @@ def main() -> None:
     modelled = np.array([sum(e.allowed for e in ev24[i]) for i in test["DUPERSID"]])
     coverage = float(modelled.sum() / test["spend_y2"].sum())
 
-    # Donors: for each predicted percentile, the 5 training people with the nearest actual 2024 spending.
-    order = np.argsort(train["spend_y2"].to_numpy(), kind="stable")
-    spend_sorted = train["spend_y2"].to_numpy()[order]
-
-    def donors(v: float) -> np.ndarray:
-        i = np.searchsorted(spend_sorted, v)
-        lo, hi = max(0, i - DONORS), min(len(order), i + DONORS)
-        window = np.arange(lo, hi)
-        nearest = window[np.argsort(np.abs(spend_sorted[window] - v), kind="stable")[:DONORS]]
-        return order[nearest]
-
     household = pd.factorize(test["DUID"])[0]
     counts = household_counts(household)
     plans_by_sponsor = menus.load()
@@ -182,20 +88,8 @@ def main() -> None:
         truth = cost_matrix(plans, ev24, list(test["DUPERSID"]))
         last_year = cost_matrix(plans, ev23, list(test["DUPERSID"]))
         donor_cost = cost_matrix(plans, ev24, list(train["DUPERSID"]))
-        scen = np.stack([np.stack([donor_cost[donors(v)].mean(0) for v in q[:, k]]) for k in range(len(QUANTILES))])
-        expected, p90 = scen.mean(0), scen[-1]
-        premium = np.array([p.premium_monthly for p in plans])
-        deductible = np.array([p.deductible for p in plans])
+        choice = choices(plans, truth, last_year, donor_cost, q, train["spend_y2"].to_numpy())
         n = len(test)
-        capped = np.where(p90 <= p90.min(1, keepdims=True) + RISK_CAP, expected, np.inf)
-        choice = {
-            "lowest_premium": np.full(n, np.lexsort((deductible, premium))[0]),
-            "lowest_deductible": np.full(n, np.lexsort((premium, deductible))[0]),
-            "same_as_last_year": last_year.argmin(1),
-            "tabpfn_expected": expected.argmin(1),
-            "tabpfn_risk_capped": capped.argmin(1),
-            "oracle": truth.argmin(1),
-        }
         best = truth.min(1)
         res = {"plans": [{"plan_id": p.plan_id, "name": p.name, "premium_monthly": p.premium_monthly,
                           "deductible": p.deductible, "oop": p.oop, "employer_hsa": p.employer_hsa} for p in plans]}
@@ -204,7 +98,7 @@ def main() -> None:
             hit = regret < 0.5
             pooled[s]["regret"].append(regret)
             pooled[s]["hit"].append(hit)
-            res[s] = {**metrics(regret, hit, household, counts),
+            res[s] = {**regret_metrics(regret, hit, household, counts),
                       "plans_chosen": {plans[k].name: int((c == k).sum()) for k in np.unique(c)}}
         res["mean_true_cost_of_cheapest_plan"] = float(best.mean())
         oracle_share[sponsor] = {plans[k].name: int((choice["oracle"] == k).sum()) for k in np.unique(choice["oracle"])}
@@ -216,7 +110,7 @@ def main() -> None:
     pooled_res = {}
     h3, c3 = np.tile(household, 3), counts
     for s in STRATEGIES:
-        pooled_res[s] = metrics(np.concatenate(pooled[s]["regret"]), np.concatenate(pooled[s]["hit"]), h3, c3)
+        pooled_res[s] = regret_metrics(np.concatenate(pooled[s]["regret"]), np.concatenate(pooled[s]["hit"]), h3, c3)
     # Paired regret differences against TabPFN expected, and results by 2023 spending tier.
     tab = np.concatenate(pooled["tabpfn_expected"]["regret"])
     n_h = c3.shape[1]
