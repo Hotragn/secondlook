@@ -10,6 +10,7 @@ Writes eval/results/step4b_lazy_safe.png and eval/results/step4b_lazy_safe.svg.
 """
 
 import json
+import textwrap
 from pathlib import Path
 
 import matplotlib
@@ -74,7 +75,7 @@ def main() -> None:
     plt.rcParams.update({"font.family": "sans-serif",
                          "font.sans-serif": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"],
                          "svg.fonttype": "none"})
-    fig, axes = plt.subplots(2, 3, figsize=(13, 7.2), gridspec_kw={"wspace": 0.12, "hspace": 0.55})
+    fig, axes = plt.subplots(2, 3, figsize=(13, 7.2), gridspec_kw={"wspace": 0.12, "hspace": 0.62})
     fig.patch.set_facecolor(SURFACE)
     is_tab = lambda n: n.startswith("TabPFN") or "TabPFN flags" in n
     for ax, (key, title, fmt, xmax) in zip(axes[0], [
@@ -100,13 +101,16 @@ def main() -> None:
     lr = r["lazy_regret_test"]
     fig.text(0.012, 0.985, "When is it safe to just take the lowest premium?", fontsize=13.5, color=INK,
              fontweight="semibold", va="top")
-    fig.text(0.012, 0.95, f"{r['rows']['test']:,} held-out person-menu cases (758 MEPS adults × 3 real 2027 menus). "
-             f"The lowest premium cost more than $250 extra in {lr['share_over_250']:.0%} of them. "
+    fig.text(0.012, 0.955, f"{r['rows']['test']:,} held-out person-menu cases (758 MEPS adults × 3 real 2027 menus). "
+             f"The lowest premium cost more than $250 extra in {lr['share_over_250']:.0%} of them.\n"
              "Flaggers were trained on other people; lines are 95% household-bootstrap intervals.",
-             fontsize=9.5, color=INK_2, va="top", parse_math=False)
-    fig.text(0.012, 0.515, "Finding the costly cases (lazy regret over $250)", fontsize=11, color=INK, fontweight="semibold")
-    fig.text(0.012, 0.035, r["headline"], fontsize=8.5, color=INK_2, parse_math=False, wrap=True)
-    fig.subplots_adjust(left=0.17, right=0.985, top=0.86, bottom=0.14)
+             fontsize=9.5, color=INK_2, va="top", parse_math=False, linespacing=1.4)
+    fig.text(0.012, 0.865, "Finding the costly cases (lazy regret over $250)", fontsize=11, color=INK,
+             fontweight="semibold", parse_math=False)
+    fig.text(0.012, 0.465, "What each way of choosing costs people", fontsize=11, color=INK, fontweight="semibold")
+    fig.text(0.012, 0.02, "\n".join(textwrap.wrap(r["headline"], 210)), fontsize=8.5, color=INK_2,
+             parse_math=False, linespacing=1.4)
+    fig.subplots_adjust(left=0.17, right=0.985, top=0.80, bottom=0.14)
     for ext in ("png", "svg"):
         fig.savefig(OUT.with_suffix(f".{ext}"), dpi=200, facecolor=SURFACE)
     print(f"wrote {OUT.relative_to(ROOT)}.png and .svg")
