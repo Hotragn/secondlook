@@ -9,6 +9,7 @@ Run: uv run python -I scripts/capture.py   (or: make capture)
 import functools
 import http.server
 import io
+import re
 import socketserver
 import threading
 from pathlib import Path
@@ -153,8 +154,13 @@ def main() -> None:
         browser.close()
     httpd.shutdown()
 
-    (MEDIA / "captions.md").write_text("# Hindcast screenshots and GIFs\n\nMade by `make capture` (scripts/capture.py).\n\n"
-                                       + "\n".join(f"- `{n}`: {c}" for n, c in CAPTIONS) + "\n")
+    # Keep caption lines for media this script does not make (the launch video) while the file is there.
+    path = MEDIA / "captions.md"
+    made = {n for n, _ in CAPTIONS}
+    kept = [line for line in (path.read_text().splitlines() if path.exists() else [])
+            if (m := re.match(r"- `([^`]+)`", line)) and m.group(1) not in made and (MEDIA / m.group(1)).exists()]
+    path.write_text("# Hindcast screenshots and GIFs\n\nScreenshots and GIFs are made by `make capture` (scripts/capture.py); "
+                    "other entries are added by hand.\n\n" + "\n".join([f"- `{n}`: {c}" for n, c in CAPTIONS] + kept) + "\n")
     for n, c in CAPTIONS:
         print(f"{n}: {c}")
     if errors:
