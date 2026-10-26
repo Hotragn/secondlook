@@ -293,3 +293,17 @@ Lekka tells you whether the cheapest plan is safe for you:
 - **How sure:** numbers copied from `eval/results`.
 - **Local mode** (`make app`, `sameaslastyear/server.py`, bound to 127.0.0.1): runs the same five-answer models live on the CPU, and the e4b reader on an uploaded PDF. Live results can differ from the precomputed grid, because TabPFN's CPU and GPU arithmetic differ slightly and that can change which 5 donors are nearest.
 - **Fonts:** self-hosted (OFL), so neither the site nor local mode makes a network request at run time.
+
+**31. Licenses and attribution (Steps 6 and 9).**
+- **Code:** MIT (`LICENSE`), covering the code and the text written for this project. Third-party material keeps its own terms, listed in the README under "Credits and licenses".
+- **TabPFN:** the Hugging Face cards for the v2 weights (`Prior-Labs/TabPFN-v2-reg` and `-clf`) give the Prior Labs License 1.1 (`priorlabs-1-1`, not gated). Its paragraph 10 asks anyone who makes available a product containing the source or weights to ship the license and to display "Built with PriorLabs-TabPFN" on each related website, user interface, blog post, about page or product documentation. Lekka downloads the weights at run time rather than shipping them, but complies anyway: a copy in `licenses/`, the line in the README and the site footer, and the post must carry it too.
+- **Gemma 4:** all three QAT builds list the Apache License 2.0 in `ollama show --license`. No weights are shipped.
+- **Fonts:** the OFL 1.1 texts from google/fonts now sit next to the woff2 files in `docs/fonts/`, so the site carries them.
+- **MEPS:** the raw files are not redistributed. AHRQ is credited, with the data use agreement's terms.
+- **Plan documents:** public, copied unchanged, with source URLs in the manifest. All 11 sponsors are credited.
+
+**32. Headline numbers and post media.**
+- `eval/NUMBERS.md` is generated (`make numbers`) from the result JSON, with each number's key path, interval and make command. The script fails if README.md shows a headline differently.
+- The summary graphic is HTML in the brand fonts, filled from `step4_decision.json` and captured 1600 px wide. Ledger green against rust failed the palette validator's CVD check (protan ΔE 5.7). So the rows carry the labels and colour is emphasis only: ledger for the lowest premium, neutral gray `#8A877E` for same as last year (protan ΔE 11.8, contrast at least 3:1).
+- The three evaluation charts are their 2600 px originals scaled down to 1600 px, not redrawn.
+- `make pages-check` serves `docs/` from `/lekka/` and fails on missing files, console errors, requests that leave the local server, or fonts that did not load.

@@ -408,3 +408,33 @@ Pre-registered in DECISIONS 25 (`3d01df7`), scored once by `make eval-lazy`, whi
 - **Donor sensitivity.** Typical and bad years rest on 5 survey people each, so small prediction changes can move a plan's estimate by a few hundred dollars. In one check, local CPU vs the precomputed grid gave $1,643 vs $1,232 for one plan.
 - **Uploaded plans are not priced.** Local-mode uploads show what was read, because SBCs have no premium.
 - **Nothing is public yet.** GitHub Pages and making the repository public both need the owner's approval.
+
+## STATUS: Steps 6 and 9, publish readiness (2026-10-26, 05:25 UTC)
+
+### Done
+- **Secrets scan, clean.** gitleaks is not installed, so a Python scan ran instead. It printed only names and paths, never values.
+  - `.env` has never been in any commit: `git log --all --full-history -- .env` is empty, and no commit's tree has a `.env` entry.
+  - All 272 blobs reachable from any ref (73.7 MB; refs `main` and `origin/main`; no stashes) contain none of the 7 `.env` values, in full or as any 16-character piece.
+  - No key patterns: AWS, GitHub, Google, Slack, private keys, `sk-`/`sk_`, `hf_`, `rnd_`, MongoDB URIs with passwords, Sentry DSNs, JWTs, or generic `api_key=`/`secret=`/`password=` assignments.
+  - The working tree gives the same result.
+- **Licenses.** MIT `LICENSE`, and "Credits and licenses" in the README:
+  - MEPS (AHRQ) and the 11 plan sponsors
+  - TabPFN v2 under the Prior Labs License 1.1, with a copy in `licenses/`
+  - Gemma 4 under Apache 2.0
+  - the fonts under OFL, with the texts in `docs/fonts/`
+
+  "Built with PriorLabs-TabPFN" is in the README and the site footer (DECISIONS 31).
+- **README, final.** What Lekka is, the results table with every number linked to its JSON, how to run, what it can't do, and credits.
+- **`eval/NUMBERS.md`.** 39 numbers, each with its JSON key path, 95% interval and make command. `make numbers` regenerates it and fails if README.md drifts from it (DECISIONS 32).
+- **Pages readiness.** All URLs are relative, and `docs/.nojekyll` was added. `make pages-check` served a copy of `docs/` from `/lekka/` and drove the UI in headless Chromium: 10 responses, all from the local server, no HTTP or console errors, all three fonts loaded, and every relative link in `index.html` exists.
+- **Post media.** A summary graphic and three evaluation charts, all 1600 px wide, with captions in `docs/media/charts.md`.
+- **New make targets:** `eval` (every evaluation, then the numbers), `numbers`, `media`, `pages-check`. 41 unit tests pass.
+
+### Media (`docs/media/`)
+- Screens and GIFs (`make capture`, captions in `captions.md`): `01-home.png`, `02-menu.png`, `03-result-healthy.png`, `03-result-prescriptions.png`, `03-result-high-spender.png`, `04-quote-highlight.png`, `05-how-sure.png`, `06-five-answers.png`, `07-mobile.png`, `08-dark.png`, `gif-1-person-to-result.gif`, `gif-2-number-to-quote.gif`
+- Charts (`make media`, captions in `charts.md`): `chart-1-summary.png` (1600 × 936), `chart-2-plan-choice.png` (1600 × 492), `chart-3-learning-curve.png` (1600 × 566), `chart-4-plan-reader.png` (1600 × 480)
+
+### Open, for the owner
+- Pages is not enabled, and the repository is still private. Both need the owner's approval.
+- Any post must display "Built with PriorLabs-TabPFN" (Prior Labs License 1.1, paragraph 10).
+- The TabPFN 3.5 license acceptance is still open.
