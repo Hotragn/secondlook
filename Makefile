@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash
+.PHONY: setup data check split-hash eval-spend
 
 setup:
 	uv sync
@@ -14,6 +14,12 @@ check:
 	uv run python scripts/smoke_tabpfn.py
 	uv run python -I scripts/check_models.py gemma4:e2b-it-qat gemma4:e4b-it-qat gemma4:26b-a4b-it-qat
 
-# The split is frozen; compare this with the hash recorded in DECISIONS.md.
+# The splits are frozen; compare these with the hashes recorded in DECISIONS.md.
 split-hash:
-	shasum -a 256 eval/split.json
+	shasum -a 256 eval/split.json eval/spend_split.json
+
+# Step 2 / benchmark B: spend table, models and metrics, chart.
+eval-spend:
+	uv run python -I scripts/spend_data.py
+	uv run python -I scripts/spend_eval.py
+	uv run python -I scripts/spend_chart.py
