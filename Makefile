@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash eval-spend
+.PHONY: setup data check split-hash eval-spend eval-reader
 
 setup:
 	uv sync
@@ -24,3 +24,9 @@ eval-spend:
 	uv run python -I scripts/spend_eval.py
 	uv run python -I scripts/spend_learning_curve.py
 	uv run python -I scripts/spend_chart.py
+
+# Step 3 / eval A: three Gemma 4 builds on the 20 held-out SBCs. Raw model output is
+# cached in eval/results/step3_raw, so a re-run only re-scores.
+eval-reader:
+	uv run python -I scripts/reader_eval.py heldout
+	uv run python -I scripts/reader_chart.py
