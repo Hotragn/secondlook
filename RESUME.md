@@ -206,3 +206,70 @@ Paired difference, model minus TabPFN v2 (positive means TabPFN has lower loss):
   - It is better at P90 with 400–800 people (CIs exclude $0).
   - Its P10–P90 coverage stays at 74–80% at every size, while gradient boosting's falls to 63–73%.
 - **Where TabPFN loses:** at 100 people, gradient boosting beats it at the median by $326 (CI $146–$507). TabPFN is also much less stable there: the median-loss standard deviation across draws is $548, against $55.
+
+---
+
+## STATUS: Step 4, rules engine and benchmark C (2026-10-26, 02:15 UTC)
+
+### Done
+- **Rules engine** (`sameaslastyear/costs.py`):
+  - deductible: embedded or aggregate
+  - copay vs coinsurance, with or without the deductible
+  - per-day copays with caps; per-fill coinsurance caps
+  - out-of-pocket limit, with separate prescription limits where a plan has them
+  - preventive care at $0
+  - HSA employer seed and payroll tax savings
+  - 2027 IRS and CMS limits cited from primary sources (DECISIONS 21)
+  - `make test` passes all 41 tests. The 20 engine tests include three Georgia SBC coverage examples reproduced to the dollar.
+- **Real 2027 menus:** WA PEBB 9 plans, OR PEBB 4, TN state 3. Every non-gold value is quote-verified on load (DECISIONS 23).
+- **2023 event files** HC-248A/D/E/F/G were added, for "same as last year".
+- **Benchmark C:** `make eval-decision` writes `eval/results/step4_decision.json`, `eval/results/step4_decision.png` and `eval/results/step4_decision.svg` in 6 s. The modelled events cover 88.4% of the test people's 2024 spending.
+
+### Results: 758 people × 3 menus, pooled, 95% household-bootstrap CIs
+
+| Strategy | Got the cheapest plan | Mean regret | 90th-percentile regret |
+|---|---|---|---|
+| Lowest premium | **82.1%** [80.4, 83.9] | **$106** [91, 120] | **$310** [229, 423] |
+| TabPFN expected cost | 79.5% [77.5, 81.4] | $121 [106, 138] | $456 [347, 535] |
+| TabPFN risk-capped | 79.1% | $124 | $459 |
+| Same as last year | 78.1% [76.1, 80.1] | $149 [129, 172] | $608 [504, 689] |
+| Lowest deductible | 0.6% | $1,078 | $1,912 |
+
+**Paired mean-regret differences against TabPFN expected cost:**
+- Lowest premium: −$15 [−24, −7]. Lowest premium is better.
+- Same as last year: +$28 [12, 45]. TabPFN is better.
+- Risk-capped: +$3 [−1, 6], a tie.
+
+**By menu** (got the cheapest plan / mean regret):
+
+| Menu | Lowest premium | TabPFN | Same as last year |
+|---|---|---|---|
+| WA PEBB | 76% / $138 | 73% / $148 | 73% / $185 |
+| OR PEBB | 94% / $35 | 91% / $39 | 90% / $40 |
+| TN state | 76% / $144 | 74% / $177 | 71% / $223 |
+
+**By 2023 spending tier:** prediction does not beat the lowest premium in any tier.
+- **Zero and low 2023 spenders:** all three strategies are within a point of each other at the cheapest plan (91–96%).
+- **High 2023 spenders:**
+  - Lowest premium: 71% got the cheapest plan, $166 mean regret.
+  - TabPFN expected cost: 64%, $197.
+  - Same as last year: 63%, $236.
+
+**Headline, verbatim from the JSON:** "Across 758 held-out MEPS adults and 3 real 2027 employer menus, choosing the plan with the lowest TabPFN-expected cost picked the truly cheapest plan 79% of the time, against 78% for picking what would have been best last year and 82% for the lowest premium; mean regret was $121 versus $149 and $106."
+
+**What this means:**
+- On these menus, the low-premium plans, most with an employer HSA deposit, are truly cheapest for most people. For example, KP NW CDHP is cheapest for 576 of 758 people in WA, and the TN CDHP for 578 of 758.
+- A "lowest premium" rule is hard to beat on average.
+- TabPFN-based choice beats "same as last year", the rule the product is named after, but not the lowest premium.
+
+### Failed or substituted
+- **TabPFN:** the Step 2 v2 predictions were reused rather than re-run on CPU. The GPU was busy with the reader run, and Step 2's run is the same model and split.
+- **WA HSA:** the $700.08 deposit for the KP CDHPs is assumed from the UMP CDHP certificate.
+- **TN menu:** only the 3 plans priced on the state rate sheet.
+- **Availability:** regional plan availability is ignored.
+- **Approximations:** event-to-row mapping, a $50 generic/brand threshold, no separate imaging or physician lines, and self-only coverage only. All are labelled in the JSON.
+
+### Risks
+1. **Not a product claim yet.** The result is approximate in the ways listed above. It is reproducible, but not a claim about real enrollees until the mappings are validated.
+2. **A design question for the product.** If the plain lowest-premium rule usually wins, the product's value lies in finding the people for whom it fails, and the high-spender tier shows prediction does not yet find them. This needs a product decision, not a re-tune on this test set.
+3. **Narrow TabPFN bands.** Their 77% coverage (Step 2) may push risk-capped choices the wrong way.
