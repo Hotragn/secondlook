@@ -2,7 +2,7 @@
 
 Choose next year's employer health plan from the plan PDFs and five answers. You get what each plan will likely cost you in a typical year and in a bad year, and what would change the answer. Every number traces back to a quoted line in your own plan document, and everything runs on your machine.
 
-Status: Steps 1 (setup and data), 2 (spend predictor, benchmark B) and 3 (plan reader, eval A) of 9 are done. See `RESUME.md` for current numbers and `DECISIONS.md` for why things are the way they are. The spec is `BRIEF.md`.
+Status: Steps 1 (setup and data), 2 (spend predictor, benchmark B), 3 (plan reader, eval A), 4 (rules engine, benchmark C) and 4b (lazy-safe check) of 9 are done. See `RESUME.md` for current numbers and `DECISIONS.md` for why things are the way they are. The spec is `BRIEF.md`.
 
 ## Reproduce the setup
 

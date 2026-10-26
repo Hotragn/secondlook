@@ -273,3 +273,80 @@ Paired difference, model minus TabPFN v2 (positive means TabPFN has lower loss):
 1. **Not a product claim yet.** The result is approximate in the ways listed above. It is reproducible, but not a claim about real enrollees until the mappings are validated.
 2. **A design question for the product.** If the plain lowest-premium rule usually wins, the product's value lies in finding the people for whom it fails, and the high-spender tier shows prediction does not yet find them. This needs a product decision, not a re-tune on this test set.
 3. **Narrow TabPFN bands.** Their 77% coverage (Step 2) may push risk-capped choices the wrong way.
+
+---
+
+## STATUS: Step 3, plan reader and eval A (2026-10-26, 03:35 UTC)
+
+### Done
+- **Reader** (`sameaslastyear/reader.py`): Gemma 4 quotes each field, and code verifies the quote and parses the value. 61 fields per SBC:
+  - 9 summary fields
+  - 30 medical-event rows
+  - 22 coverage-example lines and parameters
+- **Coverage-example reconciliation** (`sameaslastyear/rules.py`): arithmetic, bounds and parameter agreement, not a claim-level recompute (DECISIONS 17).
+- **Gold:** 260 held-out values, committed before scoring (`45f9098`). Claude transcribed them; no person checked them. 25 are flagged ambiguous.
+- **Scoring:** one held-out run of three models, `make eval-reader`, which writes `eval/results/step3_reader.json`, `eval/results/step3_reader.png` and `eval/results/step3_reader.svg`. Raw model output is committed under `eval/results/step3_raw/heldout`.
+
+### Results: 20 held-out 2027 SBCs (260 gold values per model)
+
+| Model | Gold accuracy [95% CI] | Excl. ambiguous (235) | Wrong | Needs check | All 61 fields verified | Examples reconcile | s/PDF (mean) | Ollama size / peak RSS |
+|---|---|---|---|---|---|---|---|---|
+| gemma4:e2b-it-qat | 88.1% [81.2, 94.6] | 95.3% | 6.2% | 5.8% | 95.3% | 38% (23/60) | 72 | 3.8 / 6.8 GB |
+| **gemma4:e4b-it-qat** | **91.9%** [87.3, 96.2] | **98.7%** | **3.5%** | 4.6% | 96.3% | 63% (38/60) | 106 | 5.6 / 12.0 GB |
+| gemma4:26b-a4b-it-qat | 89.2% [83.8, 94.6] | 96.2% | 5.0% | 5.8% | 95.9% | 68% (41/60) | 114 | 15.1 / 17.7 GB |
+
+- **Best model:** the mid-size e4b reads best. The 26B is not more accurate on the gold fields, though it reconciles more coverage examples.
+- **Reconciliation flags wrong values:** of the documents with at least one wrong value, coverage-example reconciliation flags 8 of 10 (e2b), 6 of 8 (e4b) and 5 of 10 (26B).
+
+### Failure log (all 80 misses with quotes in `step3_reader.json`; 57 of them on fields flagged ambiguous)
+- **Tennessee tier tables.** The out-of-pocket answer lists "Specialty drugs / Other In-network / Out-of-network". Models quote the first number ($2,400, the specialty-drug limit) as the individual limit. TN family quotes are other tiers ($1,125 is "employee + child(ren)"), which code refuses as not "family", so they become needs_check.
+- **A typo in the source PDF.** TN Limited prints the deductible as "$1.800", which every model read as $1.80. For e4b this is the one non-ambiguous wrong deductible.
+- **"15% coinsurance after $75 copay / visit"** (UMP Classic and Select ER). The parser reads only the coinsurance. The pattern was noticed during gold transcription and deliberately left unfixed (DECISIONS 18).
+- **Two-tier cells.** For CalPERS Trio's specialist, models take "Trio+ Specialist: $30/visit" (gold $15, ambiguous). Reconciliation flags it: the example box says otherwise.
+- **Document-level example inconsistencies.** Reconciliation flags these:
+  - Kaiser WA Classic and Value print example deductibles ($200, $300) above the plan deductible ($175, $250).
+  - KP NW CDHP's example box lists a $3,500 deductible against the $1,750 individual deductible.
+
+### Risks
+- **Unchecked gold.** The gold values are Claude's transcription; a person should spot-check at least the 25 ambiguous ones.
+- **Tennessee's tier tables** are the main failure mode. They need either a tier-aware prompt or a table parser, developed on dev documents only.
+- **Speed.** About 106 s per PDF for e4b is acceptable for the app, but needs a progress UI.
+
+---
+
+## STATUS: Step 4b, the lazy-safe check (2026-10-26, 03:35 UTC)
+
+Pre-registered in DECISIONS 25 (`3d01df7`), scored once by `make eval-lazy`, which writes `eval/results/step4b_lazy_safe.json`, `eval/results/step4b_lazy_safe.png` and `eval/results/step4b_lazy_safe.svg`. The run took 687 s, mostly TabPFN cross-validation.
+
+### Results: 2,274 held-out person-menu rows (758 people × 3 menus)
+- **How often lazy costs money:** the lowest premium costs more than $250 extra in 10.9% of rows, and more than $500 in 7.9%. Mean lazy regret is $106; the 90th percentile is $310.
+- **Detection of the $250 cases** (train-chosen threshold, about 20% flag rate):
+
+| Flagger | AUC [95% CI] | PR-AUC | Recall | Precision | Brier |
+|---|---|---|---|---|---|
+| **TabPFN classifier v2** | **0.756** [0.73, 0.79] | **0.27** | 50% | 27% | 0.090 |
+| Logistic regression | 0.746 [0.71, 0.78] | 0.24 | 51% | 28% | 0.092 |
+| Gradient boosting | 0.748 [0.72, 0.78] | 0.26 | 46% | 25% | 0.094 |
+| Year-1 spend > $8,736 | 0.659 | 0.16 | 33% | 18% | – |
+| Any chronic condition (flags 56%) | 0.580 | 0.13 | 70% | 14% | – |
+
+  - For the $500 cases, TabPFN's AUC is 0.729, against 0.720 for logistic regression and 0.701 for gradient boosting.
+  - Calibration: TabPFN under-predicts in the four lower bins (it predicts 9.8% where 14.7% occur) and over-predicts in the top bin (31% against 27%).
+- **Policy, "lazy unless flagged":**
+
+| Policy | Got the cheapest plan | Mean regret [95% CI] | 90th-percentile regret |
+|---|---|---|---|
+| Always lowest premium | 82.1% | **$106** [91, 120] | $310 |
+| Lazy unless TabPFN flags | 80.7% | $119 [104, 135] | $421 |
+| Lazy unless the spend rule flags | 80.3% | $112 | $373 |
+| Always TabPFN pick | 79.5% | $121 | $456 |
+| Same as last year | 78.1% | $149 | $608 |
+| Perfect flags (reference) | 82.6% | $97 [83, 110] | $272 |
+
+- **Paired comparison:** lazy-unless-TabPFN-flags minus always-lazy is **+$13 [+6, +20]**.
+- **Headline, verbatim from the JSON:** "Taking the lowest premium cost more than $250 extra in 11% of person-menu cases. A TabPFN classifier trained on other people spotted them with AUC 0.76 (95% CI 0.73-0.79); flagging its top 20% and giving them TabPFN's expected-cost pick gave mean regret $119 against $106 for always taking the lowest premium (paired difference $+13, 95% CI +6 to +20). With perfect flags the same policy would reach $97."
+
+### What it means
+- **Detection works moderately:** at a 20% flag rate, TabPFN finds half of the costly cases.
+- **The remedy loses money.** Giving flagged people TabPFN's expected-cost pick costs them more, on average, than staying lazy, whichever model does the flagging. Even perfect flags would only cut mean regret from $106 to $97, so the weak link is the alternative pick, not the flag.
+- **For the app:** "you can be lazy" is well supported. "Don't be lazy: Plan B saves $Y" is not yet supported by these numbers. A flag could honestly say "your costs are hard to predict; check the plans below" rather than name a winner. The alternative picker needs work, done on training data only, before it recommends a specific plan.

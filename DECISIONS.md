@@ -259,3 +259,17 @@ Washington's $700.08 deposit is applied to all three PEBB CDHPs; that is an appr
   - **Compared with:** lowest premium, same as last year and TabPFN expected cost.
   - **Measured by:** share of rows given the cheapest plan, mean regret and 90th-percentile regret.
 - **Reporting:** results are reported whichever way they come out.
+
+## After the held-out runs (2026-10-26)
+
+**26. Step 3 was scored once; one metric was added afterwards without changing any number.**
+- **The run:** the held-out reader run (`make eval-reader`) ran once, from 01:50 to 03:27 UTC, with prompt fingerprint `cc2fe40164a07f57`.
+- **The added metric:** afterwards the scoring script gained a derived count, "documents with a wrong value, and how many of them coverage-example reconciliation flags", computed from the same cached outputs. Every earlier number in `step3_reader.json` was checked unchanged.
+- **Timing caveat:** e2b and e4b ran while short Step 4 and 4b jobs (each under 2 minutes of CPU) were also running, so their seconds per PDF are upper bounds. The 26B ran on an otherwise idle machine.
+- **Memory:** recorded two ways:
+  - Ollama's allocated model size from `/api/ps`
+  - the summed RSS of Ollama processes, sampled every 0.5 s
+
+**27. Step 4b was scored once.**
+- **The run:** `make eval-lazy` scored the test set once, at 03:28 UTC. The chart step failed on a matplotlib text-parsing error after the JSON was written. Only the chart script was fixed and re-run.
+- **Headline formatting:** the headline's "$+13" format is left as the script produced it, rather than re-running the test scoring for a cosmetic change.
