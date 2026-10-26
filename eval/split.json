@@ -1,0 +1,253 @@
+{
+  "rule": "held_out = SBCs whose printed coverage period starts 1/1/2027; dev = all other SBCs",
+  "frozen_before_scoring": true,
+  "manifest": "data/sbc/manifest.csv",
+  "counts": {
+    "held_out": 20,
+    "dev": 25
+  },
+  "held_out_sponsors": [
+    "CalPERS",
+    "Oregon PEBB",
+    "State of Tennessee (Partners for Health)",
+    "Washington State PEBB (Health Care Authority)"
+  ],
+  "dev_sponsors": [
+    "City of Albuquerque",
+    "Georgia State Health Benefit Plan",
+    "New Jersey State Health Benefits Program",
+    "State of Colorado",
+    "State of Delaware",
+    "University of California",
+    "University of Texas System"
+  ],
+  "held_out": [
+    {
+      "doc_id": "calpers-blue-shield-trio-2027",
+      "sponsor": "CalPERS",
+      "sha256": "88790af01eccd300bca65d4e9aab66504ae0322761d378e4d8961494718e46c4"
+    },
+    {
+      "doc_id": "or-pebb-kp-deductible-ft-2027",
+      "sponsor": "Oregon PEBB",
+      "sha256": "21faf54402a10751cad9626c6094c7fe4bf94b58ba75e3885f3c99ed0ed3d59e"
+    },
+    {
+      "doc_id": "or-pebb-kp-traditional-ft-2027",
+      "sponsor": "Oregon PEBB",
+      "sha256": "b57945130716bfb78b65136c09408c37374a9c12058d9b649fe94c9c4cbf4bab"
+    },
+    {
+      "doc_id": "or-pebb-moda-coordinated-care-ft-2027",
+      "sponsor": "Oregon PEBB",
+      "sha256": "558d4be9096c3e57a494245db0376bfc95e9331f1f8584ec2dd839a00016dba6"
+    },
+    {
+      "doc_id": "or-pebb-moda-ppo-ft-2027",
+      "sponsor": "Oregon PEBB",
+      "sha256": "f2a1959374108d2fe1e704bdef8c189e9cb68a7267bcd9b44533fd64b2c4b4fc"
+    },
+    {
+      "doc_id": "tn-cdhp-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "b788dedaf0d8dcd9528ce9ad2ba11f201022e0e32e6dd54d1afadef74bad0b5b"
+    },
+    {
+      "doc_id": "tn-copay-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "17c16d9f307c3177a1ccf510274b66955e0e61e9895265181d653ea242276326"
+    },
+    {
+      "doc_id": "tn-limited-ppo-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "a99201c1e99a65edb456f4adc1e1f88541978a72f0955cb0f4d050f1c5d3c57a"
+    },
+    {
+      "doc_id": "tn-local-cdhp-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "3fdcb4c16363bcd3d4b14497d85292f2c2fa427b3b6d126c9dfec007441167f2"
+    },
+    {
+      "doc_id": "tn-premier-ppo-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "1b7c7e519f4582a63cf5d48e7db51a4e3cf46aa1b3fbcce2ed8be5eb6ca63676"
+    },
+    {
+      "doc_id": "tn-standard-ppo-2027",
+      "sponsor": "State of Tennessee (Partners for Health)",
+      "sha256": "721fcd5967ef543869c3cbbc81bca30456792995df1eadc4d41fd20947771b67"
+    },
+    {
+      "doc_id": "wa-pebb-kpnw-cdhp-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "563c51be0144188b2cca5306609231cd10decbc3105ee46e00c51ff1f83a75bf"
+    },
+    {
+      "doc_id": "wa-pebb-kpnw-classic-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "6a8938169d5013b4375c5e63fb7b39ac5d7d92d64bd134e09322053ec6538a72"
+    },
+    {
+      "doc_id": "wa-pebb-kpwa-cdhp-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "054130e0c5df72fb5466f3ed6725890dee26a414bb29a3d82742bb7045cce179"
+    },
+    {
+      "doc_id": "wa-pebb-kpwa-classic-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "7e30ddbbbb4aa9f97937162fd78ff028bee2f2132a828ead081e76e71961c8e6"
+    },
+    {
+      "doc_id": "wa-pebb-kpwa-soundchoice-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "d8eca742b2f44929f7c7979b25a8c09faec1b078ee70f0bf927d4b2f4daac351"
+    },
+    {
+      "doc_id": "wa-pebb-kpwa-value-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "a2eb64fc0636c646a519454755109f67bca537073ee637c6fd6a5330e81e710c"
+    },
+    {
+      "doc_id": "wa-pebb-ump-cdhp-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "059a7f876c29819793ae88e9395d93fdc50098dce292ab228b1384612e6e6fab"
+    },
+    {
+      "doc_id": "wa-pebb-ump-classic-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "11650de62c61d02b6008583261073b28eaa9e7c93360b12cf081996024290482"
+    },
+    {
+      "doc_id": "wa-pebb-ump-select-2027",
+      "sponsor": "Washington State PEBB (Health Care Authority)",
+      "sha256": "ed37878637d6a8a61a54394456c0059c44693b5b3d739a8959f9256071e3428d"
+    }
+  ],
+  "dev": [
+    {
+      "doc_id": "abq-uhc-epo-fy27",
+      "sponsor": "City of Albuquerque",
+      "sha256": "96cb7b3e94cc573db80df992ce448424503e50a545dd4a439cd98619bdbfc3d9"
+    },
+    {
+      "doc_id": "abq-uhc-ppo-fy27",
+      "sponsor": "City of Albuquerque",
+      "sha256": "f3319122c1fbfad4371a71b294a05a3c3c9e126015ee7a8446a57ca68d1c5536"
+    },
+    {
+      "doc_id": "co-cigna-copay-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "cac9dce1774fe9679ec54a56ff6e220f8db8893e34d1bbed6b9d22906ce89740"
+    },
+    {
+      "doc_id": "co-cigna-copay-plus-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "00ac43cb4b8ebd63d00e3715e19aa64c49ce9733a586be12f228b43fcc461ce9"
+    },
+    {
+      "doc_id": "co-cigna-hdhp-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "9edba5879673f801f6faafbae795e44f9b779c888e9b8c2f5c82ea055f96d849"
+    },
+    {
+      "doc_id": "co-kaiser-copay-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "e5eb89e2642cc70d2fc8ffc3bf86865e853dcfe00ffed19b43db1f0796be59df"
+    },
+    {
+      "doc_id": "co-kaiser-copay-plus-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "a2b420ee9a5195efabcf9910b7b9fd49eb99878b689ad82905242ecd47b3be5f"
+    },
+    {
+      "doc_id": "co-kaiser-hdhp-fy26",
+      "sponsor": "State of Colorado",
+      "sha256": "ee03956a9e82ba19f0df93f83cd72bcb927159ede7d10bd616bc3ac80b8cb617"
+    },
+    {
+      "doc_id": "de-aetna-cdh-gold-fy26",
+      "sponsor": "State of Delaware",
+      "sha256": "e30c63e77d52d1febff35f788be5f5a2c6f8aa0fb320ae3c2e3ae205c096b705"
+    },
+    {
+      "doc_id": "de-aetna-hmo-fy26",
+      "sponsor": "State of Delaware",
+      "sha256": "4a5d20cb9d5affd55544fe41b4115e4fd0363a4f0b4dc9e188b1f826daa0e22e"
+    },
+    {
+      "doc_id": "de-highmark-comprehensive-ppo-fy26",
+      "sponsor": "State of Delaware",
+      "sha256": "3f1194b556a5a81d856f92647fc5675e3314e9e82eb61008e15f452b256735ce"
+    },
+    {
+      "doc_id": "de-highmark-first-state-basic-fy26",
+      "sponsor": "State of Delaware",
+      "sha256": "8f8acbe6ee183145efb9ca8cc6876a3e4fec516044f2db9f266a28cf3703e444"
+    },
+    {
+      "doc_id": "ga-shbp-anthem-hmo-2026",
+      "sponsor": "Georgia State Health Benefit Plan",
+      "sha256": "f9694a3223864399983c2df751d81614ce822556e73ab056fb872878dfc08102"
+    },
+    {
+      "doc_id": "ga-shbp-uhc-hdhp-2026",
+      "sponsor": "Georgia State Health Benefit Plan",
+      "sha256": "d1c1f9813493cf6dc2597824e46ccea76a240b92d2e56caca09a8c1335e7186b"
+    },
+    {
+      "doc_id": "ga-shbp-uhc-hmo-2026",
+      "sponsor": "Georgia State Health Benefit Plan",
+      "sha256": "1e0e7b60c5f2cf2331c6916566535a02e14a0bb6ee993a6f11930fb4ac6ef70e"
+    },
+    {
+      "doc_id": "nj-shbp-aetna-freedom-1525-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "7bb86fc50744ded211424edc2af65a13c066a6eec69ad9834720431ebdc3ca0a"
+    },
+    {
+      "doc_id": "nj-shbp-aetna-freedom-hdhigh-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "6a71b3c6c83806c4e367917f2aa39204bf3e536255fa1b294c9c81072f2a45e2"
+    },
+    {
+      "doc_id": "nj-shbp-aetna-hmo-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "c10805039ec20b3ea58ebcfed7903a8b8083871cbb3375835e485db59238eadb"
+    },
+    {
+      "doc_id": "nj-shbp-horizon-hmo-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "94936ff5cc6771f67f4481de3abebc5f804db6ced09a173bfa338f2388ccc536"
+    },
+    {
+      "doc_id": "nj-shbp-horizon-njdirect-15-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "dad0453ceea9aea0d8d8a648e31bf9cc471cd640666164706b07e66ac7f6056c"
+    },
+    {
+      "doc_id": "nj-shbp-horizon-njdirect-2030-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "7970b7de6168e3c05564970194f1ec3ae532e8295e3e9de4afe9a302a68d2941"
+    },
+    {
+      "doc_id": "nj-shbp-horizon-njdirect-hdlow-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "9409071cafa8906c1513e08577d8934a2101eb7d453f36c3f3271d4a9b4e6861"
+    },
+    {
+      "doc_id": "nj-shbp-horizon-omnia-2026",
+      "sponsor": "New Jersey State Health Benefits Program",
+      "sha256": "28d0e0bc5bd2d078034db49cb2eb34209f79a5194453bc8ef9b95918ce398fa7"
+    },
+    {
+      "doc_id": "uc-uc-care-2026",
+      "sponsor": "University of California",
+      "sha256": "633bb054cbd7a20a93783a924ba059e61645fa87e55390b38a9776a516caffce"
+    },
+    {
+      "doc_id": "ut-select-ppo-fy27",
+      "sponsor": "University of Texas System",
+      "sha256": "80e2d9b1fd842c9306bbd51a13a7070939456206e99f88399619da10e186989b"
+    }
+  ]
+}
