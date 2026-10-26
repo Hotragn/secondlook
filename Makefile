@@ -18,8 +18,9 @@ check:
 split-hash:
 	shasum -a 256 eval/split.json eval/spend_split.json
 
-# Step 2 / benchmark B: spend table, models and metrics, chart.
+# Step 2 / benchmark B: spend table, models and metrics, learning curve (2b), charts.
 eval-spend:
 	uv run python -I scripts/spend_data.py
 	uv run python -I scripts/spend_eval.py
+	uv run python -I scripts/spend_learning_curve.py
 	uv run python -I scripts/spend_chart.py

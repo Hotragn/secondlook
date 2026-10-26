@@ -1,5 +1,5 @@
 {
- "run_utc": "2026-10-26T01:10:33Z",
+ "run_utc": "2026-10-26T01:22:21Z",
  "command": "make eval-spend",
  "hardware": {
   "machine": "arm64",
@@ -85,14 +85,14 @@
  },
  "runtime_seconds": {
   "fit_predict": {
-   "TabPFN v2": 10.8,
+   "TabPFN v2": 11.0,
    "Same as last year": 0.0,
-   "Age-sex group quantiles": 0.0,
-   "Gradient boosting (quantile)": 1.78,
+   "Age-sex group quantiles": 0.01,
+   "Gradient boosting (quantile)": 1.85,
    "Linear quantile regression": 1.28
   },
   "bootstrap": 0.01,
-  "total": 16.2
+  "total": 16.5
  },
  "metrics": {
   "unweighted": {
