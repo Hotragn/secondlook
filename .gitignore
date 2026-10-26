@@ -10,3 +10,4 @@ node_modules/
 .DS_Store
 brag-output/*.mp4.tmp
 data/derived/
+.claude/

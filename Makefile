@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash eval-spend eval-reader eval-decision eval-lazy test
+.PHONY: setup data check split-hash eval-spend eval-reader eval-decision eval-lazy test app app-data capture
 
 setup:
 	uv sync
@@ -44,3 +44,14 @@ eval-lazy:
 
 test:
 	uv run pytest -q tests
+
+# Step 5: the site's data (docs/data/lekka.json), the local app, and screenshots.
+app-data:
+	uv run python -I scripts/build_app_data.py
+
+# Local mode at http://127.0.0.1:8765: live answers on the CPU, PDF reading with local Ollama.
+app:
+	uv run uvicorn sameaslastyear.server:app --host 127.0.0.1 --port 8765
+
+capture:
+	uv run python -I scripts/capture.py
