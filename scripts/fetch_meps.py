@@ -12,6 +12,7 @@ Run: uv run python -I scripts/fetch_meps.py
 
 import csv
 import hashlib
+import json
 import shutil
 import sys
 import urllib.request
@@ -90,12 +91,24 @@ def main() -> None:
         with pd.read_stata(dta, convert_categoricals=False, iterator=True) as reader:
             labels = reader.variable_labels()
             df = reader.read()
+            # MEPS label sets are numbered (H257NNNNX); pandas keeps the variable -> set
+            # mapping only in a private attribute, so this relies on _varlist/_lbllist.
+            sets = reader.value_labels()
+            codes = {
+                var: sets[name]
+                for var, name in zip(reader._varlist, reader._lbllist)
+                if name in sets
+            }
 
         parquet = RAW / f"{stem}.parquet"
         df.to_parquet(parquet, index=False)
         pd.DataFrame(
             {"variable": list(labels), "label": list(labels.values())}
         ).to_csv(RAW / f"{stem}_variables.csv", index=False)
+        (RAW / f"{stem}_value_labels.json").write_text(json.dumps(
+            {name: {str(k): v for k, v in mapping.items()} for name, mapping in codes.items()},
+            indent=1,
+        ))
         dta.unlink()
 
         rows.append({

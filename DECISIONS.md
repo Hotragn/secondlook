@@ -62,3 +62,55 @@ These menus are all in the held-out set. Using them for benchmark C and the frie
 
 **10. Rate sheets are kept for every sponsor; one year mismatch is recorded.**
 There are 15 rate files. Delaware's posted rate sheet is FY2027 (from July 2026), but its posted SBCs are FY2026, so Delaware's menu years do not match. New Jersey's premiums come from an Aon presentation to its benefits commission, not a member-facing sheet. Colorado's and Georgia's premiums sit inside their benefits guides. Each caveat is in the `notes` column of the manifest.
+
+## Step 2: spend predictor (2026-10-26)
+
+**11. Population: 3,033 privately covered adults from MEPS Panel 28.**
+Filter applied to HC-257 (`scripts/spend_data.py`):
+
+| Step | People |
+|---|---|
+| HC-257 Panel 28 persons | 8,872 |
+| In both 2023 and 2024 (`YEARIND = 1`) | 8,709 |
+| Positive longitudinal weight (`LONGWT > 0`) | 8,709 |
+| Aged 18–64 at the end of 2023 and of 2024 (`AGEY1X`, `AGEY2X`) | 4,673 |
+| Any private coverage in 2023 and in 2024 (`INSCOVY1 = INSCOVY2 = 1`) | **3,033** |
+
+"Any private" is MEPS's code 1 for `INSCOV`; it includes employer and non-group private plans held at any time in the year. A stricter subgroup, employer or union group coverage in all 24 months (`PEG{month}Y1/Y2 = 1`), has 2,173 people. It is reported as a breakdown, not used as the population.
+
+The five year-2 components kept for Step 4 (office, outpatient, ER, inpatient, Rx) sum to 88.95% of year-2 total spending in this population. The rest is dental, home health, vision and other.
+
+**12. Spend split: 25% test by household, fixed seed, frozen before scoring.**
+`StratifiedGroupKFold(n_splits=4, shuffle=True, random_state=20261026)`, fold 0 is the test set. Grouping by household (`DUID`) keeps family members, whose spending is correlated, on one side. Stratifying by year-1 spending tier balances the tiers.
+
+| | People | Households | Zero | Low | Mid | High |
+|---|---|---|---|---|---|---|
+| Train | 2,275 | 1,466 | 223 | 684 | 684 | 684 |
+| Test | 758 | 499 | 74 | 228 | 228 | 228 |
+
+Tiers use year-1 total spending: zero = $0; low = $1–$1,408; mid = $1,409–$5,184; high = over $5,184. The cut-offs are terciles of positive year-1 spending in the population.
+
+- `eval/spend_split.json` SHA-256: `d9577f32d9f4a365f1e4f5cd2f88f0ad796dfe87423a4d0862d1076edc4039aa`
+
+**13. Modelling choices, fixed before scoring.**
+- **Features** (26, all from 2023):
+  - age, female, region (three dummies)
+  - self-rated physical and mental health, from round 2 or else round 1. Round 3 is skipped because it is interviewed in 2024.
+  - 12 chronic-condition flags and their count
+  - office, outpatient, ER, inpatient and Rx counts
+  - total spending
+- **Target:** 2024 total spending (`TOTEXPY2`). The learned models fit `log1p(spend)` and predictions are mapped back with `expm1`. Quantiles survive any increasing transform, so this changes nothing about what is predicted. Spend and count features enter as `log1p`.
+- **Quantiles:** 0.1, 0.25, 0.5, 0.75, 0.9. Where a baseline's quantiles cross, each row is sorted.
+- **No hyperparameter tuning** for any model; library defaults with fixed seeds.
+- **TabPFN:** v3.5 is the main model if the Prior Labs token in `.env` passes the license check, with v2 as an extra row; otherwise v2 alone. The training set (2,275 rows) fits in context, so no nearest-neighbour context selection is needed.
+- **Baselines:**
+  - same as last year (every quantile = 2023 spending)
+  - age-band × sex training quantiles (18–34, 35–49, 50–64; the 0.5 row is the group median)
+  - `HistGradientBoostingRegressor(loss="quantile")`, one model per quantile
+  - linear `QuantileRegressor(alpha=0, solver="highs")` on standardised features with median imputation
+- **Metrics on the test set:**
+  - pinball loss at 0.1, 0.5 and 0.9, in dollars
+  - P10–P90 coverage (nominal 80%) and interval width
+  - all of the above overall, by year-1 tier, and for the 24-month employer-coverage subgroup
+- **Uncertainty:** 95% CIs from 1,000 bootstrap resamples of test households, plus paired differences against the main TabPFN model.
+- **Weighted versions** use `LONGWT`. The bootstrap ignores MEPS strata and PSUs, so its CIs are an approximation.
