@@ -1,0 +1,392 @@
+{
+ "description": "Real 2027 employee menus for benchmark C (self-only coverage). Deductible, out-of-pocket limit and the primary care, specialist, emergency room, generic drug and inpatient facility rows come from eval/gold/heldout_gold.json. Every other value below carries a quote that sameaslastyear/menus.py verifies against the PDF text on each load.",
+ "sponsors": {
+  "wa-pebb": {
+   "name": "Washington State PEBB (state employees)",
+   "plans": {
+    "wa-pebb-kpnw-classic-2027": {
+     "name": "Kaiser Permanente NW Classic",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 0
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpnw-classic-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpnw-classic-2027",
+      "quote": "$40 (retail) & $80 (mail order) / prescription, deductible does not apply."
+     }
+    },
+    "wa-pebb-kpnw-cdhp-2027": {
+     "name": "Kaiser Permanente NW CDHP",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 1
+     },
+     "hsa": {
+      "doc": "wa-pebb-ump-cdhp-coc-2027",
+      "quote": "State of Washington will contribute $700.08 for one person"
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpnw-cdhp-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpnw-cdhp-2027",
+      "quote": "$40 (retail) & $80 (mail order) / prescription."
+     }
+    },
+    "wa-pebb-kpwa-classic-2027": {
+     "name": "Kaiser Permanente WA Classic",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 2
+     },
+     "oop_rx": {
+      "doc": "wa-pebb-kpwa-classic-2027",
+      "quote": "$2,000 Individual / $8,000 Family for prescription drugs"
+     },
+     "inpatient_detail": {
+      "doc": "wa-pebb-kpwa-classic-2027",
+      "quote": "$150 / day up to $750 / admission",
+      "per_day": true,
+      "max_per_admission": 750
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpwa-classic-2027",
+      "quote": "$150 / visit"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpwa-classic-2027",
+      "quote": "$40 (retail); $80 (mail order)/prescription, deductible does not apply."
+     }
+    },
+    "wa-pebb-kpwa-cdhp-2027": {
+     "name": "Kaiser Permanente WA CDHP",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 3
+     },
+     "hsa": {
+      "doc": "wa-pebb-ump-cdhp-coc-2027",
+      "quote": "State of Washington will contribute $700.08 for one person"
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpwa-cdhp-2027",
+      "quote": "10% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpwa-cdhp-2027",
+      "quote": "$40 (retail); $80 (mail order) / prescription"
+     }
+    },
+    "wa-pebb-kpwa-soundchoice-2027": {
+     "name": "Kaiser Permanente WA SoundChoice",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 4
+     },
+     "oop_rx": {
+      "doc": "wa-pebb-kpwa-soundchoice-2027",
+      "quote": "$2,000 Individual / $8,000 Family for prescription drugs"
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpwa-soundchoice-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpwa-soundchoice-2027",
+      "quote": "$60 (retail); $120 (mail order) / prescription"
+     }
+    },
+    "wa-pebb-kpwa-value-2027": {
+     "name": "Kaiser Permanente WA Value",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 5
+     },
+     "oop_rx": {
+      "doc": "wa-pebb-kpwa-value-2027",
+      "quote": "$2,000 Individual / $8,000 Family for prescription drugs"
+     },
+     "inpatient_detail": {
+      "doc": "wa-pebb-kpwa-value-2027",
+      "quote": "$250 / day up to $1,250 / admission",
+      "per_day": true,
+      "max_per_admission": 1250
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-kpwa-value-2027",
+      "quote": "$200 / visit"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-kpwa-value-2027",
+      "quote": "$50 (retail); $100 (mail order) / prescription, deductible does not apply."
+     }
+    },
+    "wa-pebb-ump-classic-2027": {
+     "name": "UMP Classic",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 6
+     },
+     "oop_rx": {
+      "doc": "wa-pebb-ump-classic-2027",
+      "quote": "Prescription drugs: $2,000 individual / $4,000 family per calendar year."
+     },
+     "inpatient_detail": {
+      "doc": "wa-pebb-ump-classic-2027",
+      "quote": "$200 copay per day up to $600 per individual per calendar year",
+      "per_day": true,
+      "max_per_year": 600
+     },
+     "generic_cap": {
+      "doc": "wa-pebb-ump-classic-2027",
+      "quote": "10% coinsurance or $25 copay, whichever is less",
+      "max_per_fill": 25
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-ump-classic-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-ump-classic-2027",
+      "quote": "30% coinsurance or $75 copay, whichever is less",
+      "max_per_fill": 75
+     }
+    },
+    "wa-pebb-ump-cdhp-2027": {
+     "name": "UMP CDHP",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 7
+     },
+     "hsa": {
+      "doc": "wa-pebb-ump-cdhp-coc-2027",
+      "quote": "State of Washington will contribute $700.08 for one person"
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-ump-cdhp-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-ump-cdhp-2027",
+      "quote": "15% coinsurance for all other prescription drugs"
+     }
+    },
+    "wa-pebb-ump-select-2027": {
+     "name": "UMP Select",
+     "premium": {
+      "doc": "wa-pebb-rates-2027",
+      "quote": "Subscriber only $154.00 $53.00 $154.00 $53.00 $154.00 $151.00 $148.00 $59.00 $85.00",
+      "column": 8
+     },
+     "oop_rx": {
+      "doc": "wa-pebb-ump-select-2027",
+      "quote": "Prescription drugs: $2,000 individual / $4,000 family per calendar year."
+     },
+     "inpatient_detail": {
+      "doc": "wa-pebb-ump-select-2027",
+      "quote": "$200 copay per day up to $600 per individual per calendar year",
+      "per_day": true,
+      "max_per_year": 600
+     },
+     "generic_cap": {
+      "doc": "wa-pebb-ump-select-2027",
+      "quote": "10% coinsurance or $25 copay, whichever is less",
+      "max_per_fill": 25
+     },
+     "outpatient_facility": {
+      "doc": "wa-pebb-ump-select-2027",
+      "quote": "20% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "wa-pebb-ump-select-2027",
+      "quote": "30% coinsurance or $75 copay, whichever is less",
+      "max_per_fill": 75
+     }
+    }
+   }
+  },
+  "or-pebb": {
+   "name": "Oregon PEBB (state employees, full-time)",
+   "plans": {
+    "or-pebb-kp-traditional-ft-2027": {
+     "name": "Kaiser Traditional",
+     "premium": {
+      "doc": "or-pebb-rates-2027",
+      "quote": "Kaiser Traditional1 $1,100.64",
+      "share": {
+       "doc": "or-pebb-enrollment-guide-2027",
+       "quote": "Premium share is 5% for the Moda PPO or Kaiser Traditional plans."
+      }
+     },
+     "inpatient_detail": {
+      "doc": "or-pebb-kp-traditional-ft-2027",
+      "quote": "$50 / day up to $250 / admission.",
+      "per_day": true,
+      "max_per_admission": 250
+     },
+     "outpatient_facility": {
+      "doc": "or-pebb-kp-traditional-ft-2027",
+      "quote": "$5 / visit"
+     },
+     "preferred_brand_drugs": {
+      "doc": "or-pebb-kp-traditional-ft-2027",
+      "quote": "$25 (retail) & $25 (mail order) / prescription."
+     }
+    },
+    "or-pebb-kp-deductible-ft-2027": {
+     "name": "Kaiser Deductible",
+     "premium": {
+      "doc": "or-pebb-rates-2027",
+      "quote": "Kaiser Deductible1 $962.48",
+      "share": {
+       "doc": "or-pebb-enrollment-guide-2027",
+       "quote": "Premium share is 1% for any other full-time plan."
+      }
+     },
+     "inpatient_detail": {
+      "doc": "or-pebb-kp-deductible-ft-2027",
+      "quote": "$50 / day up to $250 / admission.",
+      "per_day": true,
+      "max_per_admission": 250
+     },
+     "outpatient_facility": {
+      "doc": "or-pebb-kp-deductible-ft-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "or-pebb-kp-deductible-ft-2027",
+      "quote": "$25 (retail) & $25 (mail order) / prescription, deductible does not apply."
+     }
+    },
+    "or-pebb-moda-coordinated-care-ft-2027": {
+     "name": "Moda Coordinated Care",
+     "premium": {
+      "doc": "or-pebb-rates-2027",
+      "quote": "Moda Coordinated Care2 $995.38",
+      "share": {
+       "doc": "or-pebb-enrollment-guide-2027",
+       "quote": "Premium share is 1% for any other full-time plan."
+      }
+     },
+     "oop_rx": {
+      "doc": "or-pebb-moda-coordinated-care-ft-2027",
+      "quote": "$1,000 individual / $3,000 family for prescription drugs"
+     },
+     "inpatient_detail": {
+      "doc": "or-pebb-moda-coordinated-care-ft-2027",
+      "quote": "$50 copay per day / $250 copay per admission",
+      "per_day": true,
+      "max_per_admission": 250
+     },
+     "outpatient_facility": {
+      "doc": "or-pebb-moda-coordinated-care-ft-2027",
+      "quote": "$25 copay/visit"
+     },
+     "preferred_brand_drugs": {
+      "doc": "or-pebb-moda-coordinated-care-ft-2027",
+      "quote": "$30 copay/retail, $75 copay mail-order"
+     }
+    },
+    "or-pebb-moda-ppo-ft-2027": {
+     "name": "Moda PPO",
+     "premium": {
+      "doc": "or-pebb-rates-2027",
+      "quote": "Moda PPO3 $1,051.50",
+      "share": {
+       "doc": "or-pebb-enrollment-guide-2027",
+       "quote": "Premium share is 5% for the Moda PPO or Kaiser Traditional plans."
+      }
+     },
+     "oop_rx": {
+      "doc": "or-pebb-moda-ppo-ft-2027",
+      "quote": "$1,000 individual / $3,000 family for prescription drugs"
+     },
+     "outpatient_facility": {
+      "doc": "or-pebb-moda-ppo-ft-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "or-pebb-moda-ppo-ft-2027",
+      "quote": "$30 copay/retail, $75 copay mail-order"
+     }
+    }
+   }
+  },
+  "tn-state": {
+   "name": "State of Tennessee (state and higher education employees)",
+   "plans": {
+    "tn-premier-ppo-2027": {
+     "name": "Premier PPO",
+     "premium": {
+      "doc": "tn-rates-state-active-2027",
+      "quote": "PREMIER PPO Employee Only $189 $189 $289 $289 $755",
+      "column": 0
+     },
+     "outpatient_facility": {
+      "doc": "tn-premier-ppo-2027",
+      "quote": "15% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "tn-premier-ppo-2027",
+      "quote": "$40 copay/prescription 30-day supply"
+     }
+    },
+    "tn-standard-ppo-2027": {
+     "name": "Standard PPO",
+     "premium": {
+      "doc": "tn-rates-state-active-2027",
+      "quote": "STANDARD PPO Employee Only $122 $122 $222 $222 $755",
+      "column": 0
+     },
+     "outpatient_facility": {
+      "doc": "tn-standard-ppo-2027",
+      "quote": "20% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "tn-standard-ppo-2027",
+      "quote": "$50 copay/prescription 30-day supply"
+     }
+    },
+    "tn-cdhp-2027": {
+     "name": "CDHP/HSA",
+     "premium": {
+      "doc": "tn-rates-state-active-2027",
+      "quote": "CDHP/HSA Employee Only $84 $84 $184 $184 $755",
+      "column": 0
+     },
+     "hsa": {
+      "doc": "tn-benefits-guide-2027",
+      "quote": "The state will put $500 (employee-only)"
+     },
+     "outpatient_facility": {
+      "doc": "tn-cdhp-2027",
+      "quote": "20% coinsurance"
+     },
+     "preferred_brand_drugs": {
+      "doc": "tn-cdhp-2027",
+      "quote": "20% coinsurance per prescription"
+     }
+    }
+   }
+  }
+ },
+ "notes": [
+  "WA premiums: subscriber-only row; columns in printed order KPNW Classic, KPNW CDHP, KPWA Classic, KPWA CDHP, KPWA SoundChoice, KPWA Value, UMP Classic, UMP CDHP, UMP Select (checked against the rendered page).",
+  "WA HSA: the $700.08 state contribution is quoted from the UMP CDHP certificate and applied to all three PEBB CDHPs (approximation: the KP CDHP documents collected do not state it).",
+  "OR premiums: full employee-only premium times the state full-time employee share from the 2027 enrollment guide.",
+  "TN premiums: BCBST Network S column (the lower of the two network prices); the Limited, Copay and Local CDHP plans are not on the state active-employee rate sheet, so the TN menu has three plans."
+ ]
+}
