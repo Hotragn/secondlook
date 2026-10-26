@@ -1,0 +1,1127 @@
+{
+ "description": "Gold values for 13 fields of each held-out SBC (eval/split.json), transcribed before any reader output existed for these documents. See eval/README.md.",
+ "transcribed_by": "Claude (Opus 5.5), the coding agent working in this repo, from extracted page text; not independently checked by a person",
+ "conventions": [
+  "Dollar amounts in dollars; coinsurance as a rate (0.15 = 15%).",
+  "Deductible and out-of-pocket values are in-network; individual = one person (or 'employee only'), family = the largest coverage tier.",
+  "Where a plan has separate medical and pharmacy (or specialty-drug) out-of-pocket limits, the medical / 'other in-network' limit is recorded and the field is flagged ambiguous.",
+  "Cost sharing is the in-network base cost for the row: copay and/or coinsurance as printed; a cap such as 'or $25, whichever is less' is not a copay.",
+  "deductible_applies is recorded only when the cell says so; otherwise null and not scored.",
+  "Where a cell lists two in-network rates, the rate for a typical visit is recorded when the text makes that clear, otherwise the first-listed rate; the field is flagged ambiguous.",
+  "Coverage-example totals are the printed 'The total ... would pay is' amounts."
+ ],
+ "fields": [
+  "deductible_individual",
+  "deductible_family",
+  "oop_individual",
+  "oop_family",
+  "primary_care",
+  "specialist",
+  "urgent_care",
+  "emergency_room",
+  "generic_drugs",
+  "inpatient_facility",
+  "peg_total",
+  "joe_total",
+  "mia_total"
+ ],
+ "documents": {
+  "wa-pebb-ump-classic-2027": {
+   "sha256": "11650de62c61d02b6008583261073b28eaa9e7c93360b12cf081996024290482",
+   "fields": {
+    "deductible_individual": 250,
+    "deductible_family": 750,
+    "oop_individual": 2000,
+    "oop_family": 4000,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 75,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 200,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 1210,
+    "joe_total": 1650,
+    "mia_total": 730
+   },
+   "ambiguous": [],
+   "notes": {
+    "emergency_room": "15% coinsurance after $75 copay / visit",
+    "generic_drugs": "Tier 1: 10% coinsurance or $25 copay, whichever is less (the $25 is a cap)",
+    "inpatient_facility": "$200 copay per day up to $600 per individual per calendar year"
+   }
+  },
+  "wa-pebb-ump-select-2027": {
+   "sha256": "ed37878637d6a8a61a54394456c0059c44693b5b3d739a8959f9256071e3428d",
+   "fields": {
+    "deductible_individual": 750,
+    "deductible_family": 2250,
+    "oop_individual": 3500,
+    "oop_family": 7000,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 75,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 200,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 1910,
+    "joe_total": 2150,
+    "mia_total": 1230
+   },
+   "ambiguous": [],
+   "notes": {
+    "emergency_room": "20% coinsurance after $75 copay / visit",
+    "generic_drugs": "Tier 1: 10% coinsurance or $25 copay, whichever is less",
+    "inpatient_facility": "$200 copay per day up to $600 per individual per calendar year"
+   }
+  },
+  "wa-pebb-ump-cdhp-2027": {
+   "sha256": "059a7f876c29819793ae88e9395d93fdc50098dce292ab228b1384612e6e6fab",
+   "fields": {
+    "deductible_individual": 1750,
+    "deductible_family": 3500,
+    "oop_individual": 4200,
+    "oop_family": 8400,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 3410,
+    "joe_total": 2150,
+    "mia_total": 1950
+   },
+   "ambiguous": [],
+   "notes": {
+    "generic_drugs": "Tier 1: 15% coinsurance for all other prescription drugs; covered insulins 10% up to $25"
+   }
+  },
+  "wa-pebb-kpwa-classic-2027": {
+   "sha256": "7e30ddbbbb4aa9f97937162fd78ff028bee2f2132a828ead081e76e71961c8e6",
+   "fields": {
+    "deductible_individual": 175,
+    "deductible_family": 525,
+    "oop_individual": 2000,
+    "oop_family": 4000,
+    "primary_care": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 250,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 150,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 420,
+    "joe_total": 1375,
+    "mia_total": 800
+   },
+   "ambiguous": [],
+   "notes": {
+    "generic_drugs": "$5 (retail); $10 (mail order)",
+    "inpatient_facility": "$150 / day up to $750 / admission"
+   }
+  },
+  "wa-pebb-kpwa-soundchoice-2027": {
+   "sha256": "d8eca742b2f44929f7c7979b25a8c09faec1b078ee70f0bf927d4b2f4daac351",
+   "fields": {
+    "deductible_individual": 125,
+    "deductible_family": 375,
+    "oop_individual": 2000,
+    "oop_family": 4000,
+    "primary_care": {
+     "copay": 20,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 75,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 500,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 705,
+    "joe_total": 1455,
+    "mia_total": 605
+   },
+   "ambiguous": [],
+   "notes": {
+    "emergency_room": "$75 / visit then 15% coinsurance"
+   }
+  },
+  "wa-pebb-kpwa-value-2027": {
+   "sha256": "a2eb64fc0636c646a519454755109f67bca537073ee637c6fd6a5330e81e710c",
+   "fields": {
+    "deductible_individual": 250,
+    "deductible_family": 750,
+    "oop_individual": 3000,
+    "oop_family": 6000,
+    "primary_care": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 300,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 250,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 620,
+    "joe_total": 1750,
+    "mia_total": 1100
+   },
+   "ambiguous": [],
+   "notes": {
+    "inpatient_facility": "$250 / day up to $1,250 / admission"
+   }
+  },
+  "wa-pebb-kpwa-cdhp-2027": {
+   "sha256": "054130e0c5df72fb5466f3ed6725890dee26a414bb29a3d82742bb7045cce179",
+   "fields": {
+    "deductible_individual": 1750,
+    "deductible_family": 3500,
+    "oop_individual": 5100,
+    "oop_family": 10200,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 20,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 2780,
+    "joe_total": 2500,
+    "mia_total": 1860
+   },
+   "ambiguous": [],
+   "notes": {}
+  },
+  "wa-pebb-kpnw-classic-2027": {
+   "sha256": "6a8938169d5013b4375c5e63fb7b39ac5d7d92d64bd134e09322053ec6538a72",
+   "fields": {
+    "deductible_individual": 300,
+    "deductible_family": 900,
+    "oop_individual": 2500,
+    "oop_family": 5000,
+    "primary_care": {
+     "copay": 25,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": 35,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "urgent_care": {
+     "copay": 45,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 1630,
+    "joe_total": 910,
+    "mia_total": 900
+   },
+   "ambiguous": [],
+   "notes": {}
+  },
+  "wa-pebb-kpnw-cdhp-2027": {
+   "sha256": "563c51be0144188b2cca5306609231cd10decbc3105ee46e00c51ff1f83a75bf",
+   "fields": {
+    "deductible_individual": 1750,
+    "deductible_family": 3500,
+    "oop_individual": 5100,
+    "oop_family": 10200,
+    "primary_care": {
+     "copay": 20,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 40,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 4470,
+    "joe_total": 2160,
+    "mia_total": 2000
+   },
+   "ambiguous": [],
+   "notes": {}
+  },
+  "or-pebb-moda-ppo-ft-2027": {
+   "sha256": "f2a1959374108d2fe1e704bdef8c189e9cb68a7267bcd9b44533fd64b2c4b4fc",
+   "fields": {
+    "deductible_individual": 250,
+    "deductible_family": 750,
+    "oop_individual": 1900,
+    "oop_family": 5700,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.1,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 150,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 10,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 500,
+    "joe_total": 1320,
+    "mia_total": 1050
+   },
+   "ambiguous": [
+    "primary_care"
+   ],
+   "notes": {
+    "primary_care": "10% coinsurance at OHS Certified Primary Care Homes, 15% otherwise; first-listed rate recorded",
+    "emergency_room": "$150 copay/visit, then 15% coinsurance",
+    "generic_drugs": "Generic tier $10 copay/retail"
+   }
+  },
+  "or-pebb-moda-coordinated-care-ft-2027": {
+   "sha256": "558d4be9096c3e57a494245db0376bfc95e9331f1f8584ec2dd839a00016dba6",
+   "fields": {
+    "deductible_individual": 500,
+    "deductible_family": 1500,
+    "oop_individual": 1500,
+    "oop_family": 4500,
+    "primary_care": {
+     "copay": 10,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 25,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 25,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 150,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 10,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 1610,
+    "joe_total": 1220,
+    "mia_total": 850
+   },
+   "ambiguous": [
+    "specialist"
+   ],
+   "notes": {
+    "specialist": "$10 copay/visit for massage therapy, $25 copay/visit for all other visits; $25 recorded",
+    "inpatient_facility": "$50 copay per day / $250 copay per admission"
+   }
+  },
+  "or-pebb-kp-traditional-ft-2027": {
+   "sha256": "b57945130716bfb78b65136c09408c37374a9c12058d9b649fe94c9c4cbf4bab",
+   "fields": {
+    "deductible_individual": 0,
+    "deductible_family": 0,
+    "oop_individual": 800,
+    "oop_family": 1600,
+    "primary_care": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 150,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 120,
+    "joe_total": 300,
+    "mia_total": 300
+   },
+   "ambiguous": [],
+   "notes": {
+    "deductible_individual": "$0 (no deductible)",
+    "inpatient_facility": "$50 / day up to $250 / admission"
+   }
+  },
+  "or-pebb-kp-deductible-ft-2027": {
+   "sha256": "21faf54402a10751cad9626c6094c7fe4bf94b58ba75e3885f3c99ed0ed3d59e",
+   "fields": {
+    "deductible_individual": 250,
+    "deductible_family": 750,
+    "oop_individual": 1500,
+    "oop_family": 4500,
+    "primary_care": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "urgent_care": {
+     "copay": 25,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "emergency_room": {
+     "copay": 150,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "inpatient_facility": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 410,
+    "joe_total": 310,
+    "mia_total": 650
+   },
+   "ambiguous": [],
+   "notes": {
+    "inpatient_facility": "$50 / day up to $250 / admission"
+   }
+  },
+  "calpers-blue-shield-trio-2027": {
+   "sha256": "88790af01eccd300bca65d4e9aab66504ae0322761d378e4d8961494718e46c4",
+   "fields": {
+    "deductible_individual": 0,
+    "deductible_family": 0,
+    "oop_individual": 1500,
+    "oop_family": 3000,
+    "primary_care": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 15,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 5,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": 0,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 80,
+    "joe_total": 610,
+    "mia_total": 80
+   },
+   "ambiguous": [
+    "specialist",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "specialist": "Trio+ Specialist $30/visit, Other Specialist $15/visit; the standard referred specialist ($15) recorded",
+    "oop_individual": "Medical limit; pharmacy has a separate $10,500 / $21,000 limit",
+    "emergency_room": "Facility Fee: $50/visit; Physician Fee: No Charge",
+    "generic_drugs": "Tier 1 Retail: $5/prescription",
+    "inpatient_facility": "No Charge"
+   }
+  },
+  "tn-premier-ppo-2027": {
+   "sha256": "1b7c7e519f4582a63cf5d48e7db51a4e3cf46aa1b3fbcce2ed8be5eb6ca63676",
+   "fields": {
+    "deductible_individual": 750,
+    "deductible_family": 1875,
+    "oop_individual": 3600,
+    "oop_family": 9000,
+    "primary_care": {
+     "copay": 25,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": 45,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "urgent_care": {
+     "copay": 45,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 7,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.15,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 2620,
+    "joe_total": 1290,
+    "mia_total": 1150
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' limit for 'employee + spouse + child(ren)'"
+   }
+  },
+  "tn-standard-ppo-2027": {
+   "sha256": "721fcd5967ef543869c3cbbc81bca30456792995df1eadc4d41fd20947771b67",
+   "fields": {
+    "deductible_individual": 1300,
+    "deductible_family": 3250,
+    "oop_individual": 4400,
+    "oop_family": 11000,
+    "primary_care": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "urgent_care": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 14,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 3670,
+    "joe_total": 1540,
+    "mia_total": 1700
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' limit for 'employee + spouse + child(ren)'"
+   }
+  },
+  "tn-limited-ppo-2027": {
+   "sha256": "a99201c1e99a65edb456f4adc1e1f88541978a72f0955cb0f4d050f1c5d3c57a",
+   "fields": {
+    "deductible_individual": 1800,
+    "deductible_family": 3600,
+    "oop_individual": 6800,
+    "oop_family": 13600,
+    "primary_care": {
+     "copay": 35,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "specialist": {
+     "copay": 55,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "urgent_care": {
+     "copay": 55,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": false
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 14,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 5070,
+    "joe_total": 1560,
+    "mia_total": 2200
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' limit for 'employee + spouse + child(ren)'",
+    "deductible_individual": "printed as '$1.800' (a typo in the PDF); $1,800 recorded"
+   }
+  },
+  "tn-cdhp-2027": {
+   "sha256": "b788dedaf0d8dcd9528ce9ad2ba11f201022e0e32e6dd54d1afadef74bad0b5b",
+   "fields": {
+    "deductible_individual": 1750,
+    "deductible_family": 3500,
+    "oop_individual": 2800,
+    "oop_family": 5600,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.2,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 2860,
+    "joe_total": 2170,
+    "mia_total": 1850
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' limit for 'employee + spouse + child(ren)'"
+   }
+  },
+  "tn-local-cdhp-2027": {
+   "sha256": "3fdcb4c16363bcd3d4b14497d85292f2c2fa427b3b6d126c9dfec007441167f2",
+   "fields": {
+    "deductible_individual": 2000,
+    "deductible_family": 4000,
+    "oop_individual": 5000,
+    "oop_family": 10000,
+    "primary_care": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": null,
+     "coinsurance": 0.3,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 5060,
+    "joe_total": 2720,
+    "mia_total": 2200
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' family limit; 'No family member will pay more than $8,700 in-network'"
+   }
+  },
+  "tn-copay-2027": {
+   "sha256": "17c16d9f307c3177a1ccf510274b66955e0e61e9895265181d653ea242276326",
+   "fields": {
+    "deductible_individual": 0,
+    "deductible_family": 0,
+    "oop_individual": 9600,
+    "oop_family": 19200,
+    "primary_care": {
+     "copay": 30,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "specialist": {
+     "copay": 50,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "urgent_care": {
+     "copay": 80,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "emergency_room": {
+     "copay": 1000,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "generic_drugs": {
+     "copay": 14,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "inpatient_facility": {
+     "copay": 2500,
+     "coinsurance": null,
+     "not_covered": false,
+     "deductible_applies": null
+    },
+    "peg_total": 3260,
+    "joe_total": 1620,
+    "mia_total": 2000
+   },
+   "ambiguous": [
+    "deductible_family",
+    "oop_individual",
+    "oop_family",
+    "primary_care",
+    "specialist"
+   ],
+   "notes": {
+    "deductible_family": "'employee + spouse + child(ren)' tier; the SBC does not use the word family",
+    "oop_individual": "'Other In-network' limit; in-network specialty drugs have a separate limit",
+    "oop_family": "'Other In-network' limit for 'employee + spouse + child(ren)'",
+    "primary_care": "$30 Tier 1 / $80 Tier 2 in-network; Tier 1 recorded",
+    "specialist": "$50 Tier 1 / $100 Tier 2; Tier 1 recorded",
+    "inpatient_facility": "$2,500 copay/visit"
+   }
+  }
+ }
+}
