@@ -1,5 +1,5 @@
 {
- "run_utc": "2026-10-26T02:12:04Z",
+ "run_utc": "2026-10-26T02:26:23Z",
  "command": "make eval-decision",
  "headline": "Across 758 held-out MEPS adults and 3 real 2027 employer menus, choosing the plan with the lowest TabPFN-expected cost picked the truly cheapest plan 79% of the time, against 78% for picking what would have been best last year and 82% for the lowest premium; mean regret was $121 versus $149 and $106.",
  "people": 758,
@@ -982,5 +982,5 @@
    }
   }
  },
- "runtime_seconds": 6.1
+ "runtime_seconds": 5.1
 }
