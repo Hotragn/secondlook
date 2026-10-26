@@ -273,3 +273,23 @@ Washington's $700.08 deposit is applied to all three PEBB CDHPs; that is an appr
 **27. Step 4b was scored once.**
 - **The run:** `make eval-lazy` scored the test set once, at 03:28 UTC. The chart step failed on a matplotlib text-parsing error after the JSON was written. Only the chart script was fixed and re-run.
 - **Headline formatting:** the headline's "$+13" format is left as the script produced it, rather than re-running the test scoring for a cosmetic change.
+
+## Step 5: the app (2026-10-26)
+
+**28. Product rule, set by the manager session after Step 4b.**
+Lekka tells you whether the cheapest plan is safe for you:
+- **Not flagged:** "You can be lazy: [lowest-premium plan] is right for people like you." It then shows a typical year and a bad year (1 in 10) for every plan, and, if you give your current plan, what "same as last year" would cost in a typical year.
+- **Flagged:** "Look closer this year: your costs are hard to predict." It shows the same two years for every plan and names no winner, because choosing for flagged people lost to the lowest premium in Step 4b.
+
+**29. The three real people, chosen from the test set by fixed rules (first match by ID).**
+- `2810297103`, healthy single adult: age 25–40, excellent or very good health, no conditions, no prescriptions, under $1,000 of care in 2023, one-person household.
+- `2810385102`, ongoing prescriptions: 2+ conditions, 24+ fills, $3,000–$15,000 of care in 2023.
+- `2810035101`, high spender: 2023 spending at or above the test set's 95th percentile ($31,994).
+
+**30. Where the site's numbers come from (`scripts/build_app_data.py`, written to `docs/data/lekka.json`).**
+- **People:** typical and bad year are each plan's cost on the real 2024 events of the 5 training people nearest the person's predicted median and 90th-percentile spending (Step 2 TabPFN). The flag is the Step 4b TabPFN classifier at its training threshold.
+- **Five answers:** precomputed for all 243 answer combinations × 3 menus, from a five-answer TabPFN regressor and classifier trained on the training people only. Each answer maps to the median value among training people who would give it. The five-answer flagger has its own one-time test AUC: 0.725. It is shown in "How sure is this?".
+- **Plan facts:** each fact's source line and page come from the reader's verified quote when the parsed value equals gold. Otherwise the correct line is used, marked "transcribed" and shown with a "check this" note: UMP ER ×2, Tennessee out-of-pocket ×3.
+- **How sure:** numbers copied from `eval/results`.
+- **Local mode** (`make app`, `sameaslastyear/server.py`, bound to 127.0.0.1): runs the same five-answer models live on the CPU, and the e4b reader on an uploaded PDF. Live results can differ from the precomputed grid, because TabPFN's CPU and GPU arithmetic differ slightly and that can change which 5 donors are nearest.
+- **Fonts:** self-hosted (OFL), so neither the site nor local mode makes a network request at run time.

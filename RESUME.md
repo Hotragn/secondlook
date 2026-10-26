@@ -350,3 +350,61 @@ Pre-registered in DECISIONS 25 (`3d01df7`), scored once by `make eval-lazy`, whi
 - **Detection works moderately:** at a 20% flag rate, TabPFN finds half of the costly cases.
 - **The remedy loses money.** Giving flagged people TabPFN's expected-cost pick costs them more, on average, than staying lazy, whichever model does the flagging. Even perfect flags would only cut mean regret from $106 to $97, so the weak link is the alternative pick, not the flag.
 - **For the app:** "you can be lazy" is well supported. "Don't be lazy: Plan B saves $Y" is not yet supported by these numbers. A flag could honestly say "your costs are hard to predict; check the plans below" rather than name a winner. The alternative picker needs work, done on training data only, before it recommends a specific plan.
+
+---
+
+## STATUS: Step 5, the app (2026-10-26, 04:25 UTC)
+
+### Done
+- **Brand.** Lekka, from `brand/BRAND.md`:
+  - paper, ink, ledger and rust tokens, plus the highlighter for quotes
+  - Newsreader, IBM Plex Sans and IBM Plex Mono, self-hosted (OFL)
+  - light and dark mode
+  - no "AI" and no emoji in UI copy
+- **Static site in `docs/`**, ready for GitHub Pages, no backend. Pages has not been enabled.
+  - **Menus:** pick one of 3 real 2027 menus (WA PEBB 9 plans, OR PEBB 4, TN state 3).
+  - **About you:** answer five questions, precomputed for all 243 combinations × 3 menus, or pick one of 3 real MEPS test-set people (DECISIONS 29).
+  - **Result card:**
+    - a verdict line, "You can be lazy: …" or "Look closer this year: …"
+    - two bars per plan: solid ledger for a typical year, outlined rust for a bad year (1 in 10)
+    - an optional current-plan "same as last year" difference, shown when not flagged
+    - for the real people, what their 2024 care actually cost under each plan
+  - **Tappable plan numbers:** every plan number opens its source line, highlighted, with the page number and a link to the original PDF. Five values the reader got wrong show the correct line with a "check this" note.
+  - **"How sure is this?":**
+    - 82% vs 78%, and $106 vs $149
+    - reader accuracy 91.9% (3.5% wrong, 4.6% flagged)
+    - flagger AUC 0.76, and 0.73 for the five-question version
+    - the approximations list
+  - **Numbers:** all come from `docs/data/lekka.json` (`make app-data`, `scripts/build_app_data.py`, about 10 minutes with TabPFN fits).
+- **Local mode, `make app`.** It serves http://127.0.0.1:8765 and listens on 127.0.0.1 only.
+  - Five answers run TabPFN live on the CPU: the first call took 78 s including model set-up, and matched the grid's predicted spending ($2,665 vs $2,659).
+  - An uploaded SBC is read by `gemma4:e4b-it-qat` through local Ollama: 78 s on a dev SBC, 41 fields verified and 1 needs check.
+- **Accessibility:** mobile first (checked at 360 px), keyboard-reachable radio groups and tabs, a native `<dialog>` that restores focus, `aria-live` results, reduced-motion respected.
+- **`make capture`** (`scripts/capture.py`, Playwright headless Chromium) wrote 10 PNGs, 2 GIFs and `captions.md` to `docs/media/`, with no console errors.
+
+### Media (`docs/media/`)
+- `01-home.png`
+- `02-menu.png`
+- `03-result-healthy.png`
+- `03-result-prescriptions.png`
+- `03-result-high-spender.png`
+- `04-quote-highlight.png`
+- `05-how-sure.png`
+- `06-five-answers.png`
+- `07-mobile.png`
+- `08-dark.png`
+- `gif-1-person-to-result.gif`
+- `gif-2-number-to-quote.gif`
+- `captions.md`
+
+### Failed or substituted
+- **The in-app browser preview could not start a static server from the Documents folder.** The process started but never opened a socket; macOS may have been holding it for a file-access prompt. Verification used headless Chromium through `scripts/capture.py` instead, and the screenshots were checked by eye.
+- **Fixed during that check:**
+  - sections were not centred at desktop width
+  - the quote dialog repeated the plan name
+  - "How sure" rounded the evaluation regrets to $10, so $106 showed as $110. Exact values are now shown.
+
+### Risks
+- **Donor sensitivity.** Typical and bad years rest on 5 survey people each, so small prediction changes can move a plan's estimate by a few hundred dollars. In one check, local CPU vs the precomputed grid gave $1,643 vs $1,232 for one plan.
+- **Uploaded plans are not priced.** Local-mode uploads show what was read, because SBCs have no premium.
+- **Nothing is public yet.** GitHub Pages and making the repository public both need the owner's approval.
