@@ -1,0 +1,53 @@
+{
+  "run_utc": "2026-10-26T00:41:46Z",
+  "num_ctx": 16384,
+  "results": [
+    {
+      "model": "gemma4:e2b",
+      "error": "structured output is unavailable"
+    },
+    {
+      "model": "gemma4:e4b",
+      "error": "structured output is unavailable"
+    },
+    {
+      "model": "gemma4:e2b-it-qat",
+      "error": null,
+      "schema_valid": true,
+      "quote_is_verbatim": true,
+      "page": 2,
+      "load_s": 3.9,
+      "tokens_per_s": 58.1,
+      "size": "3.8 GB",
+      "processor": "100% GPU",
+      "context": "16384",
+      "runner": "llamacpp"
+    },
+    {
+      "model": "gemma4:e4b-it-qat",
+      "error": null,
+      "schema_valid": true,
+      "quote_is_verbatim": true,
+      "page": 2,
+      "load_s": 4.9,
+      "tokens_per_s": 32.7,
+      "size": "5.6 GB",
+      "processor": "100% GPU",
+      "context": "16384",
+      "runner": "llamacpp"
+    },
+    {
+      "model": "gemma4:26b-a4b-it-qat",
+      "error": null,
+      "schema_valid": true,
+      "quote_is_verbatim": true,
+      "page": 2,
+      "load_s": 8.6,
+      "tokens_per_s": 37.5,
+      "size": "15 GB",
+      "processor": "100% GPU",
+      "context": "16384",
+      "runner": "llamacpp"
+    }
+  ]
+}
