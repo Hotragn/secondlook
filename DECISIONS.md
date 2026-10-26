@@ -182,3 +182,51 @@ No prompt wording changed after the first dev run.
 **20. The reader is frozen before the held-out run.**
 - **What is frozen:** the reader, parsers, rules and prompt fingerprint, committed just before `make eval-reader` first ran.
 - **The run:** the held-out run is the only one, with all three models in sequence so timings do not overlap. Its raw output is committed, so re-running the target only re-scores.
+
+## Step 4: rules engine and benchmark C (2026-10-26)
+
+**21. The 2027 limits are checked against primary sources and cited in `sameaslastyear/costs.py`.**
+- **IRS Rev. Proc. 2026-24 (rp-26-24.pdf):**
+  - HSA limit $4,500 self-only and $9,000 family
+  - HDHP minimum deductible $1,750 / $3,500
+  - HDHP out-of-pocket maximum $8,700 / $17,400
+- **Catch-up:** $1,000, from 26 U.S.C. § 223(b)(3)(B), not from the Rev. Proc.
+- **CMS 2027 PAPI guidance (2026-01-29):** ACA maximum out-of-pocket $12,000 self-only and $24,000 other.
+- **Embedded rule:** under the ACA's embedded self-only rule, no person in family coverage pays more than $12,000.
+
+**22. Rules engine (`sameaslastyear/costs.py`).**
+- **Preventive care:** $0.
+- **Deductible:** embedded or aggregate for families. Explicit SBC wording decides whether the deductible applies. Otherwise HSA plans apply it to everything but preventive care, coinsurance waits for the deductible, and copays do not.
+- **Copays:** per visit, or per day with per-admission or per-year caps.
+- **Coinsurance:** with an optional per-fill cap.
+- **Out-of-pocket:** medical limit, plus an optional separate prescription limit. Not-covered care does not count toward it.
+- **HSA:** the employer seed counts as cash; employee tax savings are federal + state + 7.65% FICA when paid through payroll, capped at the IRS limit net of the seed.
+- **Tests:** 20 unit tests in `tests/test_costs.py`, including three SBC coverage examples (Georgia UHC HDHP, a dev SBC) that the engine reproduces to the dollar: Peg $4,712, Joe $4,070, Mia $1,900.
+
+**23. Real 2027 menus (`data/menus/menus_2027.json`, loaded and verified by `sameaslastyear/menus.py`).**
+16 plans in three menus:
+- Washington PEBB: 9 plans
+- Oregon PEBB: 4 plans
+- Tennessee state: Premier, Standard and CDHP. The other three TN SBCs are not on the state active-employee rate sheet.
+
+Where the values come from:
+- **Gold labels:** deductible, out-of-pocket limit, and the primary care, specialist, ER, generic and inpatient rows.
+- **Quoted values:** everything else carries a quote that is re-verified against the PDF text on every load, with each number checked to appear in its quote. That covers premiums, per-day hospital copays and caps, per-fill caps, separate prescription limits, outpatient surgery, brand drugs and HSA deposits.
+
+Three documents were added to the corpus for this:
+- the UMP CDHP 2027 certificate (WA state HSA deposit, $700.08)
+- the TN 2027 benefits guide (state HSA deposit, $500)
+- the OR 2027 enrollment guide (employee share: 5% for Moda PPO and Kaiser Traditional, 1% otherwise)
+
+Washington's $700.08 deposit is applied to all three PEBB CDHPs; that is an approximation, because the KP documents don't state it.
+
+**24. Benchmark C design, fixed before the first run.**
+- **People:** the 758 Step 2 test people, self-only coverage. Every plan is assumed available to everyone, although Kaiser NW, for example, is regional.
+- **Truth:** premiums plus each person's actual 2024 MEPS events priced under the plan, less any employer HSA deposit.
+- **Same as last year:** prices their 2023 events. The 2023 event files were added to `scripts/fetch_meps.py`: HC-248A, D, E, F and G.
+- **TabPFN strategies:** use the Step 2 v2 quantiles, reused rather than retrained; the GPU was busy with the reader run. Each predicted percentile maps to the 5 training people whose actual 2024 spending is nearest it, and their real events are priced.
+  - Expected cost is the mean over the five percentile scenarios.
+  - Risk-capped means lowest expected cost among plans whose 90th-percentile cost is within $1,000 of the lowest.
+- **Uncertainty:** 1,000 household-bootstrap resamples, 200 for the 90th-percentile regret.
+- **Approximations:** the event-to-row mapping approximations are listed in the script docstring and the JSON. Dental is excluded as not a medical-plan cost. The modelled events cover 88.4% of the test people's 2024 spending.
+- **No retuning:** after seeing results, the strategies were not tuned on this test set.
