@@ -125,3 +125,13 @@ How the token is handled:
 - `TABPFN_NO_BROWSER=1` stops tabpfn from opening a login page.
 - tabpfn's `save_token` is disabled, so the token is not copied in plain text to `~/.cache/tabpfn/auth_token`.
 - The token goes only to api.priorlabs.ai for the license check. MEPS data never leaves the machine.
+
+**15. Learning curve (Step 2b): design fixed before running.**
+- **Models:** TabPFN v2, gradient boosting and linear quantile regression.
+- **Training sizes:** 100, 200, 400, 800 and the full 2,275 people.
+- **Draws:** 5 random draws without replacement per size; seeds are `20261026 + 1000 × size index + draw`, all recorded in the JSON. At the full size every draw holds all people, so only the model seeds differ.
+- **Test set:** the frozen Step 2 test set at every size.
+- **CIs:** household bootstrap of the per-person losses averaged over the 5 draws. The spread across draws is reported separately.
+- **The question's rule:** a model "reaches full-data accuracy" at the smallest size whose mean loss is within 5% of its own full-data loss. This was chosen before seeing results.
+
+The shared Step 2 code moved into the `sameaslastyear` package (`sameaslastyear/spend.py`), installed in editable mode by `uv sync`. `make eval-spend` gave identical metrics before and after the move.

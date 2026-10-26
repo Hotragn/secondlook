@@ -172,3 +172,35 @@ Paired difference, model minus TabPFN v2 (positive means TabPFN has lower loss):
 3. **Approximate CIs.** The household bootstrap ignores MEPS strata and PSUs, so the CIs are approximate (labelled in the JSON).
 4. **No 2023 events yet.** Step 4's "same as last year" strategy needs year-1 events, but 2023 event files are not downloaded. Without them it must approximate from year-1 component totals and say so.
 5. **Spending outside the five components.** About 11% of year-2 spending falls outside the five saved components (dental, home health, vision, other). Step 4 must exclude it or label how it is covered.
+
+---
+
+## STATUS: Step 2b, learning curve (2026-10-26, about 02:10 UTC)
+
+`make eval-spend` now also writes `eval/results/step2b_learning_curve.json`, `eval/results/step2b_learning_curve.png` and `eval/results/step2b_learning_curve.svg`. The full target takes about 3 minutes; the learning curve alone takes 141 s, of which TabPFN is 102 s. Two runs gave identical results.
+
+**Smallest training size within 5% of the model's own full-data loss:**
+
+| Model | P50 | P90 |
+|---|---|---|
+| TabPFN v2 | 200 | 200 |
+| Gradient boosting | 200 | 400 |
+| Linear quantile regression | 800 | 2,275 |
+
+**Paired difference, model minus TabPFN** (95% household-bootstrap CIs; negative means the model beats TabPFN):
+
+| Size | Gradient boosting, P50 | Gradient boosting, P90 | Linear QR, P50 |
+|---|---|---|---|
+| 100 | **−$326** [−507, −146] | −$282 [−711, +276] | +$82,620 |
+| 200 | −$30 [−130, +67] | +$198 [−18, +467] | +$1,426 [883, 2,079] |
+| 400 | +$44 [−11, +103] | **+$215** [20, 445] | +$511 [268, 811] |
+| 800 | +$40 [−25, +99] | **+$235** [50, 437] | +$209 [73, 390] |
+| 2,275 | +$14 [−76, +97] | +$115 [−60, +310] | +$70 [−34, +203] |
+
+**Answer: partly.**
+- **Linear QR needs far more people.** TabPFN reaches full-data accuracy with far fewer people than linear quantile regression, which is unusable below 400 people. Unpenalised, it gives a P50 loss of $86,640 at 100 people.
+- **Gradient boosting matches TabPFN at the median.** Both are within 5% at 200 people.
+- **TabPFN's edge over gradient boosting is the bad-year quantile and calibration:**
+  - It is better at P90 with 400–800 people (CIs exclude $0).
+  - Its P10–P90 coverage stays at 74–80% at every size, while gradient boosting's falls to 63–73%.
+- **Where TabPFN loses:** at 100 people, gradient boosting beats it at the median by $326 (CI $146–$507). TabPFN is also much less stable there: the median-loss standard deviation across draws is $548, against $55.
