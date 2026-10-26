@@ -438,3 +438,13 @@ Pre-registered in DECISIONS 25 (`3d01df7`), scored once by `make eval-lazy`, whi
 - Pages is not enabled, and the repository is still private. Both need the owner's approval.
 - Any post must display "Built with PriorLabs-TabPFN" (Prior Labs License 1.1, paragraph 10).
 - The TabPFN 3.5 license acceptance is still open.
+
+## STATUS: Rename to Hindcast (2026-10-26, 05:29 UTC)
+- "Lekka" is now "Hindcast" in the UI, page title and meta, README, BRAND.md, the brand SVGs and the `docs/` site (DECISIONS 33). The tagline is "Check your 2027 plan against what really happened." The Telugu name note is removed. Colours, fonts and the tally mark are unchanged.
+- `make capture` and `make media` re-made all 10 screenshots, both GIFs and the 4 charts, with their captions. Only `chart-1-summary.png` carries the name: the other three charts are evaluation charts with no product name.
+- **Checks:**
+  - `make pages-check` passes from `/hindcast/`.
+  - `make numbers` matches the README.
+  - 41 tests pass.
+  - No "Lekka" remains outside the history in DECISIONS.md and RESUME.md.
+- The repository is still `Hotragn/sameaslastyear-wip` and private. Renaming it to `Hotragn/hindcast` waits for the owner's approval.

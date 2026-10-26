@@ -1,7 +1,7 @@
 """Check that docs/ works from a subpath, the way GitHub Pages serves it.
 
-Copies docs/ into a temporary folder as lekka/, serves the parent folder on a free local
-port and drives the real UI in headless Chromium: load /lekka/, pick a menu and a person,
+Copies docs/ into a temporary folder as hindcast/, serves the parent folder on a free local
+port and drives the real UI in headless Chromium: load /hindcast/, pick a menu and a person,
 open a quote. Fails on a missing .nojekyll, an absolute local URL ("/..." in src, href,
 url() or fetch) in the site's HTML, CSS or JS, any HTTP error, any console error, any
 request that leaves the local server, or a self-hosted font that did not load.
@@ -22,7 +22,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-SUBPATH = "lekka"
+SUBPATH = "hindcast"
 ABSOLUTE = re.compile(r"""(?:src|href)\s*=\s*["']/(?!/)|url\(\s*["']?/(?!/)|fetch\(\s*["'`]/(?!/)""")
 RELATIVE = re.compile(r"""(?:src|href)\s*=\s*["'](?![a-z]+:|#|/)([^"']+)["']""")
 FONTS = {"Newsreader", "IBM Plex Sans", "IBM Plex Mono"}

@@ -1,8 +1,9 @@
-# Lekka: brand system
+# Hindcast: brand system
 
 ## Name
-**Lekka** (లెక్క) is Telugu for *the count, the math, the reckoning*. It's the thing most of us skip when we re-pick last year's health plan. Say it "LEK-kah".
-- **Tagline:** *Do the math before you click "same as last year".*
+**Hindcast.** A hindcast is a forecast tested on the past. Hindcast prices every 2027 plan on real people's 2024 care, and checks its advice against what actually happened in 2024.
+- **Tagline:** *Check your 2027 plan against what really happened.*
+- **Wordmark:** lowercase "hindcast" in Newsreader 600, beside the tally mark (`wordmark.svg`).
 - **Short line:** *Your plan, worked out.*
 
 ## Voice

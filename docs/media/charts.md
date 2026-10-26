@@ -1,4 +1,4 @@
-# Lekka charts
+# Hindcast charts
 
 Made by `make media` (scripts/media.py) from eval/results. Each image is 1600 px wide.
 

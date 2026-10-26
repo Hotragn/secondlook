@@ -1,4 +1,4 @@
-// Lekka front end. Every number shown comes from data/lekka.json (built by
+// Hindcast front end. Every number shown comes from data/hindcast.json (built by
 // scripts/build_app_data.py) or, in local mode, from the local server. This file
 // only formats and adds; it never estimates.
 (() => {
@@ -14,7 +14,7 @@
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   async function init() {
-    state.data = await (await fetch("data/lekka.json")).json();
+    state.data = await (await fetch("data/hindcast.json")).json();
     // Local mode is the make app server on port 8765; anywhere else (GitHub Pages) skip the probe.
     if (location.port === "8765") {
       try {
@@ -112,7 +112,7 @@
     const max = Math.max(...res.bad, ...res.typical, 1);
     const verdict = res.flag
       ? `<p class="verdict closer">Look closer this year: your costs are hard to predict.</p>
-         <p class="lede">Here is a typical year and a bad year (1 in 10) for every plan. People like you vary a lot, so Lekka does not name a winner.</p>`
+         <p class="lede">Here is a typical year and a bad year (1 in 10) for every plan. People like you vary a lot, so Hindcast does not name a winner.</p>`
       : `<p class="verdict lazy">You can be lazy: <em>${esc(lazy.name)}</em> (the lowest premium) is right for people like you.</p>
          <p class="lede">In a typical year it costs you about <span class="money">${money(res.typical[lazyIdx])}</span>; in a bad year (1 in 10), about <span class="money">${money(res.bad[lazyIdx])}</span>.</p>`;
     const rows = order.map((i) => {
@@ -186,7 +186,7 @@
     if (s.second) extra.push(`<p class="src-meta">Your share comes from ${esc(s.second.title)}, page ${s.second.page}:</p>${sourceBlock(s.second)}`);
     if (s.note) extra.push(`<p>${esc(s.note)}</p>`);
     extra.push(s.provenance.startsWith("transcribed")
-      ? `<p class="check"><strong>Check this.</strong> Lekka’s automatic reading got this value wrong, so this line was found by hand and checked against the PDF.</p>`
+      ? `<p class="check"><strong>Check this.</strong> Hindcast’s automatic reading got this value wrong, so this line was found by hand and checked against the PDF.</p>`
       : `<p class="src-meta">${s.provenance.startsWith("read") ? "Read from the PDF and checked against its text." : "From the " + esc(s.provenance) + ", checked against its text."}</p>`);
     extra.push(`<p><a href="${esc(s.url)}" target="_blank" rel="noopener">Open the original document</a></p>`);
     $("#q-extra").innerHTML = extra.join("");
@@ -198,7 +198,7 @@
     const t = state.data.trust, pc = (x) => Math.round(x * 100) + "%";
     $("#sure-body").innerHTML = `<ul>
       <li>We tested the lazy rule on <span class="big">${t.people}</span> real adults from the US Medical Expenditure Panel Survey, against these <span class="big">${t.menus}</span> menus, using their actual 2024 care. Taking the lowest premium gave the cheapest plan to <span class="big">${pc(t.lowest_premium_hit)}</span> of them; picking what was best last year did so for <span class="big">${pc(t.same_as_last_year_hit)}</span>. Average overpayment: <span class="big">${exact(t.lowest_premium_regret)}</span> against <span class="big">${exact(t.same_as_last_year_regret)}</span>.</li>
-      <li>The lowest premium cost more than $250 extra in about <span class="big">${pc(t.lazy_costly_share)}</span> of cases. Lekka’s check ranks those cases first with an AUC of <span class="big">${t.flagger_auc.toFixed(2)}</span> (95% interval ${t.flagger_auc_ci[0].toFixed(2)} to ${t.flagger_auc_ci[1].toFixed(2)}) and catches about <span class="big">${pc(t.flagger_recall)}</span> of them. The five-question version knows less about you: AUC <span class="big">${t.five_answer_flagger_auc.toFixed(2)}</span>. When it says “look closer”, it does not name a plan, because choosing for flagged people did not beat the lowest premium in testing.</li>
+      <li>The lowest premium cost more than $250 extra in about <span class="big">${pc(t.lazy_costly_share)}</span> of cases. Hindcast’s check ranks those cases first with an AUC of <span class="big">${t.flagger_auc.toFixed(2)}</span> (95% interval ${t.flagger_auc_ci[0].toFixed(2)} to ${t.flagger_auc_ci[1].toFixed(2)}) and catches about <span class="big">${pc(t.flagger_recall)}</span> of them. The five-question version knows less about you: AUC <span class="big">${t.five_answer_flagger_auc.toFixed(2)}</span>. When it says “look closer”, it does not name a plan, because choosing for flagged people did not beat the lowest premium in testing.</li>
       <li>Plan numbers are read from the plan PDFs. On 20 held-out 2027 plan documents, <span class="big">${pc(t.reader_accuracy)}</span> of ${t.reader_values} key values were right, <span class="big">${(t.reader_wrong * 100).toFixed(1)}%</span> were wrong and <span class="big">${(t.reader_needs_check * 100).toFixed(1)}%</span> were flagged for checking. Values read wrong are shown here with the correct line and a “check this” note.</li>
     </ul>
     <h3>What these estimates leave out or simplify</h3><ul>${t.approximations.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>

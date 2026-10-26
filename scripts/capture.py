@@ -94,7 +94,7 @@ def main() -> None:
         page.mouse.wheel(0, 500)
         page.wait_for_timeout(300)
         frame(page, frames)
-        gif(frames, "gif-1-person-to-result", "Pick a real person and Lekka says whether the cheapest plan is safe for them.")
+        gif(frames, "gif-1-person-to-result", "Pick a real person and Hindcast says whether the cheapest plan is safe for them.")
 
         for pid, slug in PEOPLE:
             pick_person(page, pid)
@@ -153,7 +153,7 @@ def main() -> None:
         browser.close()
     httpd.shutdown()
 
-    (MEDIA / "captions.md").write_text("# Lekka screenshots and GIFs\n\nMade by `make capture` (scripts/capture.py).\n\n"
+    (MEDIA / "captions.md").write_text("# Hindcast screenshots and GIFs\n\nMade by `make capture` (scripts/capture.py).\n\n"
                                        + "\n".join(f"- `{n}`: {c}" for n, c in CAPTIONS) + "\n")
     for n, c in CAPTIONS:
         print(f"{n}: {c}")

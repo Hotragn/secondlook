@@ -307,3 +307,13 @@ Lekka tells you whether the cheapest plan is safe for you:
 - The summary graphic is HTML in the brand fonts, filled from `step4_decision.json` and captured 1600 px wide. Ledger green against rust failed the palette validator's CVD check (protan ΔE 5.7). So the rows carry the labels and colour is emphasis only: ledger for the lowest premium, neutral gray `#8A877E` for same as last year (protan ΔE 11.8, contrast at least 3:1).
 - The three evaluation charts are their 2600 px originals scaled down to 1600 px, not redrawn.
 - `make pages-check` serves `docs/` from `/lekka/` and fails on missing files, console errors, requests that leave the local server, or fonts that did not load.
+
+**33. Renamed to Hindcast (set by the manager session after Step 6).**
+- **Name:** Hindcast. A hindcast is a forecast tested on the past, which is what the "what actually happened in 2024" check does.
+- **Tagline:** "Check your 2027 plan against what really happened."
+- **Changed:**
+  - UI copy, the page title and meta description, the README, and `brand/BRAND.md`, where the Telugu name note is gone.
+  - SVG titles and labels, and the wordmark text. Its viewBox widened from 172 to 224 so that "hindcast" keeps the same right margin.
+  - The site data is now `docs/data/hindcast.json`. `make pages-check` serves from `/hindcast/`, to match the planned repo name.
+- **Kept:** colours, fonts and the tally mark. Earlier entries here and in RESUME.md keep the old name as history.
+- **Not yet:** the repo stays `Hotragn/sameaslastyear-wip` until the owner approves the rename to `Hotragn/hindcast`.

@@ -1,16 +1,18 @@
-# Lekka
+# Hindcast
 
-*Do the math before you click "same as last year".*
+*Check your 2027 plan against what really happened.*
 
-Lekka tells you whether the cheapest 2027 health plan on your employer's menu is safe for you.
+Hindcast tells you whether the cheapest 2027 health plan on your employer's menu is safe for you.
 
-- **When it is,** Lekka says so, and shows a typical year and a bad year (1 in 10) for every plan.
+- **When it is,** Hindcast says so, and shows a typical year and a bad year (1 in 10) for every plan.
 - **When your costs are hard to predict,** it tells you to look closer instead of pretending to know the winner.
 - **Every plan number** links to the line in the plan document it came from, highlighted, with the page number.
 
+A hindcast is a forecast tested on the past. Every plan here is priced on real survey people's 2024 care, and the advice was tested against what actually happened to 758 held-out people in 2024.
+
 Built with PriorLabs-TabPFN. Plan documents are read by Gemma 4 running on your own computer.
 
-![Pick a real survey person and Lekka says whether the cheapest plan is safe for them](docs/media/gif-1-person-to-result.gif)
+![Pick a real survey person and Hindcast says whether the cheapest plan is safe for them](docs/media/gif-1-person-to-result.gif)
 
 ## Results
 
@@ -28,7 +30,7 @@ Each evaluation was frozen before scoring, and each test set was scored once. Ev
 | How much data does the spend model need? | TabPFN gets within 5% of its full-data loss with [200](eval/results/step2b_learning_curve.json) training people, at the median and the 90th percentile. Gradient boosting needs [200](eval/results/step2b_learning_curve.json) and [400](eval/results/step2b_learning_curve.json). Linear quantile regression needs [800](eval/results/step2b_learning_curve.json) and all [2,275](eval/results/step2b_learning_curve.json). |
 | How well does it predict next year's spending? | TabPFN's median pinball loss is [$3,496](eval/results/step2_spend.json) per person, against [$4,682](eval/results/step2_spend.json) for "same as last year". Paired, it beats same as last year by [+$1,185](eval/results/step2_spend.json) and age-sex medians by [+$461](eval/results/step2_spend.json). [77%](eval/results/step2_spend.json) of actual 2024 spending fell inside its 10–90% band (the target is 80%). |
 
-**What this means for the design.** On these menus the lowest premium is a strong default: it beat TabPFN's own expected-cost pick. So Lekka starts from the lowest premium. It uses TabPFN to show what a typical and a bad year could cost, and to say when a person should look closer.
+**What this means for the design.** On these menus the lowest premium is a strong default: it beat TabPFN's own expected-cost pick. So Hindcast starts from the lowest premium. It uses TabPFN to show what a typical and a bad year could cost, and to say when a person should look closer.
 
 More charts: [plan choice](docs/media/chart-2-plan-choice.png), [learning curve](docs/media/chart-3-learning-curve.png), [plan reader](docs/media/chart-4-plan-reader.png).
 
@@ -58,14 +60,14 @@ make test    # unit tests
   python3 -m http.server 8766 --bind 127.0.0.1 --directory docs
   ```
 
-  All its URLs are relative, so it also works from a subpath such as GitHub Pages. `make pages-check` serves it from `/lekka/` and fails on any missing file, console error or outside request.
+  All its URLs are relative, so it also works from a subpath such as GitHub Pages. `make pages-check` serves it from `/hindcast/` and fails on any missing file, console error or outside request.
 - **Local mode (`make app`).** The same UI, but your five answers are worked out live on this computer's CPU. You can also upload a plan's Summary of Benefits and Coverage PDF, and it is read on this computer. Nothing is sent anywhere: the server listens on 127.0.0.1 only, the fonts are self-hosted, and the PDF reader talks to a local Ollama server. It fits TabPFN on the survey's training people, so run `make data` and `make eval-spend` first.
 
 Other targets: `check` (TabPFN and Gemma smoke tests), `split-hash`, `eval-spend`, `eval-reader`, `eval-decision`, `eval-lazy`, `numbers`, `app-data`, `capture` (screenshots), `media` (post charts).
 
 ## What it can't do
 - **Only three menus, and self-only coverage.** It prices the three 2027 menus in `docs/data`, and only self-only coverage. Family coverage is in the rules engine and its tests, but not in the benchmark or the app.
-- **Plans you upload are read, not priced.** A Summary of Benefits and Coverage has no premium, so in local mode Lekka shows what it read, with quotes and "check this" flags.
+- **Plans you upload are read, not priced.** A Summary of Benefits and Coverage has no premium, so in local mode Hindcast shows what it read, with quotes and "check this" flags.
 - **"Look closer" names no plan.** In testing, picking a plan for flagged people did worse than taking the lowest premium. The check finds about half of the people for whom the lowest premium costs more than $250 extra.
 - **The care model is approximate.** Each visit takes one cost-sharing row on its full payment. Prescriptions are split into generic and brand at $50 a fill, because the survey does not say which is which. Dental, vision, home health and other spending are left out; together these are about 12% of 2024 spending. The full list is in "How sure is this?" and in `eval/results/step4_decision.json`.
 - **Typical and bad years rest on 5 survey people each.** Small changes in the prediction (for example, local mode's CPU arithmetic against the precomputed grid) can swap which people are used, and move a plan's estimate by a few hundred dollars.
@@ -88,7 +90,7 @@ Other targets: `check` (TabPFN and Gemma smoke tests), `split-hash`, `eval-spend
 ## Credits and licenses
 The code and the text written for this project are under the [MIT license](LICENSE). The data, documents, models and fonts below belong to others and keep their own terms.
 
-- **Medical Expenditure Panel Survey (MEPS).** Public-use files from the Agency for Healthcare Research and Quality (AHRQ): HC-257 (Panel 28, 2023–2024), HC-256 (2024 full-year consolidated), HC-254A/D/E/F/G (2024 events) and HC-248A/D/E/F/G (2023 events). Source: Agency for Healthcare Research and Quality, Medical Expenditure Panel Survey. The raw files are not redistributed here; `make data` downloads them, and `data/meps_manifest.csv` records each source URL and hash. The repo holds only derived data: the person split, aggregate results, and the site's three example people and price grid. AHRQ's data use agreement allows statistical reporting and analysis only, and forbids any attempt to identify a person. Lekka makes no such attempt.
+- **Medical Expenditure Panel Survey (MEPS).** Public-use files from the Agency for Healthcare Research and Quality (AHRQ): HC-257 (Panel 28, 2023–2024), HC-256 (2024 full-year consolidated), HC-254A/D/E/F/G (2024 events) and HC-248A/D/E/F/G (2023 events). Source: Agency for Healthcare Research and Quality, Medical Expenditure Panel Survey. The raw files are not redistributed here; `make data` downloads them, and `data/meps_manifest.csv` records each source URL and hash. The repo holds only derived data: the person split, aggregate results, and the site's three example people and price grid. AHRQ's data use agreement allows statistical reporting and analysis only, and forbids any attempt to identify a person. Hindcast makes no such attempt.
 - **Plan documents.** Public 2027 plan documents (Summaries of Benefits and Coverage, rate sheets and plan guides) published by Washington State PEBB (Health Care Authority), Oregon PEBB, the State of Tennessee (Partners for Health), CalPERS, the City of Albuquerque, the Georgia State Health Benefit Plan, the New Jersey State Health Benefits Program, the State of Colorado, the State of Delaware, the University of California and the University of Texas System. They are copied unchanged into `data/sbc/` so that every quote can be checked. `data/sbc/manifest.csv` lists each file's source URL, retrieval time and SHA-256. Their content belongs to their publishers.
 - **TabPFN.** Spend predictions and the "look closer" check use TabPFN v2 from Prior Labs, through the `tabpfn` Python package (Apache-2.0). The v2 model weights are licensed under the Prior Labs License 1.1; a copy is in [licenses/PriorLabs-License-1.1.txt](licenses/PriorLabs-License-1.1.txt). Built with PriorLabs-TabPFN. Paper: Hollmann et al., "Accurate predictions on small data with a tabular foundation model", *Nature* 637, 319–326 (2025).
 - **Gemma 4.** The plan reader uses Google's Gemma 4 QAT builds (`gemma4:e2b-it-qat`, `gemma4:e4b-it-qat`, `gemma4:26b-a4b-it-qat`) through Ollama. Their Ollama builds ship under the Apache License 2.0 (`ollama show <model> --license`). No weights are redistributed here.

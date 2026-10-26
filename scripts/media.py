@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 MEDIA = DOCS / "media"
 RESULTS = ROOT / "eval" / "results"
-NAME = "Lekka"
+NAME = "Hindcast"
 WIDTH = 1600
 FONTS = [("Newsreader", 600, "Newsreader-600"), ("IBM Plex Sans", 400, "IBMPlexSans-400"),
          ("IBM Plex Sans", 500, "IBMPlexSans-500"), ("IBM Plex Mono", 400, "IBMPlexMono-400"),
@@ -97,7 +97,7 @@ h1 {{ font: 600 31px/1.15 'Newsreader', serif; letter-spacing: -0.015em; margin-
 .foot {{ margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--mute); }}
 .foot code {{ font-family: 'IBM Plex Mono', monospace; }}
 </style></head><body><div class="frame">
-<div class="brand">{mark}<span>{NAME}</span></div>
+<div class="brand">{mark}<span>{NAME.lower()}</span></div>
 <h1>&ldquo;Same as last year&rdquo;, or the lowest premium?</h1>
 <p class="sub">{r['people']:,} held-out adults from the US Medical Expenditure Panel Survey, priced on three real 2027 employer menus.</p>
 <div class="grid"><div class="head"><span></span><span>Got the truly cheapest plan</span><span>Average overpayment</span></div>{rows}</div>

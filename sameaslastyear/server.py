@@ -77,7 +77,7 @@ class Model:
 
         warnings.simplefilter("ignore")
         prepare_tabpfn_auth()
-        self.data = json.loads((DOCS / "data" / "lekka.json").read_text())
+        self.data = json.loads((DOCS / "data" / "hindcast.json").read_text())
         t = pd.read_parquet(ROOT / "data" / "derived" / "spend_panel28.parquet")
         train = t[t.split == "train"].reset_index(drop=True)
         self.plans = menu_loader.load()
@@ -112,7 +112,7 @@ class Model:
                 "typical_spend": round(float(q[2])), "bad_spend": round(float(q[4])), "computed": "live on this computer"}
 
 
-app = FastAPI(title="Lekka (local)", docs_url=None, redoc_url=None)
+app = FastAPI(title="Hindcast (local)", docs_url=None, redoc_url=None)
 _model: Model | None = None
 
 
