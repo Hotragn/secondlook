@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash eval-spend eval-reader eval-decision test
+.PHONY: setup data check split-hash eval-spend eval-reader eval-decision eval-lazy test
 
 setup:
 	uv sync
@@ -36,6 +36,11 @@ eval-reader:
 eval-decision:
 	uv run python -I scripts/decision_eval.py
 	uv run python -I scripts/decision_chart.py
+
+# Step 4b: the lazy-safe check (pre-registered in DECISIONS 25). Needs make eval-spend first.
+eval-lazy:
+	uv run python -I scripts/lazy_safe_eval.py
+	uv run python -I scripts/lazy_safe_chart.py
 
 test:
 	uv run pytest -q tests
