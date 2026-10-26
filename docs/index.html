@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lekka: do the math before you click "same as last year"</title>
+<meta name="description" content="Lekka tells you whether the cheapest 2027 health plan is safe for you, with every number traced to the line in the plan document it came from.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Newsreader-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/IBMPlexSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="wordmark" href="./" aria-label="Lekka home">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <g style="stroke: var(--ink)" stroke-width="4.5" stroke-linecap="round">
+          <line x1="17" y1="16" x2="17" y2="48"/><line x1="26" y1="16" x2="26" y2="48"/>
+          <line x1="35" y1="16" x2="35" y2="48"/><line x1="44" y1="16" x2="44" y2="48"/>
+        </g>
+        <line x1="11" y1="42" x2="51" y2="21" style="stroke: var(--ledger)" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <span>lekka</span>
+    </a>
+    <span id="mode" class="badge">Precomputed results</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>Do the math before you click “same as last year”.</h1>
+    <p>Pick your employer’s 2027 plans, then answer five questions or try a real person. Lekka says whether the cheapest plan is safe for you, shows a typical year and a bad year for every plan, and links every plan number to the line in the plan document it came from.</p>
+  </div>
+
+  <section class="step wrap" aria-labelledby="s1">
+    <div class="step-head"><span class="step-no">1</span><h2 id="s1">Your employer’s 2027 plans</h2></div>
+    <div class="rows" role="radiogroup" aria-labelledby="s1" id="menus"></div>
+  </section>
+
+  <section class="step wrap" aria-labelledby="s2">
+    <div class="step-head"><span class="step-no">2</span><h2 id="s2">About you</h2></div>
+    <div class="tabs" role="tablist" aria-label="How to describe yourself">
+      <button class="tab" role="tab" id="tab-q" aria-selected="true" aria-controls="panel-q">Answer five questions</button>
+      <button class="tab" role="tab" id="tab-p" aria-selected="false" aria-controls="panel-p">Try a real person</button>
+    </div>
+    <div id="panel-q" role="tabpanel" aria-labelledby="tab-q" class="card">
+      <form id="questions"></form>
+      <button class="primary" id="go" type="button">Work it out</button>
+    </div>
+    <div id="panel-p" role="tabpanel" aria-labelledby="tab-p" class="hidden">
+      <p class="mute" style="margin:0 0 10px">Real, anonymous adults from the US Medical Expenditure Panel Survey. None of them helped choose these plans.</p>
+      <div class="rows" role="radiogroup" aria-label="Real people" id="people"></div>
+    </div>
+  </section>
+
+  <section class="step wrap" id="result" aria-live="polite" aria-labelledby="s3">
+    <div class="step-head"><span class="step-no">3</span><h2 id="s3">What Lekka found</h2></div>
+    <div class="card" id="result-card"><p class="mute" style="margin:0">Choose plans and describe yourself to see the result.</p></div>
+  </section>
+
+  <section class="step wrap hidden" id="local" aria-labelledby="s4">
+    <div class="step-head"><span class="step-no">4</span><h2 id="s4">Read your own plan document</h2></div>
+    <div class="card">
+      <p style="margin-top:0">Choose a Summary of Benefits and Coverage PDF. It is read on this computer and never uploaded anywhere. Reading takes about two minutes.</p>
+      <input type="file" id="pdf" accept="application/pdf" aria-label="Plan PDF">
+      <button class="primary" id="read" type="button" disabled>Read this plan</button>
+      <div id="read-out"></div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="sure-h">
+    <details class="sure card" id="sure">
+      <summary id="sure-h">How sure is this?</summary>
+      <div id="sure-body"></div>
+    </details>
+  </section>
+</main>
+
+<dialog id="quote" aria-labelledby="q-title">
+  <div class="dlg">
+    <div class="dlg-head">
+      <div><h3 id="q-title"></h3><div class="src-meta" id="q-meta"></div></div>
+      <button class="close" id="q-close" type="button">Close</button>
+    </div>
+    <blockquote class="src" id="q-text"></blockquote>
+    <div id="q-extra"></div>
+  </div>
+</dialog>
+
+<footer class="wrap">
+  <p>Nothing you choose here leaves your browser. In local mode (<span class="num">make app</span>) your answers and plan PDFs are worked out on your own computer.</p>
+  <p>Plan documents and rates are public 2027 documents from Washington PEBB, Oregon PEBB and the State of Tennessee. Costs are estimates, not quotes from your employer.</p>
+</footer>
+</body>
+</html>
