@@ -114,3 +114,14 @@ Tiers use year-1 total spending: zero = $0; low = $1–$1,408; mid = $1,409–$5
   - all of the above overall, by year-1 tier, and for the 24-month employer-coverage subgroup
 - **Uncertainty:** 95% CIs from 1,000 bootstrap resamples of test households, plus paired differences against the main TabPFN model.
 - **Weighted versions** use `LONGWT`. The bootstrap ignores MEPS strata and PSUs, so its CIs are an approximation.
+
+**14. TabPFN v3.5 did not run; v2 is the main TabPFN for these results.**
+The `TABPFN_TOKEN` in `.env` is valid: Prior Labs' `verify_token` returns true. But the account that owns it has not accepted the TabPFN 3.5 license (`tabpfn-3-5-license-v1.0`), so `check_license_accepted` returns false and tabpfn refuses to download the v3.5 weights. Accepting the license is the account owner's action, on the Licenses tab at ux.priorlabs.ai.
+
+`scripts/spend_eval.py` tries v3.5 first on every run. Once the license is accepted, `make eval-spend` makes v3.5 the main model and keeps v2 as an extra row, with no code change.
+
+How the token is handled:
+- Only `TABPFN_TOKEN` is read from `.env` (`dotenv_values`), never printed.
+- `TABPFN_NO_BROWSER=1` stops tabpfn from opening a login page.
+- tabpfn's `save_token` is disabled, so the token is not copied in plain text to `~/.cache/tabpfn/auth_token`.
+- The token goes only to api.priorlabs.ai for the license check. MEPS data never leaves the machine.

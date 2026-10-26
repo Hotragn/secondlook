@@ -4,9 +4,9 @@ Where the build stands, for whoever picks it up next. The spec is `BRIEF.md`; th
 
 ## Next step
 
-Step 2: spend predictor and benchmark B (TabPFN on MEPS Panel 28).
+Step 3: plan reader and eval A (Gemma 4 QAT builds on the frozen 20-SBC held-out set).
 
-Before starting, check whether the Prior Labs license for TabPFN v3.5 has been accepted (DECISIONS 2). If it has not, Step 2 runs on v2 and says so.
+Open item from Step 2: once the Prior Labs account accepts the TabPFN 3.5 license, re-run `make eval-spend` to get v3.5 results (DECISIONS 14).
 
 ---
 
@@ -103,3 +103,72 @@ All three QAT builds run 100% on the GPU.
 8. **IRS limits.** The 2027 IRS limits in the brief are not yet checked against an IRS source; that happens in Step 4.
 9. **MEPS coverage.** Full event-level truth in Step 4 may need HC-254C (other medical) and HC-254H (home health), which were not downloaded.
 10. **Disk.** Free space fell from 110 GiB to 63 GiB, mostly the five Gemma builds (42 GB). The two MLX builds (17 GB) are unused by the reader and can be removed with `ollama rm` if space is needed.
+
+---
+
+## STATUS: Step 2, spend predictor and benchmark B (2026-10-26, about 01:25 UTC)
+
+### Done
+- **Population (DECISIONS 11):** 3,033 MEPS Panel 28 adults aged 18–64 with any private coverage in both 2023 and 2024. 2,173 of them had employer coverage in all 24 months.
+- **Features and target:** 26 features from 2023; the target is 2024 total spending. The year-2 component totals (office, outpatient, ER, inpatient, Rx), year-2 counts and out-of-pocket spending are saved in `data/derived/spend_panel28.parquet` for Step 4. That file is local only and `make eval-spend` rebuilds it.
+- **Split (DECISIONS 12):** 2,275 train and 758 test people, by household, stratified by year-1 tier, seed 20261026. `eval/spend_split.json` SHA-256 is `d9577f32d9f4a365f1e4f5cd2f88f0ad796dfe87423a4d0862d1076edc4039aa`. It was committed and pushed (`876c809`) before any model was scored.
+- **Models:** TabPFN v2 (v3.5 refused; DECISIONS 14) and four baselines, with quantiles 0.1–0.9. No nearest-neighbour context selection was needed: 2,275 training rows fit in context.
+- **Outputs:** `eval/results/step2_spend.json`, `eval/results/step2_spend.png` and `eval/results/step2_spend.svg`, all from `make eval-spend`. Test-set predictions are in `data/derived/step2_test_predictions.parquet` (local).
+- **Runtime:** `make eval-spend` takes 18.3 s wall on an Apple M4 with 24 GB, macOS 26.6.2. TabPFN v2 fit and predict takes 10.8 s on MPS. A second run gave identical metrics.
+
+### Results: 758 test people, unweighted, 95% household-bootstrap CIs
+
+| Model | P10 loss | P50 loss | P90 loss | P10–P90 coverage | Band width |
+|---|---|---|---|---|---|
+| **TabPFN v2** | **$834** [691, 1,009] | **$3,496** [2,824, 4,310] | **$3,772** [2,784, 4,978] | 77.2% [74.3, 80.3] | $16,534 |
+| Same as last year | $4,395 | $4,682 | $4,968 | 5.7% | $0 |
+| Age-sex group quantiles | $869 | $3,957 | $4,544 | 86.3% | $19,195 |
+| Gradient boosting (quantile) | $875 | $3,508 | $3,893 | 73.2% | $12,244 |
+| Linear quantile regression | $880 | $3,564 | $3,823 | 77.2% | $18,832 |
+
+Paired difference, model minus TabPFN v2 (positive means TabPFN has lower loss):
+
+| Model | P10 | P50 | P90 |
+|---|---|---|---|
+| Same as last year | +$3,562 [2,628, 4,513] | +$1,185 [734, 1,642] | +$1,195 [880, 1,531] |
+| Age-sex group quantiles | +$35 [10, 56] | +$461 [278, 664] | +$771 [391, 1,160] |
+| Gradient boosting | +$41 [9, 84] | +$11 [−76, 93] | +$120 [−63, 329] |
+| Linear quantile regression | +$47 [−28, 176] | +$68 [−36, 199] | +$51 [−241, 333] |
+
+`LONGWT`-weighted results keep the same order:
+
+| Model | P50 loss | P10–P90 coverage |
+|---|---|---|
+| TabPFN v2 | $3,325 | 75.8% [72.1, 79.6] |
+| Gradient boosting | $3,339 | 73.3% |
+| Linear quantile regression | $3,358 | 76.1% |
+| Age-sex group quantiles | $3,726 | 86.5% |
+| Same as last year | $4,363 | 6.2% |
+
+### Where TabPFN loses or does not win
+- **No clear win over the strong baselines.** TabPFN is statistically tied with linear quantile regression at all three quantiles, and with gradient boosting at P50 and P90. Its only clear edge over gradient boosting is $41 at P10.
+- **Its bands are slightly too narrow.**
+  - Unweighted, the P10–P90 band holds 77.2% of people against the 80% target; the CI just reaches 80%.
+  - Weighted to the population, it holds 75.8%, and the CI excludes 80%.
+  - Age-sex group quantiles reach 86% coverage, but only with bands about $2,700 wider (age-sex $19,195 vs TabPFN $16,534).
+- **Point losses by tier, none significant (every CI includes $0):**
+  - People with $0 in 2023 (74 people):
+    - P50: gradient boosting is $8 better.
+    - P90: gradient boosting is $90 better and linear QR $56 better.
+    - Band coverage: 85.1% for both of those, against TabPFN's 75.7%.
+  - Low tier, P90: linear QR is $33 better.
+  - High tier, P50: gradient boosting is $24 better.
+  - Employer-coverage subgroup, P50: gradient boosting is $30 better.
+- **The win that holds:** TabPFN beats "same as last year" by $1,185 per person in median pinball loss, and the age-sex medians by $461. Both CIs exclude $0.
+
+### Failed or substituted
+- **TabPFN v3.5:** refused because the license is not accepted on the token's account. v2 ran instead (DECISIONS 14).
+- **Bug caught before commit:** in the first run, the paired-difference block was shifted by one model. The main model's own zero diff was counted, so every "vs TabPFN" row carried the next model's name and the last baseline's diff was dropped. It was fixed and re-run; the committed JSON has correctly aligned diffs (checked against the per-model losses).
+- **Value labels:** `scripts/fetch_meps.py` now also saves MEPS value labels per variable. pandas keeps the variable-to-label-set link only in a private attribute (`_varlist` / `_lbllist`).
+
+### Risks
+1. **Weaker TabPFN.** Until the license is accepted, the TabPFN in every result is v2, not the current v3.5.
+2. **Narrow bands.** P90 risk caps in Step 4 that come from TabPFN quantiles sit a little low: 77% coverage where 80% is the target. Step 4 should report this, or calibrate the bands on train only.
+3. **Approximate CIs.** The household bootstrap ignores MEPS strata and PSUs, so the CIs are approximate (labelled in the JSON).
+4. **No 2023 events yet.** Step 4's "same as last year" strategy needs year-1 events, but 2023 event files are not downloaded. Without them it must approximate from year-1 component totals and say so.
+5. **Spending outside the five components.** About 11% of year-2 spending falls outside the five saved components (dental, home health, vision, other). Step 4 must exclude it or label how it is covered.
