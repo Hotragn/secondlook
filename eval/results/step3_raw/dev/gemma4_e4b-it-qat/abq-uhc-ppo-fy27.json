@@ -1,0 +1,292 @@
+{
+ "sections": {
+  "summary": [
+   0
+  ],
+  "services": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "examples": [
+   7
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "PPO Plan",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: POS",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$175 Individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$350 Family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care is covered before you meet your deductible.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$6,350 Individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$12,700 Family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$40 copay per visit, deductible does not apply",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$60 copay per visit, deductible does not apply",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No Charge",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "No Charge",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$75 copay per service, deductible applies",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "$750 copay/service, deductible applies",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "No Charge",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "$300 copay per visit, deductible applies",
+    "page": 4
+   },
+   "emergency_transport": {
+    "quote": "Ground Ambulance: $50 copay per transport, deductible applies",
+    "page": 4
+   },
+   "urgent_care": {
+    "quote": "$65 copay per visit, deductible applies",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "$750 copay per admission, deductible applies",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "No Charge",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "$40 copay per visit, deductible does not apply",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "$750 copay per admission, deductible applies",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "No Charge",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "No Charge",
+    "page": 5
+   },
+   "childbirth_facility": {
+    "quote": "$750 copay per admission, deductible applies",
+    "page": 5
+   },
+   "home_health": {
+    "quote": "No Charge",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "Cardiac Rehab: $10 copay per visit, deductible does not apply",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "Cardiac Rehab: $10 copay per visit, deductible does not apply",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "$750 copay per admission, deductible applies",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "50% coinsurance",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "$750 copay per admission, deductible applies",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "Not Covered",
+    "page": 6
+   },
+   "children_glasses": {
+    "quote": "Not Covered",
+    "page": 6
+   },
+   "children_dental": {
+    "quote": "Not Covered",
+    "page": 6
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "The plan\u2019s overall deductible",
+    "page": 8
+   },
+   "ex_specialist": {
+    "quote": "Specialist copay",
+    "page": 8
+   },
+   "ex_hospital": {
+    "quote": "Hospital (facility) copay",
+    "page": 8
+   },
+   "ex_other": {
+    "quote": "Other coinsurance",
+    "page": 8
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 8
+   },
+   "peg_deductibles": {
+    "quote": "$150",
+    "page": 8
+   },
+   "peg_copayments": {
+    "quote": "$800",
+    "page": 8
+   },
+   "peg_coinsurance": {
+    "quote": "$0",
+    "page": 8
+   },
+   "peg_limits": {
+    "quote": "$70",
+    "page": 8
+   },
+   "peg_total": {
+    "quote": "$1020",
+    "page": 8
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 8
+   },
+   "joe_deductibles": {
+    "quote": "$0",
+    "page": 8
+   },
+   "joe_copayments": {
+    "quote": "$300",
+    "page": 8
+   },
+   "joe_coinsurance": {
+    "quote": "$0",
+    "page": 8
+   },
+   "joe_limits": {
+    "quote": "$4300",
+    "page": 8
+   },
+   "joe_total": {
+    "quote": "$4600",
+    "page": 8
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 8
+   },
+   "mia_deductibles": {
+    "quote": "$150",
+    "page": 8
+   },
+   "mia_copayments": {
+    "quote": "$700",
+    "page": 8
+   },
+   "mia_coinsurance": {
+    "quote": "$0",
+    "page": 8
+   },
+   "mia_limits": {
+    "quote": "$10",
+    "page": 8
+   },
+   "mia_total": {
+    "quote": "$860",
+    "page": 8
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 11.87,
+   "prompt_tokens": 1359,
+   "output_tokens": 230
+  },
+  "services": {
+   "seconds": 39.65,
+   "prompt_tokens": 4791,
+   "output_tokens": 701
+  },
+  "examples": {
+   "seconds": 18.8,
+   "prompt_tokens": 1381,
+   "output_tokens": 453
+  }
+ },
+ "doc_id": "abq-uhc-ppo-fy27",
+ "sha256": "f3319122c1fbfad4371a71b294a05a3c3c9e126015ee7a8446a57ca68d1c5536",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

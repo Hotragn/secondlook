@@ -39,6 +39,6 @@ The conventions are listed in the gold file.
 CMS's service-level inputs for the Peg, Joe and Mia examples were not found, so the examples are not recomputed claim by claim. Instead, `sameaslastyear/rules.py` checks each example against the rest of the same SBC, with a $1 tolerance for rounding:
 - **Arithmetic:** deductibles + copayments + coinsurance + limits equals the printed total.
 - **Bounds:** the example's deductible is no more than the plan deductible; its cost sharing is no more than the individual out-of-pocket limit; its total is no more than the total example cost.
-- **Parameters:** the example box's plan deductible, specialist cost and hospital coinsurance equal the fields read from the summary and the medical-events table.
+- **Parameters:** the example box's plan deductible, specialist cost and hospital cost sharing equal the fields read from the summary and the medical-events table.
 
 An example "matches" when every check whose inputs were verified passes.

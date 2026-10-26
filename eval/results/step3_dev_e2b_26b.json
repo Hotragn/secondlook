@@ -1,0 +1,78 @@
+{
+ "run_utc": "2026-10-26T01:49:15Z",
+ "set": "dev",
+ "prompt_fingerprint": "cc2fe40164a07f57",
+ "num_ctx": 16384,
+ "documents": [
+  "co-cigna-hdhp-fy26",
+  "nj-shbp-horizon-njdirect-15-2026"
+ ],
+ "results": {
+  "gemma4:e2b-it-qat": {
+   "documents": 2,
+   "fields_per_document": 61,
+   "verified_rate": 0.8688524590163934,
+   "needs_check_rate": 0.13114754098360656,
+   "quote_match": {
+    "exact": 115,
+    "not_found": 4,
+    "not_in_example_box": 2,
+    "empty": 1
+   },
+   "coverage_examples": {
+    "match_rate": 0.5,
+    "counts": {
+     "match": 3,
+     "mismatch": 3
+    },
+    "failed_checks": {
+     "param_hospital": 3,
+     "oop_bound": 1
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 63.745000000000005,
+    "median": 63.745000000000005,
+    "max": 77.12
+   },
+   "memory": {
+    "peak_ollama_size_bytes": 3598157085,
+    "peak_vram_bytes": 3598157085,
+    "peak_ollama_process_rss_bytes": 5122359296
+   }
+  },
+  "gemma4:26b-a4b-it-qat": {
+   "documents": 2,
+   "fields_per_document": 61,
+   "verified_rate": 0.9508196721311475,
+   "needs_check_rate": 0.04918032786885246,
+   "quote_match": {
+    "exact": 118,
+    "empty": 4
+   },
+   "coverage_examples": {
+    "match_rate": 0.5,
+    "counts": {
+     "match": 3,
+     "mismatch": 3
+    },
+    "failed_checks": {
+     "param_hospital": 3,
+     "oop_bound": 1
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 117.445,
+    "median": 117.445,
+    "max": 118.67
+   },
+   "memory": {
+    "peak_ollama_size_bytes": 15079791655,
+    "peak_vram_bytes": 15079791655,
+    "peak_ollama_process_rss_bytes": 17196498944
+   }
+  }
+ },
+ "failure_log": [],
+ "wall_seconds": 379.7
+}

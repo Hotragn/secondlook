@@ -4,13 +4,15 @@ Where the build stands, for whoever picks it up next. The spec is `BRIEF.md`; th
 
 ## Next step
 
-Step 3: plan reader and eval A (Gemma 4 QAT builds on the frozen 20-SBC held-out set).
+Step 4: rules engine, scenario engine and benchmark C, the headline numbers.
 
-Open item from Step 2: once the Prior Labs account accepts the TabPFN 3.5 license, re-run `make eval-spend` to get v3.5 results (DECISIONS 14).
+Open items:
+- **TabPFN 3.5:** once the Prior Labs account accepts the TabPFN 3.5 license, re-run `make eval-spend` to get v3.5 results (DECISIONS 14).
+- **2023 event files:** Step 4's "same as last year" strategy needs them; they are not downloaded yet.
 
 ---
 
-## STATUS: Step 1, setup and data (2026-10-26, about 01:00 UTC)
+## STATUS: Step 1, setup and data (2026-10-26, 00:57 UTC)
 
 ### Done
 
@@ -106,7 +108,7 @@ All three QAT builds run 100% on the GPU.
 
 ---
 
-## STATUS: Step 2, spend predictor and benchmark B (2026-10-26, about 01:25 UTC)
+## STATUS: Step 2, spend predictor and benchmark B (2026-10-26, 01:11 UTC)
 
 ### Done
 - **Population (DECISIONS 11):** 3,033 MEPS Panel 28 adults aged 18–64 with any private coverage in both 2023 and 2024. 2,173 of them had employer coverage in all 24 months.
@@ -175,7 +177,7 @@ Paired difference, model minus TabPFN v2 (positive means TabPFN has lower loss):
 
 ---
 
-## STATUS: Step 2b, learning curve (2026-10-26, about 02:10 UTC)
+## STATUS: Step 2b, learning curve (2026-10-26, 01:25 UTC)
 
 `make eval-spend` now also writes `eval/results/step2b_learning_curve.json`, `eval/results/step2b_learning_curve.png` and `eval/results/step2b_learning_curve.svg`. The full target takes about 3 minutes; the learning curve alone takes 141 s, of which TabPFN is 102 s. Two runs gave identical results.
 

@@ -135,3 +135,50 @@ How the token is handled:
 - **The question's rule:** a model "reaches full-data accuracy" at the smallest size whose mean loss is within 5% of its own full-data loss. This was chosen before seeing results.
 
 The shared Step 2 code moved into the `sameaslastyear` package (`sameaslastyear/spend.py`), installed in editable mode by `uv sync`. `make eval-spend` gave identical metrics before and after the move.
+
+## Step 3: plan reader (2026-10-26)
+
+**16. Reader design: the model quotes, code verifies and parses.**
+- **Page text:** pypdfium2 text in content-stream order. On the dev SBCs this keeps each table cell's text contiguous ("30% coinsurance After Deductible"). pdfplumber's table extraction split or merged cells differently from issuer to issuer, and line-ordered text interleaves wrapped cells.
+- **Model calls:** the SBC is sent in three calls, each with only its pages, found from fixed SBC headings:
+  - important questions: 9 fields
+  - common medical events: all 30 standard rows
+  - coverage examples: 18 example lines plus the 4 plan parameters in Peg's box
+- **Model settings:** Ollama JSON schema `{quote, page}` per field, temperature 0, seed 0, no thinking, 16k context. The longest section is about 4k tokens.
+- **Verification:** the quote must appear in the cited page's text after normalising whitespace, quotes and dashes. If it appears only on another page, it is accepted as `page_fixed` and counted separately. Coverage-example quotes must also sit inside that person's example box. This matters because "Deductibles $1,500" can appear in all three boxes.
+- **Parsing:** values come from the quote with regular expressions. The model never types a number. For deductible and out-of-pocket fields, code may read the role word (individual or family) from the document text next to the verified quote; the amount itself always comes from the quote.
+- **needs_check:** anything without a verified, parseable quote, including a plan name that is just the SBC title. Nothing is guessed.
+
+**17. Coverage examples are reconciled, not recomputed.**
+One search did not find CMS's service-level inputs for the Peg, Joe and Mia examples, so each example is checked for consistency within the SBC instead (`sameaslastyear/rules.py`, $1 tolerance):
+- **Arithmetic:** deductibles, copayments, coinsurance and limits add up to the printed total.
+- **Bounds:** the deductible, out-of-pocket and total-cost limits hold.
+- **Parameters:** the example box's deductible, specialist cost and hospital cost sharing agree with the fields read from the summary and the table.
+
+This is weaker than a claim-level recompute, and it is labelled as such.
+
+**18. Gold labels were committed before any held-out reader run; the one leak is disclosed.**
+- **Who made them:** Claude transcribed the 260 held-out gold values (`eval/gold/heldout_gold.json`) from extracted text. No person has checked them. 25 values are flagged ambiguous, and accuracy is reported with and without them.
+- **When:** they were committed in `45f9098`, before any held-out reader output existed.
+- **The leak:** transcribing them exposed held-out cell patterns. After that commit, the reader was changed only for failures seen on dev documents.
+
+**19. Parser changes made during development, each traced to a dev-set failure.**
+Re-scoring the same cached `gemma4:e4b-it-qat` output on the first 5 dev SBCs, verified fields went from 239 of 305 to 289 of 305 after these fixes. With all fixes, e4b verifies 406 of 427 fields (95.1%) on the 7 dev SBCs, and 15 of 21 coverage examples reconcile. On 2 further dev SBCs, e2b verified 86.9% and the 26B 95.1%. Each change, and the dev failure behind it:
+- **Role words before the amount.** NJ Aetna prints "Individual $8,480 / Family $16,960".
+- **"You" and "You + Family" tiers.** Georgia SHBP prints "$3,500 You $7,000 You + Family".
+- **Repeated quotes.** "$7,000" appears for two Georgia tiers, so every occurrence of a quote is checked.
+- **Bare "$0" deductible.** It means $0 for families too (NJ Horizon HMO).
+- **"Out-of- Network" with a space.** Delaware Highmark spells it that way.
+- **Forward labels.** A role label followed by a colon ("Family:", "self-only coverage:") belongs to the next amount; a colon elsewhere does not (Albuquerque).
+- **Example-box boundaries.** Boxes are cut at each "The total X would pay is $N" line, because Albuquerque, Delaware Highmark, NJ Aetna and UC Care print all three headings before the boxes.
+- **Example-box parameters.** These can be copays ("Hospital (facility) copayment $0", "$100 per day"), not only coinsurance.
+
+**What dev showed the reconciliation catching:**
+- UC Care's coverage examples assume its Tier 2 network ($500 deductible, 30% specialist), while the summary fields hold Tier 1 ($0, $30). All three examples are therefore flagged as mismatches.
+- Albuquerque prints the three "Total Example Cost" amounts in one row, so they cannot be tied to a person's box and stay needs_check.
+
+No prompt wording changed after the first dev run.
+
+**20. The reader is frozen before the held-out run.**
+- **What is frozen:** the reader, parsers, rules and prompt fingerprint, committed just before `make eval-reader` first ran.
+- **The run:** the held-out run is the only one, with all three models in sequence so timings do not overlap. Its raw output is committed, so re-running the target only re-scores.

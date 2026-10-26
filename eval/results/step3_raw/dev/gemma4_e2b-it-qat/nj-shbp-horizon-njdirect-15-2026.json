@@ -1,0 +1,292 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "examples": [
+   7
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "Horizon BCBSNJ: State Health Benefits Program- 26 NJ DIRECT15 (PPO)",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: PPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$110.00 Individual/$220.00 Family per calendar year for in-network services that do not require a Copayment.",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$220.00 Family per calendar year for in-network services that do not require a Copayment.",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care is covered before you meet your deductible. This plan covers some items and services even if you haven\u2019t yet met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost-sharing and before you meet your deductible.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$400.00 Individual / $1,000.00 Family; Active employee in-network Health providers",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$1,000.00 Family; Active employee in-network Health providers",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$15.00 Copayment per visit.",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$15.00 Copayment per visit.",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No Charge.",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "$50.00 Copayment per visit for X-ray.",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$50.00 Copayment per visit.",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "See separate Prescription Drug Plan SBC",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "Non-preferred brand drugs",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "Non-preferred brand drugs",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "Specialty drugs",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "Deductible applies for Outpatient Hospital, Ambulatory Surgical Center.",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "Deductible applies for Outpatient Hospital, Ambulatory Surgical Center.",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "$100.00 Copayment per visit. Deductible does not apply.",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "10% Coinsurance. 30% Coinsurance. Limited to local emergency transport to the nearest facility equipped to treat the emergency condition.",
+    "page": 4
+   },
+   "urgent_care": {
+    "quote": "$15.00 Copayment per visit. Deductible does not apply.",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. There is a separate $200 Deductible per inpatient stay for out- of-network facilities.",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. 30% Coinsurance for out-of-network anesthesia.",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "$15.00 Copayment per Office visit for Mental Health and Behavioral Health. Deductible does not apply.",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. There is a separate $200 Deductible per inpatient stay for out- of-network facilities.",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "$15.00 Copayment per visit for Office. Deductible does not apply.",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "Deductible applies. 30% Coinsurance. __________none==",
+    "page": 4
+   },
+   "childbirth_facility": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. There is a separate $200 Deductible per inpatient stay for out- of-network facilities.",
+    "page": 4
+   },
+   "home_health": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval.",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "Deductible applies for Inpatient and Outpatient Facility.",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "Deductible applies for Inpatient and Outpatient Facility.",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. Limited to 120 days in-network and 60 out-of-network facility days for a combined maximum of 120 days per calendar year. There is a separate $200 Deductible per inpatient stay for out-of-network facilities.",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "10% Coinsurance. 30% Coinsurance. Requires pre-approval for all rentals and some purchases.",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "Deductible applies. 30% Coinsurance. Requires pre-approval. There is a separate $200 Deductible per inpatient stay for out- of-network facilities.",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "$15.00 Copayment per visit. Deductible does not apply.",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not Covered. Not Covered. __________none==",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not Covered. Not Covered. __________none==",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$110.00",
+    "page": 8
+   },
+   "ex_specialist": {
+    "quote": "$15.00",
+    "page": 8
+   },
+   "ex_hospital": {
+    "quote": "0%",
+    "page": 8
+   },
+   "ex_other": {
+    "quote": "10%",
+    "page": 8
+   },
+   "peg_total_cost": {
+    "quote": "$12,700.00",
+    "page": 8
+   },
+   "peg_deductibles": {
+    "quote": "$100.00",
+    "page": 8
+   },
+   "peg_copayments": {
+    "quote": "$100.00",
+    "page": 8
+   },
+   "peg_coinsurance": {
+    "quote": "$0.00",
+    "page": 8
+   },
+   "peg_limits": {
+    "quote": "$70.00",
+    "page": 8
+   },
+   "peg_total": {
+    "quote": "$270.00",
+    "page": 8
+   },
+   "joe_total_cost": {
+    "quote": "$5,600.00",
+    "page": 8
+   },
+   "joe_deductibles": {
+    "quote": "$100.00",
+    "page": 8
+   },
+   "joe_copayments": {
+    "quote": "$200.00",
+    "page": 8
+   },
+   "joe_coinsurance": {
+    "quote": "$70.00",
+    "page": 8
+   },
+   "joe_limits": {
+    "quote": "$3,500.00",
+    "page": 8
+   },
+   "joe_total": {
+    "quote": "$3,870.00",
+    "page": 8
+   },
+   "mia_total_cost": {
+    "quote": "$2,800.00",
+    "page": 8
+   },
+   "mia_deductibles": {
+    "quote": "$100.00",
+    "page": 8
+   },
+   "mia_copayments": {
+    "quote": "$300.00",
+    "page": 8
+   },
+   "mia_coinsurance": {
+    "quote": "$100.00",
+    "page": 8
+   },
+   "mia_limits": {
+    "quote": "$10.00",
+    "page": 8
+   },
+   "mia_total": {
+    "quote": "$510.00",
+    "page": 8
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 13.78,
+   "prompt_tokens": 2120,
+   "output_tokens": 474
+  },
+  "services": {
+   "seconds": 41.1,
+   "prompt_tokens": 4160,
+   "output_tokens": 1327
+  },
+  "examples": {
+   "seconds": 22.24,
+   "prompt_tokens": 1544,
+   "output_tokens": 577
+  }
+ },
+ "doc_id": "nj-shbp-horizon-njdirect-15-2026",
+ "sha256": "dad0453ceea9aea0d8d8a648e31bf9cc471cd640666164706b07e66ac7f6056c",
+ "model": "gemma4:e2b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

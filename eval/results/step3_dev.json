@@ -1,0 +1,49 @@
+{
+ "run_utc": "2026-10-26T01:49:48Z",
+ "set": "dev",
+ "prompt_fingerprint": "cc2fe40164a07f57",
+ "num_ctx": 16384,
+ "documents": [
+  "abq-uhc-ppo-fy27",
+  "co-kaiser-copay-fy26",
+  "de-highmark-comprehensive-ppo-fy26",
+  "ga-shbp-uhc-hdhp-2026",
+  "nj-shbp-aetna-hmo-2026",
+  "uc-uc-care-2026",
+  "ut-select-ppo-fy27"
+ ],
+ "results": {
+  "gemma4:e4b-it-qat": {
+   "documents": 7,
+   "fields_per_document": 61,
+   "verified_rate": 0.9508196721311475,
+   "needs_check_rate": 0.04918032786885246,
+   "quote_match": {
+    "exact": 416,
+    "empty": 8,
+    "not_in_example_box": 2,
+    "not_found": 1
+   },
+   "coverage_examples": {
+    "match_rate": 0.7142857142857143,
+    "counts": {
+     "match": 15,
+     "mismatch": 6
+    },
+    "failed_checks": {
+     "deductible_bound": 4,
+     "param_deductible": 3,
+     "param_specialist": 3,
+     "param_hospital": 6
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 104.59142857142857,
+    "median": 109.03,
+    "max": 144.04
+   }
+  }
+ },
+ "failure_log": [],
+ "wall_seconds": 0.9
+}

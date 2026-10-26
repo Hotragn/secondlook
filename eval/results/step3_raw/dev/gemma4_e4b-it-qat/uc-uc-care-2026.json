@@ -1,0 +1,293 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "examples": [
+   8
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "University of California UC Care Plan",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: PPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$0 per individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$0 per family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care and services listed in your complete terms of coverage.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$6,100 per individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$9,700 per family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$30/visit",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$30/visit",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No Charge",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "$30/visit",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$30/visit",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "Not Covered",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "$100/surgery",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "$30/visit",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "$300/visit",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "$200/transport; deductible does not apply",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "$30/visit",
+    "page": 3
+   },
+   "inpatient_facility": {
+    "quote": "$250/admission",
+    "page": 3
+   },
+   "inpatient_physician": {
+    "quote": "No Charge",
+    "page": 3
+   },
+   "mental_health_outpatient": {
+    "quote": "No Charge for first 3 visits when using any combination of UC Select Tier 1 Providers and/or Blue Shield PPO Tier 2 Providers, then $30/visit",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "No Charge",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "$30/visit (initial visit only)",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "No Charge",
+    "page": 4
+   },
+   "childbirth_facility": {
+    "quote": "$250/admission",
+    "page": 5
+   },
+   "home_health": {
+    "quote": "Services covered under Blue Shield PPO Tier 2 Provider",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "$30/visit",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "$30/visit",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "Freestanding SNF: Services covered under Blue Shield PPO Tier 2 Provider",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "Services covered under Blue Shield PPO Tier 2 Provider",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "Services covered under Blue Shield PPO Tier 2 Provider",
+    "page": 6
+   },
+   "children_eye_exam": {
+    "quote": "Not Covered",
+    "page": 6
+   },
+   "children_glasses": {
+    "quote": "Not Covered",
+    "page": 6
+   },
+   "children_dental": {
+    "quote": "Not Covered",
+    "page": 6
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "The plan\u2019s overall deductible $500",
+    "page": 9
+   },
+   "ex_specialist": {
+    "quote": "Specialist coinsurance 30%",
+    "page": 9
+   },
+   "ex_hospital": {
+    "quote": "Hospital (facility) coinsurance 30%",
+    "page": 9
+   },
+   "ex_other": {
+    "quote": "Other coinsurance 30%",
+    "page": 9
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 9
+   },
+   "peg_deductibles": {
+    "quote": "$500",
+    "page": 9
+   },
+   "peg_copayments": {
+    "quote": "$0",
+    "page": 9
+   },
+   "peg_coinsurance": {
+    "quote": "$3,600",
+    "page": 9
+   },
+   "peg_limits": {
+    "quote": "$70",
+    "page": 9
+   },
+   "peg_total": {
+    "quote": "$4,170",
+    "page": 9
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 9
+   },
+   "joe_deductibles": {
+    "quote": "$500",
+    "page": 9
+   },
+   "joe_copayments": {
+    "quote": "$0",
+    "page": 9
+   },
+   "joe_coinsurance": {
+    "quote": "$400",
+    "page": 9
+   },
+   "joe_limits": {
+    "quote": "$3,500",
+    "page": 9
+   },
+   "joe_total": {
+    "quote": "$4,400",
+    "page": 9
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 9
+   },
+   "mia_deductibles": {
+    "quote": "$500",
+    "page": 9
+   },
+   "mia_copayments": {
+    "quote": "$400",
+    "page": 9
+   },
+   "mia_coinsurance": {
+    "quote": "$200",
+    "page": 9
+   },
+   "mia_limits": {
+    "quote": "$10",
+    "page": 9
+   },
+   "mia_total": {
+    "quote": "$1,110",
+    "page": 9
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 26.89,
+   "prompt_tokens": 2153,
+   "output_tokens": 234
+  },
+  "services": {
+   "seconds": 55.57,
+   "prompt_tokens": 4924,
+   "output_tokens": 682
+  },
+  "examples": {
+   "seconds": 26.57,
+   "prompt_tokens": 1422,
+   "output_tokens": 477
+  }
+ },
+ "doc_id": "uc-uc-care-2026",
+ "sha256": "633bb054cbd7a20a93783a924ba059e61645fa87e55390b38a9776a516caffce",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}
