@@ -1,0 +1,2364 @@
+{
+ "run_utc": "2026-10-26T01:10:33Z",
+ "command": "make eval-spend",
+ "hardware": {
+  "machine": "arm64",
+  "cpu": "Apple M4",
+  "memory_gb": 24.0,
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.15",
+  "torch": "2.14.1",
+  "mps_available": true
+ },
+ "population": {
+  "n": 3033,
+  "filter": "HC-257 Panel 28; YEARIND = 1; LONGWT > 0; AGEY1X and AGEY2X in 18-64; INSCOVY1 = INSCOVY2 = 1 (any private coverage both years)"
+ },
+ "split": {
+  "file": "eval/spend_split.json",
+  "sha256": "d9577f32d9f4a365f1e4f5cd2f88f0ad796dfe87423a4d0862d1076edc4039aa",
+  "train": 2275,
+  "test": 758,
+  "test_households": 499
+ },
+ "tabpfn": {
+  "main_version": "v2",
+  "status": {
+   "TabPFN v3.5": "not run: TabPFNLicenseError: TabPFN requires a one-time license acceptance to download",
+   "TabPFN v2": "ran"
+  },
+  "context_rows": 2275,
+  "context_selection": "none: all training rows fit in TabPFN's context",
+  "device": {
+   "TabPFN v2": "(device(type='mps'),)"
+  }
+ },
+ "features": [
+  "age",
+  "female",
+  "region_midwest",
+  "region_south",
+  "region_west",
+  "self_rated_health",
+  "self_rated_mental_health",
+  "high_bp",
+  "coronary_hd",
+  "angina",
+  "heart_attack",
+  "other_heart",
+  "stroke",
+  "emphysema",
+  "high_chol",
+  "cancer",
+  "diabetes",
+  "arthritis",
+  "asthma",
+  "n_conditions",
+  "office_visits",
+  "outpatient_visits",
+  "er_visits",
+  "inpatient_stays",
+  "rx_fills",
+  "spend_y1"
+ ],
+ "target": "TOTEXPY2, 2024 total health care spending in dollars; learned models fit log1p and map back with expm1",
+ "quantiles": [
+  0.1,
+  0.25,
+  0.5,
+  0.75,
+  0.9
+ ],
+ "bootstrap": {
+  "resamples": 1000,
+  "unit": "test household",
+  "interval": "percentile 2.5-97.5",
+  "note": "ignores MEPS strata and PSUs, so CIs are approximate"
+ },
+ "slice_sizes": {
+  "all": 758,
+  "tier_zero": 74,
+  "tier_low": 228,
+  "tier_mid": 228,
+  "tier_high": 228,
+  "employer_coverage_all_24_months": 555
+ },
+ "runtime_seconds": {
+  "fit_predict": {
+   "TabPFN v2": 10.8,
+   "Same as last year": 0.0,
+   "Age-sex group quantiles": 0.0,
+   "Gradient boosting (quantile)": 1.78,
+   "Linear quantile regression": 1.28
+  },
+  "bootstrap": 0.01,
+  "total": 16.2
+ },
+ "metrics": {
+  "unweighted": {
+   "all": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 833.7,
+      "ci95": [
+       691.3,
+       1008.7
+      ]
+     },
+     "pinball_q25": {
+      "value": 1945.0,
+      "ci95": [
+       1598.9,
+       2373.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 3496.5,
+      "ci95": [
+       2824.1,
+       4310.2
+      ]
+     },
+     "pinball_q75": {
+      "value": 4288.0,
+      "ci95": [
+       3378.4,
+       5431.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 3772.5,
+      "ci95": [
+       2783.7,
+       4978.2
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7718,
+      "ci95": [
+       0.7427,
+       0.8029
+      ]
+     },
+     "width_p10_p90": {
+      "value": 16534.5,
+      "ci95": [
+       14954.2,
+       18211.2
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 4395.3,
+      "ci95": [
+       3436.0,
+       5398.7
+      ]
+     },
+     "pinball_q25": {
+      "value": 4502.6,
+      "ci95": [
+       3635.7,
+       5378.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 4681.6,
+      "ci95": [
+       3846.4,
+       5610.6
+      ]
+     },
+     "pinball_q75": {
+      "value": 4860.5,
+      "ci95": [
+       3885.9,
+       6066.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 4967.9,
+      "ci95": [
+       3829.9,
+       6368.4
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0567,
+      "ci95": [
+       0.0389,
+       0.0783
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 868.9,
+      "ci95": [
+       723.4,
+       1049.9
+      ]
+     },
+     "pinball_q25": {
+      "value": 2128.3,
+      "ci95": [
+       1771.2,
+       2581.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 3957.1,
+      "ci95": [
+       3249.9,
+       4837.3
+      ]
+     },
+     "pinball_q75": {
+      "value": 5017.7,
+      "ci95": [
+       4031.7,
+       6288.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 4543.8,
+      "ci95": [
+       3499.3,
+       5899.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8628,
+      "ci95": [
+       0.8387,
+       0.8864
+      ]
+     },
+     "width_p10_p90": {
+      "value": 19195.4,
+      "ci95": [
+       18652.8,
+       19763.9
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 875.0,
+      "ci95": [
+       724.7,
+       1057.6
+      ]
+     },
+     "pinball_q25": {
+      "value": 1993.6,
+      "ci95": [
+       1645.7,
+       2428.7
+      ]
+     },
+     "pinball_q50": {
+      "value": 3507.7,
+      "ci95": [
+       2841.6,
+       4326.8
+      ]
+     },
+     "pinball_q75": {
+      "value": 4379.4,
+      "ci95": [
+       3419.8,
+       5596.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 3892.9,
+      "ci95": [
+       2882.0,
+       5190.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7322,
+      "ci95": [
+       0.698,
+       0.7639
+      ]
+     },
+     "width_p10_p90": {
+      "value": 12243.8,
+      "ci95": [
+       11089.8,
+       13482.5
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 880.3,
+      "ci95": [
+       702.2,
+       1088.7
+      ]
+     },
+     "pinball_q25": {
+      "value": 2064.4,
+      "ci95": [
+       1692.3,
+       2519.3
+      ]
+     },
+     "pinball_q50": {
+      "value": 3564.2,
+      "ci95": [
+       2884.3,
+       4422.4
+      ]
+     },
+     "pinball_q75": {
+      "value": 4281.6,
+      "ci95": [
+       3353.9,
+       5417.8
+      ]
+     },
+     "pinball_q90": {
+      "value": 3823.2,
+      "ci95": [
+       2853.4,
+       5012.8
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7718,
+      "ci95": [
+       0.7396,
+       0.8024
+      ]
+     },
+     "width_p10_p90": {
+      "value": 18832.3,
+      "ci95": [
+       16822.9,
+       21221.2
+      ]
+     }
+    }
+   },
+   "tier_zero": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 118.7,
+      "ci95": [
+       46.3,
+       225.2
+      ]
+     },
+     "pinball_q25": {
+      "value": 296.8,
+      "ci95": [
+       115.8,
+       563.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 593.5,
+      "ci95": [
+       231.5,
+       1126.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 869.3,
+      "ci95": [
+       325.5,
+       1657.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 915.8,
+      "ci95": [
+       292.0,
+       1808.9
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7568,
+      "ci95": [
+       0.6562,
+       0.8451
+      ]
+     },
+     "width_p10_p90": {
+      "value": 496.2,
+      "ci95": [
+       363.8,
+       655.0
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 118.7,
+      "ci95": [
+       46.3,
+       225.2
+      ]
+     },
+     "pinball_q25": {
+      "value": 296.8,
+      "ci95": [
+       115.8,
+       563.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 593.5,
+      "ci95": [
+       231.5,
+       1126.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 890.3,
+      "ci95": [
+       347.3,
+       1689.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 1068.3,
+      "ci95": [
+       416.7,
+       2026.8
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.5811,
+      "ci95": [
+       0.4507,
+       0.6962
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 124.7,
+      "ci95": [
+       52.5,
+       230.0
+      ]
+     },
+     "pinball_q25": {
+      "value": 429.5,
+      "ci95": [
+       256.9,
+       681.9
+      ]
+     },
+     "pinball_q50": {
+      "value": 1050.5,
+      "ci95": [
+       733.3,
+       1526.3
+      ]
+     },
+     "pinball_q75": {
+      "value": 1584.6,
+      "ci95": [
+       1225.6,
+       2157.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 1554.5,
+      "ci95": [
+       1232.8,
+       2045.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.9189,
+      "ci95": [
+       0.8533,
+       0.975
+      ]
+     },
+     "width_p10_p90": {
+      "value": 14304.3,
+      "ci95": [
+       12809.7,
+       16078.5
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 118.7,
+      "ci95": [
+       46.3,
+       225.2
+      ]
+     },
+     "pinball_q25": {
+      "value": 296.8,
+      "ci95": [
+       115.8,
+       563.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 585.4,
+      "ci95": [
+       222.2,
+       1109.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 814.7,
+      "ci95": [
+       282.3,
+       1581.6
+      ]
+     },
+     "pinball_q90": {
+      "value": 825.5,
+      "ci95": [
+       252.5,
+       1683.9
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8514,
+      "ci95": [
+       0.7639,
+       0.9265
+      ]
+     },
+     "width_p10_p90": {
+      "value": 1792.1,
+      "ci95": [
+       1641.5,
+       1950.2
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 118.7,
+      "ci95": [
+       46.3,
+       225.2
+      ]
+     },
+     "pinball_q25": {
+      "value": 296.8,
+      "ci95": [
+       115.8,
+       563.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 594.0,
+      "ci95": [
+       232.2,
+       1126.1
+      ]
+     },
+     "pinball_q75": {
+      "value": 845.3,
+      "ci95": [
+       302.4,
+       1629.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 859.9,
+      "ci95": [
+       262.9,
+       1706.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8514,
+      "ci95": [
+       0.759,
+       0.9231
+      ]
+     },
+     "width_p10_p90": {
+      "value": 1612.1,
+      "ci95": [
+       1469.2,
+       1772.5
+      ]
+     }
+    }
+   },
+   "tier_low": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 294.2,
+      "ci95": [
+       204.0,
+       412.9
+      ]
+     },
+     "pinball_q25": {
+      "value": 721.3,
+      "ci95": [
+       498.2,
+       1009.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 1328.3,
+      "ci95": [
+       892.3,
+       1894.4
+      ]
+     },
+     "pinball_q75": {
+      "value": 1703.4,
+      "ci95": [
+       1058.4,
+       2527.1
+      ]
+     },
+     "pinball_q90": {
+      "value": 1487.8,
+      "ci95": [
+       821.3,
+       2389.4
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7719,
+      "ci95": [
+       0.7155,
+       0.8312
+      ]
+     },
+     "width_p10_p90": {
+      "value": 4975.9,
+      "ci95": [
+       4673.2,
+       5354.7
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 413.5,
+      "ci95": [
+       320.0,
+       524.7
+      ]
+     },
+     "pinball_q25": {
+      "value": 768.0,
+      "ci95": [
+       548.7,
+       1050.6
+      ]
+     },
+     "pinball_q50": {
+      "value": 1358.8,
+      "ci95": [
+       917.6,
+       1936.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 1949.7,
+      "ci95": [
+       1285.4,
+       2829.9
+      ]
+     },
+     "pinball_q90": {
+      "value": 2304.2,
+      "ci95": [
+       1504.9,
+       3368.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 296.6,
+      "ci95": [
+       208.1,
+       415.5
+      ]
+     },
+     "pinball_q25": {
+      "value": 755.3,
+      "ci95": [
+       537.0,
+       1036.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 1511.9,
+      "ci95": [
+       1103.5,
+       2019.4
+      ]
+     },
+     "pinball_q75": {
+      "value": 1984.3,
+      "ci95": [
+       1476.6,
+       2694.6
+      ]
+     },
+     "pinball_q90": {
+      "value": 1960.1,
+      "ci95": [
+       1542.1,
+       2545.1
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.9211,
+      "ci95": [
+       0.8864,
+       0.9563
+      ]
+     },
+     "width_p10_p90": {
+      "value": 18033.4,
+      "ci95": [
+       17064.7,
+       19097.0
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 293.8,
+      "ci95": [
+       205.0,
+       413.6
+      ]
+     },
+     "pinball_q25": {
+      "value": 731.1,
+      "ci95": [
+       512.3,
+       1019.3
+      ]
+     },
+     "pinball_q50": {
+      "value": 1326.0,
+      "ci95": [
+       891.5,
+       1885.4
+      ]
+     },
+     "pinball_q75": {
+      "value": 1703.6,
+      "ci95": [
+       1069.0,
+       2525.1
+      ]
+     },
+     "pinball_q90": {
+      "value": 1520.8,
+      "ci95": [
+       831.7,
+       2414.7
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.75,
+      "ci95": [
+       0.6956,
+       0.8029
+      ]
+     },
+     "width_p10_p90": {
+      "value": 4530.8,
+      "ci95": [
+       4167.0,
+       4880.0
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 292.8,
+      "ci95": [
+       202.1,
+       411.0
+      ]
+     },
+     "pinball_q25": {
+      "value": 716.6,
+      "ci95": [
+       491.3,
+       1012.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 1327.1,
+      "ci95": [
+       890.0,
+       1894.6
+      ]
+     },
+     "pinball_q75": {
+      "value": 1671.7,
+      "ci95": [
+       1061.4,
+       2475.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 1455.2,
+      "ci95": [
+       826.7,
+       2301.0
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.6974,
+      "ci95": [
+       0.6308,
+       0.7623
+      ]
+     },
+     "width_p10_p90": {
+      "value": 6913.9,
+      "ci95": [
+       6407.5,
+       7554.3
+      ]
+     }
+    }
+   },
+   "tier_mid": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 758.1,
+      "ci95": [
+       516.5,
+       1111.3
+      ]
+     },
+     "pinball_q25": {
+      "value": 1805.3,
+      "ci95": [
+       1210.8,
+       2697.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 3229.1,
+      "ci95": [
+       2075.0,
+       4974.7
+      ]
+     },
+     "pinball_q75": {
+      "value": 4095.8,
+      "ci95": [
+       2430.7,
+       6594.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 3927.8,
+      "ci95": [
+       2048.7,
+       6724.4
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7851,
+      "ci95": [
+       0.7339,
+       0.8362
+      ]
+     },
+     "width_p10_p90": {
+      "value": 12373.7,
+      "ci95": [
+       11739.7,
+       13008.4
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 1408.1,
+      "ci95": [
+       1177.8,
+       1742.2
+      ]
+     },
+     "pinball_q25": {
+      "value": 2129.9,
+      "ci95": [
+       1562.8,
+       2978.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 3332.9,
+      "ci95": [
+       2155.7,
+       5086.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 4535.9,
+      "ci95": [
+       2761.6,
+       7188.6
+      ]
+     },
+     "pinball_q90": {
+      "value": 5257.7,
+      "ci95": [
+       3125.3,
+       8451.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 776.9,
+      "ci95": [
+       537.4,
+       1133.5
+      ]
+     },
+     "pinball_q25": {
+      "value": 1863.2,
+      "ci95": [
+       1271.8,
+       2760.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 3364.2,
+      "ci95": [
+       2203.9,
+       5130.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 4303.6,
+      "ci95": [
+       2643.8,
+       6786.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 4154.9,
+      "ci95": [
+       2406.7,
+       6828.9
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.9035,
+      "ci95": [
+       0.8649,
+       0.9391
+      ]
+     },
+     "width_p10_p90": {
+      "value": 20064.0,
+      "ci95": [
+       19108.8,
+       21018.1
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 785.3,
+      "ci95": [
+       536.9,
+       1139.3
+      ]
+     },
+     "pinball_q25": {
+      "value": 1843.9,
+      "ci95": [
+       1257.2,
+       2725.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 3295.2,
+      "ci95": [
+       2129.5,
+       5035.6
+      ]
+     },
+     "pinball_q75": {
+      "value": 4142.7,
+      "ci95": [
+       2455.9,
+       6707.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 4009.1,
+      "ci95": [
+       2072.3,
+       6995.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7588,
+      "ci95": [
+       0.703,
+       0.8169
+      ]
+     },
+     "width_p10_p90": {
+      "value": 10443.5,
+      "ci95": [
+       9719.0,
+       11144.6
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 766.7,
+      "ci95": [
+       525.9,
+       1128.7
+      ]
+     },
+     "pinball_q25": {
+      "value": 1823.9,
+      "ci95": [
+       1227.5,
+       2698.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 3279.3,
+      "ci95": [
+       2120.3,
+       5016.1
+      ]
+     },
+     "pinball_q75": {
+      "value": 4189.8,
+      "ci95": [
+       2497.4,
+       6726.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 4051.5,
+      "ci95": [
+       2220.6,
+       6855.1
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8114,
+      "ci95": [
+       0.7554,
+       0.8629
+      ]
+     },
+     "width_p10_p90": {
+      "value": 15429.3,
+      "ci95": [
+       14133.9,
+       16899.6
+      ]
+     }
+    }
+   },
+   "tier_high": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 1680.8,
+      "ci95": [
+       1299.9,
+       2138.3
+      ]
+     },
+     "pinball_q25": {
+      "value": 3843.4,
+      "ci95": [
+       2943.5,
+       4942.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 6874.3,
+      "ci95": [
+       5186.5,
+       8952.3
+      ]
+     },
+     "pinball_q75": {
+      "value": 8174.4,
+      "ci95": [
+       5916.9,
+       11015.8
+      ]
+     },
+     "pinball_q90": {
+      "value": 6829.0,
+      "ci95": [
+       4538.3,
+       9863.2
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7632,
+      "ci95": [
+       0.7014,
+       0.8238
+      ]
+     },
+     "width_p10_p90": {
+      "value": 37459.4,
+      "ci95": [
+       33136.2,
+       41647.4
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 12752.3,
+      "ci95": [
+       9854.9,
+       15913.8
+      ]
+     },
+     "pinball_q25": {
+      "value": 11975.1,
+      "ci95": [
+       9408.3,
+       14615.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 10679.7,
+      "ci95": [
+       8446.3,
+       13162.8
+      ]
+     },
+     "pinball_q75": {
+      "value": 9384.4,
+      "ci95": [
+       6993.3,
+       12239.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 8607.2,
+      "ci95": [
+       5873.5,
+       11962.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 1774.8,
+      "ci95": [
+       1388.0,
+       2248.5
+      ]
+     },
+     "pinball_q25": {
+      "value": 4317.6,
+      "ci95": [
+       3357.7,
+       5499.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 7938.7,
+      "ci95": [
+       6065.5,
+       10300.3
+      ]
+     },
+     "pinball_q75": {
+      "value": 9879.4,
+      "ci95": [
+       7210.7,
+       13297.9
+      ]
+     },
+     "pinball_q90": {
+      "value": 8486.6,
+      "ci95": [
+       5721.0,
+       12134.1
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7456,
+      "ci95": [
+       0.6869,
+       0.7991
+      ]
+     },
+     "width_p10_p90": {
+      "value": 21076.1,
+      "ci95": [
+       20113.1,
+       22025.9
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 1791.2,
+      "ci95": [
+       1398.0,
+       2266.6
+      ]
+     },
+     "pinball_q25": {
+      "value": 3956.4,
+      "ci95": [
+       3065.8,
+       5058.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 6850.3,
+      "ci95": [
+       5192.1,
+       8882.8
+      ]
+     },
+     "pinball_q75": {
+      "value": 8449.0,
+      "ci95": [
+       6144.6,
+       11374.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 7144.2,
+      "ci95": [
+       4691.8,
+       10258.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.6491,
+      "ci95": [
+       0.5858,
+       0.71
+      ]
+     },
+     "width_p10_p90": {
+      "value": 25149.2,
+      "ci95": [
+       21910.9,
+       28549.4
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 1828.6,
+      "ci95": [
+       1355.1,
+       2449.4
+      ]
+     },
+     "pinball_q25": {
+      "value": 4226.4,
+      "ci95": [
+       3291.6,
+       5326.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 7050.3,
+      "ci95": [
+       5358.0,
+       9142.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 8098.6,
+      "ci95": [
+       5852.0,
+       10963.9
+      ]
+     },
+     "pinball_q90": {
+      "value": 6924.8,
+      "ci95": [
+       4596.9,
+       9738.2
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7807,
+      "ci95": [
+       0.7202,
+       0.8356
+      ]
+     },
+     "width_p10_p90": {
+      "value": 39742.7,
+      "ci95": [
+       33822.1,
+       46829.6
+      ]
+     }
+    }
+   },
+   "employer_coverage_all_24_months": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 874.7,
+      "ci95": [
+       688.6,
+       1103.8
+      ]
+     },
+     "pinball_q25": {
+      "value": 2031.9,
+      "ci95": [
+       1584.9,
+       2589.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 3609.6,
+      "ci95": [
+       2759.1,
+       4717.9
+      ]
+     },
+     "pinball_q75": {
+      "value": 4440.9,
+      "ci95": [
+       3264.3,
+       5958.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 3887.1,
+      "ci95": [
+       2688.1,
+       5490.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7658,
+      "ci95": [
+       0.7264,
+       0.8025
+      ]
+     },
+     "width_p10_p90": {
+      "value": 16799.3,
+      "ci95": [
+       14936.3,
+       18887.0
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 4258.6,
+      "ci95": [
+       3165.6,
+       5376.4
+      ]
+     },
+     "pinball_q25": {
+      "value": 4439.4,
+      "ci95": [
+       3457.5,
+       5466.3
+      ]
+     },
+     "pinball_q50": {
+      "value": 4740.9,
+      "ci95": [
+       3733.7,
+       5887.6
+      ]
+     },
+     "pinball_q75": {
+      "value": 5042.3,
+      "ci95": [
+       3840.6,
+       6522.7
+      ]
+     },
+     "pinball_q90": {
+      "value": 5223.2,
+      "ci95": [
+       3780.8,
+       7085.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0595,
+      "ci95": [
+       0.0384,
+       0.0853
+      ]
+     },
+     "width_p10_p90": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 914.2,
+      "ci95": [
+       725.9,
+       1151.8
+      ]
+     },
+     "pinball_q25": {
+      "value": 2234.1,
+      "ci95": [
+       1761.9,
+       2824.1
+      ]
+     },
+     "pinball_q50": {
+      "value": 4155.8,
+      "ci95": [
+       3249.9,
+       5314.0
+      ]
+     },
+     "pinball_q75": {
+      "value": 5298.6,
+      "ci95": [
+       4020.4,
+       6969.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 4812.2,
+      "ci95": [
+       3469.0,
+       6672.7
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8595,
+      "ci95": [
+       0.8299,
+       0.8864
+      ]
+     },
+     "width_p10_p90": {
+      "value": 19538.8,
+      "ci95": [
+       18895.0,
+       20187.8
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 927.4,
+      "ci95": [
+       734.5,
+       1166.1
+      ]
+     },
+     "pinball_q25": {
+      "value": 2081.1,
+      "ci95": [
+       1635.9,
+       2657.9
+      ]
+     },
+     "pinball_q50": {
+      "value": 3580.1,
+      "ci95": [
+       2729.8,
+       4675.5
+      ]
+     },
+     "pinball_q75": {
+      "value": 4543.4,
+      "ci95": [
+       3337.2,
+       6113.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 4018.2,
+      "ci95": [
+       2790.4,
+       5724.6
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7405,
+      "ci95": [
+       0.6991,
+       0.7772
+      ]
+     },
+     "width_p10_p90": {
+      "value": 12477.2,
+      "ci95": [
+       11153.8,
+       13887.1
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 943.0,
+      "ci95": [
+       722.1,
+       1219.1
+      ]
+     },
+     "pinball_q25": {
+      "value": 2160.1,
+      "ci95": [
+       1698.2,
+       2728.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 3698.0,
+      "ci95": [
+       2861.2,
+       4759.4
+      ]
+     },
+     "pinball_q75": {
+      "value": 4435.7,
+      "ci95": [
+       3289.8,
+       5962.6
+      ]
+     },
+     "pinball_q90": {
+      "value": 3974.3,
+      "ci95": [
+       2831.2,
+       5550.8
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7874,
+      "ci95": [
+       0.7504,
+       0.8253
+      ]
+     },
+     "width_p10_p90": {
+      "value": 18959.3,
+      "ci95": [
+       16494.6,
+       22014.5
+      ]
+     }
+    }
+   }
+  },
+  "weighted_longwt": {
+   "all": {
+    "TabPFN v2": {
+     "pinball_q10": {
+      "value": 787.6,
+      "ci95": [
+       639.1,
+       965.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 3325.0,
+      "ci95": [
+       2656.5,
+       4144.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 3463.4,
+      "ci95": [
+       2559.8,
+       4578.8
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7576,
+      "ci95": [
+       0.7208,
+       0.7963
+      ]
+     }
+    },
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 4084.1,
+      "ci95": [
+       3056.3,
+       5228.6
+      ]
+     },
+     "pinball_q50": {
+      "value": 4363.3,
+      "ci95": [
+       3561.3,
+       5223.7
+      ]
+     },
+     "pinball_q90": {
+      "value": 4642.5,
+      "ci95": [
+       3565.2,
+       6017.5
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.0622,
+      "ci95": [
+       0.041,
+       0.087
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 814.8,
+      "ci95": [
+       668.7,
+       995.3
+      ]
+     },
+     "pinball_q50": {
+      "value": 3726.2,
+      "ci95": [
+       3034.5,
+       4605.7
+      ]
+     },
+     "pinball_q90": {
+      "value": 4260.9,
+      "ci95": [
+       3302.1,
+       5544.8
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.8652,
+      "ci95": [
+       0.8367,
+       0.8925
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 809.8,
+      "ci95": [
+       658.7,
+       988.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 3339.1,
+      "ci95": [
+       2673.3,
+       4150.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 3613.7,
+      "ci95": [
+       2690.6,
+       4763.4
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7328,
+      "ci95": [
+       0.6942,
+       0.7705
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 813.9,
+      "ci95": [
+       645.6,
+       1016.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 3358.5,
+      "ci95": [
+       2677.4,
+       4179.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 3628.3,
+      "ci95": [
+       2732.8,
+       4689.1
+      ]
+     },
+     "coverage_p10_p90": {
+      "value": 0.7607,
+      "ci95": [
+       0.7214,
+       0.7972
+      ]
+     }
+    }
+   }
+  },
+  "paired_difference_vs_main": {
+   "definition": "model minus TabPFN v2, per person; negative means the model has lower loss",
+   "all": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 3561.6,
+      "ci95": [
+       2627.5,
+       4513.3
+      ]
+     },
+     "pinball_q50": {
+      "value": 1185.1,
+      "ci95": [
+       733.6,
+       1642.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 1195.4,
+      "ci95": [
+       879.8,
+       1531.3
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 35.2,
+      "ci95": [
+       9.7097,
+       55.9
+      ]
+     },
+     "pinball_q50": {
+      "value": 460.6,
+      "ci95": [
+       277.7,
+       664.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 771.3,
+      "ci95": [
+       391.1,
+       1160.5
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 41.3,
+      "ci95": [
+       8.6305,
+       83.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 11.2,
+      "ci95": [
+       -76.2,
+       92.9
+      ]
+     },
+     "pinball_q90": {
+      "value": 120.4,
+      "ci95": [
+       -62.8,
+       328.8
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 46.6,
+      "ci95": [
+       -27.9,
+       176.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 67.7,
+      "ci95": [
+       -35.5,
+       199.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 50.8,
+      "ci95": [
+       -240.7,
+       332.6
+      ]
+     }
+    }
+   },
+   "tier_zero": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 0.0019,
+      "ci95": [
+       -0.0007,
+       0.0048
+      ]
+     },
+     "pinball_q90": {
+      "value": 152.6,
+      "ci95": [
+       76.8,
+       254.1
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 5.9801,
+      "ci95": [
+       -1.2583,
+       14.6
+      ]
+     },
+     "pinball_q50": {
+      "value": 457.0,
+      "ci95": [
+       293.4,
+       610.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 638.8,
+      "ci95": [
+       -14.4,
+       1087.1
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "pinball_q50": {
+      "value": -8.1139,
+      "ci95": [
+       -29.8,
+       14.6
+      ]
+     },
+     "pinball_q90": {
+      "value": -90.2,
+      "ci95": [
+       -242.4,
+       23.3
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 0.0003,
+      "ci95": [
+       -0.0008,
+       0.0019
+      ]
+     },
+     "pinball_q50": {
+      "value": 0.5268,
+      "ci95": [
+       -1.3181,
+       2.1559
+      ]
+     },
+     "pinball_q90": {
+      "value": -55.9,
+      "ci95": [
+       -165.1,
+       31.7
+      ]
+     }
+    }
+   },
+   "tier_low": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 119.3,
+      "ci95": [
+       84.9,
+       155.1
+      ]
+     },
+     "pinball_q50": {
+      "value": 30.6,
+      "ci95": [
+       3.5663,
+       60.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 816.5,
+      "ci95": [
+       585.1,
+       1083.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 2.414,
+      "ci95": [
+       -4.0212,
+       9.1096
+      ]
+     },
+     "pinball_q50": {
+      "value": 183.6,
+      "ci95": [
+       76.7,
+       289.6
+      ]
+     },
+     "pinball_q90": {
+      "value": 472.3,
+      "ci95": [
+       53.9,
+       823.6
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": -0.3158,
+      "ci95": [
+       -5.5411,
+       4.3875
+      ]
+     },
+     "pinball_q50": {
+      "value": -2.2576,
+      "ci95": [
+       -26.0,
+       21.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 33.1,
+      "ci95": [
+       -71.0,
+       143.7
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": -1.3871,
+      "ci95": [
+       -5.8279,
+       2.4274
+      ]
+     },
+     "pinball_q50": {
+      "value": -1.2028,
+      "ci95": [
+       -14.5,
+       14.4
+      ]
+     },
+     "pinball_q90": {
+      "value": -32.6,
+      "ci95": [
+       -161.2,
+       70.3
+      ]
+     }
+    }
+   },
+   "tier_mid": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 650.0,
+      "ci95": [
+       492.7,
+       814.0
+      ]
+     },
+     "pinball_q50": {
+      "value": 103.8,
+      "ci95": [
+       15.8,
+       195.1
+      ]
+     },
+     "pinball_q90": {
+      "value": 1329.9,
+      "ci95": [
+       837.1,
+       1859.2
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 18.8,
+      "ci95": [
+       -0.7011,
+       37.2
+      ]
+     },
+     "pinball_q50": {
+      "value": 135.0,
+      "ci95": [
+       23.7,
+       239.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 227.1,
+      "ci95": [
+       -118.1,
+       516.8
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 27.2,
+      "ci95": [
+       2.6743,
+       55.1
+      ]
+     },
+     "pinball_q50": {
+      "value": 66.1,
+      "ci95": [
+       16.7,
+       117.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 81.2,
+      "ci95": [
+       -97.9,
+       257.4
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 8.5547,
+      "ci95": [
+       -6.544,
+       22.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 50.2,
+      "ci95": [
+       -0.0192,
+       102.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 123.7,
+      "ci95": [
+       -38.1,
+       287.4
+      ]
+     }
+    }
+   },
+   "tier_high": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 11071.4,
+      "ci95": [
+       8116.8,
+       14178.8
+      ]
+     },
+     "pinball_q50": {
+      "value": 3805.4,
+      "ci95": [
+       2364.8,
+       5279.9
+      ]
+     },
+     "pinball_q90": {
+      "value": 1778.3,
+      "ci95": [
+       882.2,
+       2748.0
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 93.9,
+      "ci95": [
+       10.9,
+       159.1
+      ]
+     },
+     "pinball_q50": {
+      "value": 1064.4,
+      "ci95": [
+       476.2,
+       1694.1
+      ]
+     },
+     "pinball_q90": {
+      "value": 1657.6,
+      "ci95": [
+       585.3,
+       2846.3
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 110.4,
+      "ci95": [
+       2.0433,
+       256.8
+      ]
+     },
+     "pinball_q50": {
+      "value": -24.0,
+      "ci95": [
+       -316.0,
+       246.5
+      ]
+     },
+     "pinball_q90": {
+      "value": 315.2,
+      "ci95": [
+       -332.1,
+       951.9
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 147.8,
+      "ci95": [
+       -102.0,
+       576.6
+      ]
+     },
+     "pinball_q50": {
+      "value": 176.0,
+      "ci95": [
+       -157.3,
+       613.3
+      ]
+     },
+     "pinball_q90": {
+      "value": 95.8,
+      "ci95": [
+       -906.7,
+       1003.0
+      ]
+     }
+    }
+   },
+   "employer_coverage_all_24_months": {
+    "Same as last year": {
+     "pinball_q10": {
+      "value": 3383.9,
+      "ci95": [
+       2331.2,
+       4506.5
+      ]
+     },
+     "pinball_q50": {
+      "value": 1131.3,
+      "ci95": [
+       590.5,
+       1652.4
+      ]
+     },
+     "pinball_q90": {
+      "value": 1336.1,
+      "ci95": [
+       940.6,
+       1743.4
+      ]
+     }
+    },
+    "Age-sex group quantiles": {
+     "pinball_q10": {
+      "value": 39.5,
+      "ci95": [
+       8.2972,
+       63.4
+      ]
+     },
+     "pinball_q50": {
+      "value": 546.2,
+      "ci95": [
+       311.5,
+       804.0
+      ]
+     },
+     "pinball_q90": {
+      "value": 925.1,
+      "ci95": [
+       483.2,
+       1452.2
+      ]
+     }
+    },
+    "Gradient boosting (quantile)": {
+     "pinball_q10": {
+      "value": 52.8,
+      "ci95": [
+       9.714,
+       109.8
+      ]
+     },
+     "pinball_q50": {
+      "value": -29.5,
+      "ci95": [
+       -140.2,
+       65.8
+      ]
+     },
+     "pinball_q90": {
+      "value": 131.1,
+      "ci95": [
+       -100.0,
+       375.7
+      ]
+     }
+    },
+    "Linear quantile regression": {
+     "pinball_q10": {
+      "value": 68.3,
+      "ci95": [
+       -32.6,
+       238.7
+      ]
+     },
+     "pinball_q50": {
+      "value": 88.4,
+      "ci95": [
+       -42.0,
+       263.2
+      ]
+     },
+     "pinball_q90": {
+      "value": 87.2,
+      "ci95": [
+       -281.4,
+       447.6
+      ]
+     }
+    }
+   }
+  }
+ }
+}
