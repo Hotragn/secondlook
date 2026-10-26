@@ -1,0 +1,986 @@
+{
+ "run_utc": "2026-10-26T02:12:04Z",
+ "command": "make eval-decision",
+ "headline": "Across 758 held-out MEPS adults and 3 real 2027 employer menus, choosing the plan with the lowest TabPFN-expected cost picked the truly cheapest plan 79% of the time, against 78% for picking what would have been best last year and 82% for the lowest premium; mean regret was $121 versus $149 and $106.",
+ "people": 758,
+ "households": 499,
+ "coverage": "self-only; every plan in a menu is assumed available to everyone",
+ "menus": "data/menus/menus_2027.json (quotes verified on load by sameaslastyear/menus.py)",
+ "tabpfn": "TabPFN v2 quantiles from Step 2 (eval/results/step2_spend.json), trained on the 2,275 training people",
+ "scenario": "mean plan cost of the 5 training people with the nearest actual 2024 spending to each predicted percentile; expected cost = mean over the 10th/25th/50th/75th/90th percentile scenarios (an approximation of the predicted distribution by five points)",
+ "risk_cap": "plans whose 90th-percentile scenario cost is within $1,000 of the lowest",
+ "modelled_share_of_2024_spending": 0.8837586089373841,
+ "approximations": [
+  "Event costs are MEPS total payments from all sources, used as the allowed amount.",
+  "Office visits are mapped to the preventive, primary care or specialist row by visit type and provider; vision exams, laser eye surgery and dentist visits are excluded.",
+  "Outpatient visits with surgery use the outpatient surgery facility row, others the specialist row.",
+  "Each event takes one row's cost sharing on its full payment; ER visits leading to admission waive the ER copay.",
+  "Prescription fills costing up to $50 use the generic row, others the preferred brand row.",
+  "A missing event month counts as June when ordering the deductible.",
+  "Dental, home health, vision and other medical spending are not modelled (dental is not a medical-plan cost).",
+  "Employer HSA deposits are counted as cash; employee HSA tax savings are not included."
+ ],
+ "oracle_plan_counts": {
+  "wa-pebb": {
+   "Kaiser Permanente NW CDHP": 576,
+   "Kaiser Permanente WA Classic": 47,
+   "Kaiser Permanente WA CDHP": 96,
+   "UMP Classic": 4,
+   "UMP CDHP": 17,
+   "UMP Select": 18
+  },
+  "or-pebb": {
+   "Kaiser Traditional": 14,
+   "Kaiser Deductible": 712,
+   "Moda Coordinated Care": 32
+  },
+  "tn-state": {
+   "Standard PPO": 180,
+   "CDHP/HSA": 578
+  }
+ },
+ "by_menu": {
+  "wa-pebb": {
+   "plans": [
+    {
+     "plan_id": "wa-pebb-kpnw-classic-2027",
+     "name": "Kaiser Permanente NW Classic",
+     "premium_monthly": 154.0,
+     "deductible": 300.0,
+     "oop": 2500.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "wa-pebb-kpnw-cdhp-2027",
+     "name": "Kaiser Permanente NW CDHP",
+     "premium_monthly": 53.0,
+     "deductible": 1750.0,
+     "oop": 5100.0,
+     "employer_hsa": 700.08
+    },
+    {
+     "plan_id": "wa-pebb-kpwa-classic-2027",
+     "name": "Kaiser Permanente WA Classic",
+     "premium_monthly": 154.0,
+     "deductible": 175.0,
+     "oop": 2000.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "wa-pebb-kpwa-cdhp-2027",
+     "name": "Kaiser Permanente WA CDHP",
+     "premium_monthly": 53.0,
+     "deductible": 1750.0,
+     "oop": 5100.0,
+     "employer_hsa": 700.08
+    },
+    {
+     "plan_id": "wa-pebb-kpwa-soundchoice-2027",
+     "name": "Kaiser Permanente WA SoundChoice",
+     "premium_monthly": 154.0,
+     "deductible": 125.0,
+     "oop": 2000.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "wa-pebb-kpwa-value-2027",
+     "name": "Kaiser Permanente WA Value",
+     "premium_monthly": 151.0,
+     "deductible": 250.0,
+     "oop": 3000.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "wa-pebb-ump-classic-2027",
+     "name": "UMP Classic",
+     "premium_monthly": 148.0,
+     "deductible": 250.0,
+     "oop": 2000.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "wa-pebb-ump-cdhp-2027",
+     "name": "UMP CDHP",
+     "premium_monthly": 59.0,
+     "deductible": 1750.0,
+     "oop": 4200.0,
+     "employer_hsa": 700.08
+    },
+    {
+     "plan_id": "wa-pebb-ump-select-2027",
+     "name": "UMP Select",
+     "premium_monthly": 85.0,
+     "deductible": 750.0,
+     "oop": 3500.0,
+     "employer_hsa": 0.0
+    }
+   ],
+   "lowest_premium": {
+    "hit_rate": {
+     "value": 0.7598944591029023,
+     "ci95": [
+      0.7303184843830005,
+      0.7915226086455753
+     ]
+    },
+    "mean_regret": {
+     "value": 138.08306332453824,
+     "ci95": [
+      106.48495623897814,
+      172.48166979166663
+     ]
+    },
+    "p90_regret": {
+     "value": 279.61519999999786,
+     "ci95": [
+      186.06643750000046,
+      471.84747750000065
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente NW CDHP": 758
+    }
+   },
+   "lowest_deductible": {
+    "hit_rate": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "mean_regret": {
+     "value": 1333.3148627968337,
+     "ci95": [
+      1292.906175163494,
+      1374.4044728485505
+     ]
+    },
+    "p90_regret": {
+     "value": 1912.08,
+     "ci95": [
+      1912.08,
+      1912.08
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente WA SoundChoice": 758
+    }
+   },
+   "same_as_last_year": {
+    "hit_rate": {
+     "value": 0.7282321899736148,
+     "ci95": [
+      0.6964734176137573,
+      0.7602723626527376
+     ]
+    },
+    "mean_regret": {
+     "value": 185.11549802110815,
+     "ci95": [
+      144.89392642741498,
+      224.4060663937257
+     ]
+    },
+    "p90_regret": {
+     "value": 650.2018000000003,
+     "ci95": [
+      439.3294999999998,
+      856.8832625
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente NW CDHP": 566,
+     "Kaiser Permanente WA Classic": 43,
+     "Kaiser Permanente WA CDHP": 113,
+     "Kaiser Permanente WA SoundChoice": 1,
+     "UMP Classic": 3,
+     "UMP CDHP": 15,
+     "UMP Select": 17
+    }
+   },
+   "tabpfn_expected": {
+    "hit_rate": {
+     "value": 0.7335092348284961,
+     "ci95": [
+      0.7025884622623753,
+      0.7656299446202531
+     ]
+    },
+    "mean_regret": {
+     "value": 147.7696754617414,
+     "ci95": [
+      117.22511063163773,
+      179.84461997609645
+     ]
+    },
+    "p90_regret": {
+     "value": 460.0281000000001,
+     "ci95": [
+      281.63580750000403,
+      583.6846550000014
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente NW CDHP": 405,
+     "Kaiser Permanente WA Classic": 54,
+     "Kaiser Permanente WA CDHP": 299
+    }
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": {
+     "value": 0.7203166226912929,
+     "ci95": [
+      0.6888744588744589,
+      0.7545784786220704
+     ]
+    },
+    "mean_regret": {
+     "value": 157.1759821899736,
+     "ci95": [
+      125.85157338029478,
+      188.88850038678962
+     ]
+    },
+    "p90_regret": {
+     "value": 469.3268000000001,
+     "ci95": [
+      339.3435699999991,
+      639.1428074999997
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente NW CDHP": 394,
+     "Kaiser Permanente WA Classic": 66,
+     "Kaiser Permanente WA CDHP": 293,
+     "UMP CDHP": 5
+    }
+   },
+   "oracle": {
+    "hit_rate": {
+     "value": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "mean_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Permanente NW CDHP": 576,
+     "Kaiser Permanente WA Classic": 47,
+     "Kaiser Permanente WA CDHP": 96,
+     "UMP Classic": 4,
+     "UMP CDHP": 17,
+     "UMP Select": 18
+    }
+   },
+   "mean_true_cost_of_cheapest_plan": 1019.2911339050133
+  },
+  "or-pebb": {
+   "plans": [
+    {
+     "plan_id": "or-pebb-kp-traditional-ft-2027",
+     "name": "Kaiser Traditional",
+     "premium_monthly": 55.03,
+     "deductible": 0.0,
+     "oop": 800.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "or-pebb-kp-deductible-ft-2027",
+     "name": "Kaiser Deductible",
+     "premium_monthly": 9.62,
+     "deductible": 250.0,
+     "oop": 1500.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "or-pebb-moda-coordinated-care-ft-2027",
+     "name": "Moda Coordinated Care",
+     "premium_monthly": 9.95,
+     "deductible": 500.0,
+     "oop": 1500.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "or-pebb-moda-ppo-ft-2027",
+     "name": "Moda PPO",
+     "premium_monthly": 52.58,
+     "deductible": 250.0,
+     "oop": 1900.0,
+     "employer_hsa": 0.0
+    }
+   ],
+   "lowest_premium": {
+    "hit_rate": {
+     "value": 0.9393139841688655,
+     "ci95": [
+      0.9222657864341044,
+      0.9550862696465641
+     ]
+    },
+    "mean_regret": {
+     "value": 34.984325857519785,
+     "ci95": [
+      23.04538047238487,
+      47.91197221524499
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Deductible": 758
+    }
+   },
+   "lowest_deductible": {
+    "hit_rate": {
+     "value": 0.018469656992084433,
+     "ci95": [
+      0.009333333333333334,
+      0.028318612839338224
+     ]
+    },
+    "mean_regret": {
+     "value": 524.692740105541,
+     "ci95": [
+      518.2367054607656,
+      530.5985206041472
+     ]
+    },
+    "p90_regret": {
+     "value": 544.9200000000001,
+     "ci95": [
+      544.9200000000001,
+      544.9200000000001
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Traditional": 758
+    }
+   },
+   "same_as_last_year": {
+    "hit_rate": {
+     "value": 0.9036939313984169,
+     "ci95": [
+      0.8836560060917571,
+      0.9239863388945957
+     ]
+    },
+    "mean_regret": {
+     "value": 40.019269788918216,
+     "ci95": [
+      28.187298282258066,
+      52.72424044219047
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      42.270499999999856
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Traditional": 5,
+     "Kaiser Deductible": 718,
+     "Moda Coordinated Care": 35
+    }
+   },
+   "tabpfn_expected": {
+    "hit_rate": {
+     "value": 0.9142480211081794,
+     "ci95": [
+      0.8929444049082401,
+      0.9348116886043996
+     ]
+    },
+    "mean_regret": {
+     "value": 39.08312994722956,
+     "ci95": [
+      26.53357383593762,
+      52.79954634966887
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      19.134828750000086
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Deductible": 738,
+     "Moda Coordinated Care": 20
+    }
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": {
+     "value": 0.9142480211081794,
+     "ci95": [
+      0.8929444049082401,
+      0.9348116886043996
+     ]
+    },
+    "mean_regret": {
+     "value": 39.08312994722956,
+     "ci95": [
+      26.53357383593762,
+      52.79954634966887
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      19.134828750000086
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Deductible": 738,
+     "Moda Coordinated Care": 20
+    }
+   },
+   "oracle": {
+    "hit_rate": {
+     "value": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "mean_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Kaiser Traditional": 14,
+     "Kaiser Deductible": 712,
+     "Moda Coordinated Care": 32
+    }
+   },
+   "mean_true_cost_of_cheapest_plan": 258.00409366754616
+  },
+  "tn-state": {
+   "plans": [
+    {
+     "plan_id": "tn-premier-ppo-2027",
+     "name": "Premier PPO",
+     "premium_monthly": 189.0,
+     "deductible": 750.0,
+     "oop": 3600.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "tn-standard-ppo-2027",
+     "name": "Standard PPO",
+     "premium_monthly": 122.0,
+     "deductible": 1300.0,
+     "oop": 4400.0,
+     "employer_hsa": 0.0
+    },
+    {
+     "plan_id": "tn-cdhp-2027",
+     "name": "CDHP/HSA",
+     "premium_monthly": 84.0,
+     "deductible": 1750.0,
+     "oop": 2800.0,
+     "employer_hsa": 500.0
+    }
+   ],
+   "lowest_premium": {
+    "hit_rate": {
+     "value": 0.762532981530343,
+     "ci95": [
+      0.7331383683311493,
+      0.7939711214572293
+     ]
+    },
+    "mean_regret": {
+     "value": 144.2391820580475,
+     "ci95": [
+      121.41843167894736,
+      166.40822613368144
+     ]
+    },
+    "p90_regret": {
+     "value": 628.8874000000028,
+     "ci95": [
+      518.0693499999996,
+      725.422
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "CDHP/HSA": 758
+    }
+   },
+   "lowest_deductible": {
+    "hit_rate": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "mean_regret": {
+     "value": 1376.1045263852243,
+     "ci95": [
+      1339.6729914824145,
+      1414.9720494852381
+     ]
+    },
+    "p90_regret": {
+     "value": 1760.0,
+     "ci95": [
+      1760.0,
+      1760.0
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Premier PPO": 758
+    }
+   },
+   "same_as_last_year": {
+    "hit_rate": {
+     "value": 0.712401055408971,
+     "ci95": [
+      0.680978266568792,
+      0.7416938963447046
+     ]
+    },
+    "mean_regret": {
+     "value": 223.04714248021108,
+     "ci95": [
+      189.46707135549872,
+      257.4101222635262
+     ]
+    },
+    "p90_regret": {
+     "value": 839.5150000000007,
+     "ci95": [
+      755.0780000000004,
+      943.1678699999999
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Standard PPO": 188,
+     "CDHP/HSA": 570
+    }
+   },
+   "tabpfn_expected": {
+    "hit_rate": {
+     "value": 0.7361477572559367,
+     "ci95": [
+      0.7058803683416687,
+      0.7661901776314466
+     ]
+    },
+    "mean_regret": {
+     "value": 176.7601926121372,
+     "ci95": [
+      151.20688535852935,
+      202.31981525598735
+     ]
+    },
+    "p90_regret": {
+     "value": 730.0114000000011,
+     "ci95": [
+      658.1887200000006,
+      828.557704999999
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Standard PPO": 44,
+     "CDHP/HSA": 714
+    }
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": {
+     "value": 0.737467018469657,
+     "ci95": [
+      0.7071477972197248,
+      0.7685492521631017
+     ]
+    },
+    "mean_regret": {
+     "value": 175.02220580474935,
+     "ci95": [
+      149.22667215025908,
+      201.554779625063
+     ]
+    },
+    "p90_regret": {
+     "value": 710.5988000000016,
+     "ci95": [
+      651.6771499999999,
+      820.0524
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Standard PPO": 47,
+     "CDHP/HSA": 711
+    }
+   },
+   "oracle": {
+    "hit_rate": {
+     "value": 1.0,
+     "ci95": [
+      1.0,
+      1.0
+     ]
+    },
+    "mean_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "p90_regret": {
+     "value": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "resamples": 200
+    },
+    "plans_chosen": {
+     "Standard PPO": 180,
+     "CDHP/HSA": 578
+    }
+   },
+   "mean_true_cost_of_cheapest_plan": 1498.117142480211
+  }
+ },
+ "pooled": {
+  "lowest_premium": {
+   "hit_rate": {
+    "value": 0.820580474934037,
+    "ci95": [
+     0.8039993989828942,
+     0.8386289447886031
+    ]
+   },
+   "mean_regret": {
+    "value": 105.76885708003518,
+    "ci95": [
+     91.32428263858343,
+     120.15714808150004
+    ]
+   },
+   "p90_regret": {
+    "value": 309.85520000000037,
+    "ci95": [
+     229.17000000000007,
+     423.4243150000006
+    ],
+    "resamples": 200
+   }
+  },
+  "lowest_deductible": {
+   "hit_rate": {
+    "value": 0.006156552330694811,
+    "ci95": [
+     0.003111111111111111,
+     0.009439537613112742
+    ]
+   },
+   "mean_regret": {
+    "value": 1078.0373764291996,
+    "ci95": [
+     1055.529736196268,
+     1102.360919885741
+    ]
+   },
+   "p90_regret": {
+    "value": 1912.08,
+    "ci95": [
+     1912.08,
+     1912.08
+    ],
+    "resamples": 200
+   }
+  },
+  "same_as_last_year": {
+   "hit_rate": {
+    "value": 0.7814423922603342,
+    "ci95": [
+     0.7613284148857222,
+     0.800616766548927
+    ]
+   },
+   "mean_regret": {
+    "value": 149.39397009674582,
+    "ci95": [
+     128.6770455853122,
+     172.13305981630845
+    ]
+   },
+   "p90_regret": {
+    "value": 607.5896000000004,
+    "ci95": [
+     503.692,
+     688.9200000000001
+    ],
+    "resamples": 200
+   }
+  },
+  "tabpfn_expected": {
+   "hit_rate": {
+    "value": 0.7946350043975374,
+    "ci95": [
+     0.7754190290299594,
+     0.8140952967859786
+    ]
+   },
+   "mean_regret": {
+    "value": 121.20433267370271,
+    "ci95": [
+     106.01674743758,
+     137.56422122970218
+    ]
+   },
+   "p90_regret": {
+    "value": 456.3559499999999,
+    "ci95": [
+     346.6304749999989,
+     535.3960299999987
+    ],
+    "resamples": 200
+   }
+  },
+  "tabpfn_risk_capped": {
+   "hit_rate": {
+    "value": 0.7906772207563765,
+    "ci95": [
+     0.7705530860871648,
+     0.8107425281716412
+    ]
+   },
+   "mean_regret": {
+    "value": 123.76043931398416,
+    "ci95": [
+     107.81797139732933,
+     140.16508294585907
+    ]
+   },
+   "p90_regret": {
+    "value": 458.56680000000006,
+    "ci95": [
+     352.70855,
+     534.2938749999993
+    ],
+    "resamples": 200
+   }
+  },
+  "oracle": {
+   "hit_rate": {
+    "value": 1.0,
+    "ci95": [
+     1.0,
+     1.0
+    ]
+   },
+   "mean_regret": {
+    "value": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "p90_regret": {
+    "value": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "resamples": 200
+   }
+  }
+ },
+ "paired_vs_tabpfn_expected": {
+  "lowest_premium": {
+   "mean_regret_minus_tabpfn": -15.435475593667547,
+   "ci95": [
+    -24.00881863720217,
+    -7.4551389461418935
+   ]
+  },
+  "lowest_deductible": {
+   "mean_regret_minus_tabpfn": 956.833043755497,
+   "ci95": [
+    927.683819960565,
+    989.6894784800813
+   ]
+  },
+  "same_as_last_year": {
+   "mean_regret_minus_tabpfn": 28.189637423043095,
+   "ci95": [
+    12.31924531625437,
+    44.846752727685896
+   ]
+  },
+  "tabpfn_risk_capped": {
+   "mean_regret_minus_tabpfn": 2.5561066402814427,
+   "ci95": [
+    -0.8018119490187282,
+    5.893272872648233
+   ]
+  }
+ },
+ "pooled_by_2023_spending_tier": {
+  "zero": {
+   "decisions": 222,
+   "lowest_premium": {
+    "hit_rate": 0.9594594594594594,
+    "mean_regret": 34.084493243243244
+   },
+   "lowest_deductible": {
+    "hit_rate": 0.0,
+    "mean_regret": 1310.4706621621622
+   },
+   "same_as_last_year": {
+    "hit_rate": 0.9594594594594594,
+    "mean_regret": 34.084493243243244
+   },
+   "tabpfn_expected": {
+    "hit_rate": 0.9594594594594594,
+    "mean_regret": 34.084493243243244
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": 0.9594594594594594,
+    "mean_regret": 34.084493243243244
+   },
+   "oracle": {
+    "hit_rate": 1.0,
+    "mean_regret": 0.0
+   }
+  },
+  "low": {
+   "decisions": 684,
+   "lowest_premium": {
+    "hit_rate": 0.9195906432748538,
+    "mean_regret": 55.872732456140355
+   },
+   "lowest_deductible": {
+    "hit_rate": 0.0,
+    "mean_regret": 1232.3637032163742
+   },
+   "same_as_last_year": {
+    "hit_rate": 0.9152046783625731,
+    "mean_regret": 58.10817105263158
+   },
+   "tabpfn_expected": {
+    "hit_rate": 0.9108187134502924,
+    "mean_regret": 56.975220029239765
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": 0.9093567251461988,
+    "mean_regret": 57.60533698830409
+   },
+   "oracle": {
+    "hit_rate": 1.0,
+    "mean_regret": 0.0
+   }
+  },
+  "mid": {
+   "decisions": 684,
+   "lowest_premium": {
+    "hit_rate": 0.7909356725146199,
+    "mean_regret": 118.99434649122807
+   },
+   "lowest_deductible": {
+    "hit_rate": 0.007309941520467836,
+    "mean_regret": 1006.76783625731
+   },
+   "same_as_last_year": {
+    "hit_rate": 0.7397660818713451,
+    "mean_regret": 191.741149122807
+   },
+   "tabpfn_expected": {
+    "hit_rate": 0.7807017543859649,
+    "mean_regret": 137.83159210526318
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": 0.7821637426900585,
+    "mean_regret": 137.33864766081874
+   },
+   "oracle": {
+    "hit_rate": 1.0,
+    "mean_regret": 0.0
+   }
+  },
+  "high": {
+   "decisions": 684,
+   "lowest_premium": {
+    "hit_rate": 0.706140350877193,
+    "mean_regret": 165.70547002923973
+   },
+   "lowest_deductible": {
+    "hit_rate": 0.013157894736842105,
+    "mean_regret": 919.541716374269
+   },
+   "same_as_last_year": {
+    "hit_rate": 0.631578947368421,
+    "mean_regret": 235.75759576023393
+   },
+   "tabpfn_expected": {
+    "hit_rate": 0.6388888888888888,
+    "mean_regret": 197.08192324561404
+   },
+   "tabpfn_risk_capped": {
+    "hit_rate": 0.6257309941520468,
+    "mean_regret": 205.44268421052627
+   },
+   "oracle": {
+    "hit_rate": 1.0,
+    "mean_regret": 0.0
+   }
+  }
+ },
+ "runtime_seconds": 6.1
+}

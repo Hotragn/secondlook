@@ -1,4 +1,4 @@
-.PHONY: setup data check split-hash eval-spend eval-reader
+.PHONY: setup data check split-hash eval-spend eval-reader eval-decision test
 
 setup:
 	uv sync
@@ -30,3 +30,12 @@ eval-spend:
 eval-reader:
 	uv run python -I scripts/reader_eval.py heldout
 	uv run python -I scripts/reader_chart.py
+
+# Step 4 / benchmark C: strategies on the real 2027 menus. Uses eval-spend's spend table and
+# TabPFN test predictions (data/derived/), so run make eval-spend first.
+eval-decision:
+	uv run python -I scripts/decision_eval.py
+	uv run python -I scripts/decision_chart.py
+
+test:
+	uv run pytest -q tests
