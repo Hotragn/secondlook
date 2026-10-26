@@ -133,6 +133,7 @@ def score(which: str, models: list[str], docs: list[dict], perf: dict) -> dict:
         out_dir = RAW / which / model.replace(":", "_")
         status, matches, ex_status, per_doc_acc, seconds, verdicts = Counter(), Counter(), Counter(), [], [], Counter()
         checks_failed, by_field, per_doc_clear = Counter(), {k: Counter() for k in GOLD_FIELDS}, []
+        wrong_docs = flagged_wrong_docs = 0
         for d in docs:
             raw = json.loads((out_dir / f"{d['doc_id']}.json").read_text())
             seconds.append(sum(t["seconds"] for t in raw["timing"].values()))
@@ -163,6 +164,9 @@ def score(which: str, models: list[str], docs: list[dict], perf: dict) -> dict:
                                          "match": f["match"], "parsed": f["value"], "gold": g, "reason": f["reason"]})
                 per_doc_acc.append(correct / len(GOLD_FIELDS))
                 per_doc_clear.append((clear, n_clear))
+                if any(f["doc_id"] == d["doc_id"] and f["model"] == model and f["verdict"] == "wrong" for f in failures):
+                    wrong_docs += 1
+                    flagged_wrong_docs += any(rec[p]["status"] == "mismatch" for p in rules.PEOPLE)
         n_fields = sum(status.values())
         n_ex = sum(ex_status.values())
         res = {
@@ -188,6 +192,8 @@ def score(which: str, models: list[str], docs: list[dict], perf: dict) -> dict:
                 "n_excluding_ambiguous": sum(n for _, n in per_doc_clear),
                 "by_field": {k: {"correct": v["correct"], "wrong": v["wrong"], "needs_check": v["needs_check"]}
                              for k, v in by_field.items()},
+                "documents_with_a_wrong_value": wrong_docs,
+                "of_which_flagged_by_example_reconciliation": flagged_wrong_docs,
             }
         results[model] = res
     return {"results": results, "failure_log": failures}

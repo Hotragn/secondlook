@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "State of Tennessee Local CDHP/HSA Plan: BCBST & Cigna",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type:CDHP",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$2,000 employee only",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$4,000 employee + child(ren); $4,000 employee + spouse; $4,000 employee + spouse + child(ren)",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the policy, the overall family deductible must be met before the plan begins to pay.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$2,400/ $5,000/ $10,000 employee only",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "No family member will pay more than $8,700 in-network.",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "Local CDHP/HSA Plan",
+    "page": 1
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "30% coinsurance",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "30% coinsurance",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "30% coinsurance",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "30% coinsurance",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "30% coinsurance per prescription 30-day supply or 90-day supply; 20% coinsurance per prescription 90-day supply of some maintenance drugs",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "30% coinsurance per prescription 30-day supply or 90-day supply; 20% coinsurance per prescription 90-day supply of some maintenance drugs",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "30% coinsurance per prescription 30-day supply or 90-day supply; 20% coinsurance per prescription 90-day supply of some maintenance drugs",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "25% coinsurance",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "outpatient_physician": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "emergency_room": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "emergency_transport": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "urgent_care": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "30% coinsurance",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "childbirth_professional": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "childbirth_facility": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "home_health": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "30% coinsurance",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "deductible only",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$2,000",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "30%",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "30%",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "30%",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$2,000",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$0",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "$3,000",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$60",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$5,060",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$2,000",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "$700",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$20",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$2,720",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$2,000",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "$200",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$2,200",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 25.64,
+   "prompt_tokens": 2065,
+   "output_tokens": 335
+  },
+  "services": {
+   "seconds": 69.9,
+   "prompt_tokens": 4385,
+   "output_tokens": 1015
+  },
+  "examples": {
+   "seconds": 33.49,
+   "prompt_tokens": 1426,
+   "output_tokens": 568
+  }
+ },
+ "doc_id": "tn-local-cdhp-2027",
+ "sha256": "3fdcb4c16363bcd3d4b14497d85292f2c2fa427b3b6d126c9dfec007441167f2",
+ "model": "gemma4:26b-a4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

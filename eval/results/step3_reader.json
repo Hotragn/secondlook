@@ -1,0 +1,1595 @@
+{
+ "run_utc": "2026-10-26T03:29:08Z",
+ "set": "heldout",
+ "prompt_fingerprint": "cc2fe40164a07f57",
+ "num_ctx": 16384,
+ "documents": [
+  "calpers-blue-shield-trio-2027",
+  "or-pebb-kp-deductible-ft-2027",
+  "or-pebb-kp-traditional-ft-2027",
+  "or-pebb-moda-coordinated-care-ft-2027",
+  "or-pebb-moda-ppo-ft-2027",
+  "tn-cdhp-2027",
+  "tn-copay-2027",
+  "tn-limited-ppo-2027",
+  "tn-local-cdhp-2027",
+  "tn-premier-ppo-2027",
+  "tn-standard-ppo-2027",
+  "wa-pebb-kpnw-cdhp-2027",
+  "wa-pebb-kpnw-classic-2027",
+  "wa-pebb-kpwa-cdhp-2027",
+  "wa-pebb-kpwa-classic-2027",
+  "wa-pebb-kpwa-soundchoice-2027",
+  "wa-pebb-kpwa-value-2027",
+  "wa-pebb-ump-cdhp-2027",
+  "wa-pebb-ump-classic-2027",
+  "wa-pebb-ump-select-2027"
+ ],
+ "results": {
+  "gemma4:e2b-it-qat": {
+   "documents": 20,
+   "fields_per_document": 61,
+   "verified_rate": 0.9532786885245902,
+   "needs_check_rate": 0.04672131147540984,
+   "quote_match": {
+    "exact": 1182,
+    "empty": 22,
+    "not_found": 13,
+    "page_fixed": 3
+   },
+   "coverage_examples": {
+    "match_rate": 0.38333333333333336,
+    "counts": {
+     "mismatch": 33,
+     "match": 23,
+     "incomplete": 4
+    },
+    "failed_checks": {
+     "param_specialist": 6,
+     "oop_bound": 1,
+     "arithmetic": 1,
+     "param_deductible": 21,
+     "deductible_bound": 8
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 71.7085,
+    "median": 71.14,
+    "max": 86.24000000000001
+   },
+   "gold_fields": {
+    "fields": [
+     "deductible_individual",
+     "deductible_family",
+     "oop_individual",
+     "oop_family",
+     "primary_care",
+     "specialist",
+     "urgent_care",
+     "emergency_room",
+     "generic_drugs",
+     "inpatient_facility",
+     "peg_total",
+     "joe_total",
+     "mia_total"
+    ],
+    "n": 260,
+    "accuracy": 0.8807692307692309,
+    "accuracy_ci95": [
+     0.8115384615384615,
+     0.9461538461538461
+    ],
+    "wrong_rate": 0.06153846153846154,
+    "needs_check_rate": 0.057692307692307696,
+    "counts": {
+     "correct": 229,
+     "wrong": 16,
+     "needs_check": 15
+    },
+    "accuracy_excluding_ambiguous": 0.9531914893617022,
+    "n_excluding_ambiguous": 235,
+    "by_field": {
+     "deductible_individual": {
+      "correct": 14,
+      "wrong": 6,
+      "needs_check": 0
+     },
+     "deductible_family": {
+      "correct": 13,
+      "wrong": 0,
+      "needs_check": 7
+     },
+     "oop_individual": {
+      "correct": 14,
+      "wrong": 6,
+      "needs_check": 0
+     },
+     "oop_family": {
+      "correct": 14,
+      "wrong": 0,
+      "needs_check": 6
+     },
+     "primary_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "specialist": {
+      "correct": 18,
+      "wrong": 2,
+      "needs_check": 0
+     },
+     "urgent_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "emergency_room": {
+      "correct": 18,
+      "wrong": 2,
+      "needs_check": 0
+     },
+     "generic_drugs": {
+      "correct": 18,
+      "wrong": 0,
+      "needs_check": 2
+     },
+     "inpatient_facility": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "peg_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "joe_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "mia_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     }
+    },
+    "documents_with_a_wrong_value": 10,
+    "of_which_flagged_by_example_reconciliation": 8
+   },
+   "memory": {
+    "peak_ollama_size_bytes": 3751270153,
+    "peak_vram_bytes": 3751270153,
+    "peak_ollama_process_rss_bytes": 6843138048
+   }
+  },
+  "gemma4:e4b-it-qat": {
+   "documents": 20,
+   "fields_per_document": 61,
+   "verified_rate": 0.9631147540983607,
+   "needs_check_rate": 0.036885245901639344,
+   "quote_match": {
+    "exact": 1196,
+    "empty": 21,
+    "not_in_example_box": 2,
+    "not_found": 1
+   },
+   "coverage_examples": {
+    "match_rate": 0.6333333333333333,
+    "counts": {
+     "mismatch": 22,
+     "match": 38
+    },
+    "failed_checks": {
+     "param_specialist": 3,
+     "oop_bound": 7,
+     "arithmetic": 1,
+     "deductible_bound": 11,
+     "param_deductible": 6
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 105.973,
+    "median": 103.695,
+    "max": 121.79
+   },
+   "gold_fields": {
+    "fields": [
+     "deductible_individual",
+     "deductible_family",
+     "oop_individual",
+     "oop_family",
+     "primary_care",
+     "specialist",
+     "urgent_care",
+     "emergency_room",
+     "generic_drugs",
+     "inpatient_facility",
+     "peg_total",
+     "joe_total",
+     "mia_total"
+    ],
+    "n": 260,
+    "accuracy": 0.9192307692307692,
+    "accuracy_ci95": [
+     0.8730769230769232,
+     0.9615384615384617
+    ],
+    "wrong_rate": 0.03461538461538462,
+    "needs_check_rate": 0.046153846153846156,
+    "counts": {
+     "correct": 239,
+     "wrong": 9,
+     "needs_check": 12
+    },
+    "accuracy_excluding_ambiguous": 0.9872340425531915,
+    "n_excluding_ambiguous": 235,
+    "by_field": {
+     "deductible_individual": {
+      "correct": 19,
+      "wrong": 1,
+      "needs_check": 0
+     },
+     "deductible_family": {
+      "correct": 14,
+      "wrong": 0,
+      "needs_check": 6
+     },
+     "oop_individual": {
+      "correct": 15,
+      "wrong": 5,
+      "needs_check": 0
+     },
+     "oop_family": {
+      "correct": 14,
+      "wrong": 0,
+      "needs_check": 6
+     },
+     "primary_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "specialist": {
+      "correct": 19,
+      "wrong": 1,
+      "needs_check": 0
+     },
+     "urgent_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "emergency_room": {
+      "correct": 18,
+      "wrong": 2,
+      "needs_check": 0
+     },
+     "generic_drugs": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "inpatient_facility": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "peg_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "joe_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "mia_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     }
+    },
+    "documents_with_a_wrong_value": 8,
+    "of_which_flagged_by_example_reconciliation": 6
+   },
+   "memory": {
+    "peak_ollama_size_bytes": 5568693533,
+    "peak_vram_bytes": 5568693533,
+    "peak_ollama_process_rss_bytes": 12008849408
+   }
+  },
+  "gemma4:26b-a4b-it-qat": {
+   "documents": 20,
+   "fields_per_document": 61,
+   "verified_rate": 0.9590163934426229,
+   "needs_check_rate": 0.040983606557377046,
+   "quote_match": {
+    "exact": 1186,
+    "empty": 24,
+    "not_found": 8,
+    "not_in_example_box": 2
+   },
+   "coverage_examples": {
+    "match_rate": 0.6833333333333333,
+    "counts": {
+     "mismatch": 19,
+     "match": 41
+    },
+    "failed_checks": {
+     "param_specialist": 3,
+     "arithmetic": 1,
+     "oop_bound": 3,
+     "param_deductible": 6,
+     "deductible_bound": 8
+    }
+   },
+   "seconds_per_pdf": {
+    "mean": 113.775,
+    "median": 110.60499999999999,
+    "max": 132.07
+   },
+   "gold_fields": {
+    "fields": [
+     "deductible_individual",
+     "deductible_family",
+     "oop_individual",
+     "oop_family",
+     "primary_care",
+     "specialist",
+     "urgent_care",
+     "emergency_room",
+     "generic_drugs",
+     "inpatient_facility",
+     "peg_total",
+     "joe_total",
+     "mia_total"
+    ],
+    "n": 260,
+    "accuracy": 0.8923076923076924,
+    "accuracy_ci95": [
+     0.8384615384615385,
+     0.9461538461538461
+    ],
+    "wrong_rate": 0.05,
+    "needs_check_rate": 0.057692307692307696,
+    "counts": {
+     "correct": 232,
+     "wrong": 13,
+     "needs_check": 15
+    },
+    "accuracy_excluding_ambiguous": 0.9617021276595744,
+    "n_excluding_ambiguous": 235,
+    "by_field": {
+     "deductible_individual": {
+      "correct": 17,
+      "wrong": 1,
+      "needs_check": 2
+     },
+     "deductible_family": {
+      "correct": 14,
+      "wrong": 0,
+      "needs_check": 6
+     },
+     "oop_individual": {
+      "correct": 12,
+      "wrong": 7,
+      "needs_check": 1
+     },
+     "oop_family": {
+      "correct": 12,
+      "wrong": 2,
+      "needs_check": 6
+     },
+     "primary_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "specialist": {
+      "correct": 19,
+      "wrong": 1,
+      "needs_check": 0
+     },
+     "urgent_care": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "emergency_room": {
+      "correct": 18,
+      "wrong": 2,
+      "needs_check": 0
+     },
+     "generic_drugs": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "inpatient_facility": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "peg_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "joe_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     },
+     "mia_total": {
+      "correct": 20,
+      "wrong": 0,
+      "needs_check": 0
+     }
+    },
+    "documents_with_a_wrong_value": 10,
+    "of_which_flagged_by_example_reconciliation": 5
+   },
+   "memory": {
+    "peak_ollama_size_bytes": 15079791655,
+    "peak_vram_bytes": 15079791655,
+    "peak_ollama_process_rss_bytes": 17658560512
+   }
+  }
+ },
+ "failure_log": [
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "calpers-blue-shield-trio-2027",
+   "field": "specialist",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$30/visit",
+   "page": 2,
+   "match": "exact",
+   "parsed": {
+    "copay": 30.0,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 15,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "or-pebb-moda-coordinated-care-ft-2027",
+   "field": "specialist",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$10 copay/visit for massage therapy",
+   "page": 2,
+   "match": "exact",
+   "parsed": {
+    "copay": 10.0,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 25,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$1,750/$3,400 employee only; $3,500/$6,800 employee + child(ren); $3,500/$6,800 employee + spouse; $3,500/$6,800 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": 3400.0,
+   "gold": 1750,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,500/$6,800 employee + spouse; $3,500/$6,800 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3500,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $2,800/ $5,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 5600.0,
+   "gold": 2800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800/ $5,600/ $11,200 employee + child(ren); $4,800/ $5,600/ $11,200 employee + spouse; $4,800/ $5,600/ $11,200 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 5600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$0/$9,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 9600.0,
+   "gold": 0,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$0/$19,200 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 0,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $9,600/ $19,200 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 19200.0,
+   "gold": 9600,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800/ $19,200/ $38,400 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 19200,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "generic_drugs",
+   "verdict": "needs_check",
+   "ambiguous": false,
+   "quote": "$14 copay/prescription 30-day supply; $14 copay/prescription 90-day supply of some maintenance drugs; $28 copay/prescription 90-day supply of other drugs copay/prescription plus charges exceeding the allowed amount for 30-day supply; No benefit for 90- day supply Deductible does not apply. 90-day supply must be obtained from a Retail-90 network pharmacy or mail order. There is no out-of\ufffenetwork benefit for a 90- day supply. Maintenance drugs include some medications for high blood pressure, high cholesterol, coronary artery disease (CAD), congestive heart failure (CHF), depression, osteoporosis, asthma/chronic obstructive pulmonary disease (COPD), and diabetes (oral medications, insulins, needles, test strips and lancets). Does not include any specialty drugs. Certain low-dose generic statins received in- network may be covered at no charge. Members do not have to pay for specific medications used to treat opioid dependency.",
+   "page": 3,
+   "match": "not_found",
+   "parsed": null,
+   "gold": {
+    "copay": 14,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$1.800/$3,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 3600.0,
+   "gold": 1800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$2,500/$4,800 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $6,800/ $13,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 13600.0,
+   "gold": 6800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800/ $13,600/ $27,200 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 13600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$2,000/$4,000 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 4000.0,
+   "gold": 2000,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,000/$8,000 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 4000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $5,000/ $10,000 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 10000.0,
+   "gold": 5000,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800/ $10,000/ $20,000 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 10000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "generic_drugs",
+   "verdict": "needs_check",
+   "ambiguous": false,
+   "quote": "30% coinsurance per prescription 30-day supply or 90-day supply; 20% coinsurance per prescription 90-day supply of some maintenance drugs 50% coinsurance plus amount exceeding the allowed amount for 30-day supply; No benefit for 90-day supply",
+   "page": 3,
+   "match": "not_found",
+   "parsed": null,
+   "gold": {
+    "copay": null,
+    "coinsurance": 0.3,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$750/$1,500 employee only; $1,125/$2,250 employee + child(ren); $1,500/$3,000 employee + spouse; $1,875/$3,750 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": 1500.0,
+   "gold": 750,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$1,875/$3,750 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 1875,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $3,600/ $7,200 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 7200.0,
+   "gold": 3600,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$6,000/ $9,000/ $18,000 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 9000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$1,300/$2,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2600.0,
+   "gold": 1300,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$1,950/$3,900 employee + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3250,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $4,400/ $8,800 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 8800.0,
+   "gold": 4400,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$6,000/ $11,000/ $22,000 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 11000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "wa-pebb-ump-classic-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "15% coinsurance after $75 copay / visit",
+   "page": 4,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "wa-pebb-ump-select-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": false,
+   "quote": "$750 family per calendar year.",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 2250,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:e2b-it-qat",
+   "doc_id": "wa-pebb-ump-select-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "20% coinsurance after $75 copay / visit",
+   "page": 3,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "calpers-blue-shield-trio-2027",
+   "field": "specialist",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "Trio+ Specialist: $30/visit",
+   "page": 2,
+   "match": "exact",
+   "parsed": {
+    "copay": 30.0,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 15,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,500",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3500,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 2800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 5600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$19,200",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 0,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$38,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 19200,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$1.800",
+   "page": 1,
+   "match": "exact",
+   "parsed": 1.8,
+   "gold": 1800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,600",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 6800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$6,800",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 13600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,000",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 4000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 5000,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$8,700",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 10000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$1,125",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 1875,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 3600,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,600",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 9000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$1,950",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3250,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 4400,
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,600",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 11000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "wa-pebb-ump-classic-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "15% coinsurance after $75 copay / visit",
+   "page": 4,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:e4b-it-qat",
+   "doc_id": "wa-pebb-ump-select-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "20% coinsurance after $75 copay / visit",
+   "page": 3,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "calpers-blue-shield-trio-2027",
+   "field": "specialist",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "Trio+ Specialist: $30/visit\nOther Specialist: $15/visit",
+   "page": 2,
+   "match": "exact",
+   "parsed": {
+    "copay": 30.0,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 15,
+    "coinsurance": null,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "or-pebb-moda-coordinated-care-ft-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$6,850 individual",
+   "page": 1,
+   "match": "exact",
+   "parsed": 6850.0,
+   "gold": 1500,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "or-pebb-moda-coordinated-care-ft-2027",
+   "field": "oop_family",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$13,700 family",
+   "page": 1,
+   "match": "exact",
+   "parsed": 13700.0,
+   "gold": 4500,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "or-pebb-moda-ppo-ft-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$6,850 individual",
+   "page": 1,
+   "match": "exact",
+   "parsed": 6850.0,
+   "gold": 1900,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "or-pebb-moda-ppo-ft-2027",
+   "field": "oop_family",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$13,700 family",
+   "page": 1,
+   "match": "exact",
+   "parsed": 13700.0,
+   "gold": 5700,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,500",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3500,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 2800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 5600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "deductible_individual",
+   "verdict": "needs_check",
+   "ambiguous": false,
+   "quote": "$0 employee only",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 0,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$19,200 employee + child(ren); $19,200 employee + spouse; $19,200 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 0,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "oop_individual",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$2,400 employee only",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 9600,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-copay-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800 employee + child(ren); $4,800 employee + spouse; $4,800 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 19200,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_individual",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "$1.800/$3,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 3600.0,
+   "gold": 1800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,600/$7,200 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $6,800/ $13,600 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 13600.0,
+   "gold": 6800,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-limited-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,800/ $13,600/ $27,200 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 13600,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "deductible_individual",
+   "verdict": "needs_check",
+   "ambiguous": false,
+   "quote": "$2,000 employee only",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 2000,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$4,000 employee + child(ren); $4,000 employee + spouse; $4,000 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "not_found",
+   "parsed": null,
+   "gold": 4000,
+   "reason": "quote not in the document"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400/ $5,000/ $10,000 employee only",
+   "page": 1,
+   "match": "exact",
+   "parsed": 10000.0,
+   "gold": 5000,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-local-cdhp-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "No family member will pay more than $8,700 in-network.",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 10000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$1,500/$3,000 employee + spouse; \n$1,875/$3,750 employee + spouse + \nchild(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 1875,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 3600,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-premier-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,600",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 9000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "deductible_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$3,250/$6,500 employee + spouse + child(ren)",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 3250,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_individual",
+   "verdict": "wrong",
+   "ambiguous": true,
+   "quote": "$2,400",
+   "page": 1,
+   "match": "exact",
+   "parsed": 2400.0,
+   "gold": 4400,
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "tn-standard-ppo-2027",
+   "field": "oop_family",
+   "verdict": "needs_check",
+   "ambiguous": true,
+   "quote": "$6,000",
+   "page": 1,
+   "match": "exact",
+   "parsed": null,
+   "gold": 11000,
+   "reason": "value not parseable from the quote"
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "wa-pebb-ump-classic-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "15% coinsurance after $75 copay / visit",
+   "page": 4,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.15,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  },
+  {
+   "model": "gemma4:26b-a4b-it-qat",
+   "doc_id": "wa-pebb-ump-select-2027",
+   "field": "emergency_room",
+   "verdict": "wrong",
+   "ambiguous": false,
+   "quote": "20% coinsurance after $75 \ncopay / visit",
+   "page": 3,
+   "match": "exact",
+   "parsed": {
+    "copay": null,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "gold": {
+    "copay": 75,
+    "coinsurance": 0.2,
+    "not_covered": false,
+    "deductible_applies": null
+   },
+   "reason": null
+  }
+ ],
+ "wall_seconds": 3.8
+}

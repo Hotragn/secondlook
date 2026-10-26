@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "State of Tennessee Copay Plan: BCBST",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type:PPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$0",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$19,200",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. In-network services eligible for coverage under this plan are covered before deductible.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$9,600",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$38,400",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$30 copay/visit Tier 1",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$50 copay/visit Tier 1",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "$50 copay/test",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$750 copay/test",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$14 copay/prescription",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "$50 copay/prescription",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "Not covered",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "25% coinsurance",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "$1,000 copay",
+    "page": 4
+   },
+   "outpatient_physician": {
+    "quote": "No charge",
+    "page": 4
+   },
+   "emergency_room": {
+    "quote": "$1,000 copay/visit",
+    "page": 4
+   },
+   "emergency_transport": {
+    "quote": "$1,000 copay",
+    "page": 4
+   },
+   "urgent_care": {
+    "quote": "$80 copay/visit",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "$2,500 copay/visit",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "No charge",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "$30 copay/office visit",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "$2,500 copay",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "$30 copay/visit Tier 1",
+    "page": 5
+   },
+   "childbirth_professional": {
+    "quote": "No charge",
+    "page": 5
+   },
+   "childbirth_facility": {
+    "quote": "$2,500 copay",
+    "page": 5
+   },
+   "home_health": {
+    "quote": "$50 copay/day",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "$30 copay/visit",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "$30 copay/visit",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "$2,500 copay",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "$250 copay",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "No charge",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not Covered",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$0",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "$50",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "$2,500",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "$250",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$3,200",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$60",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$3,260",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$2,800",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$1,600",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$20",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$1,620",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$2000",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$2,000",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 22.69,
+   "prompt_tokens": 2009,
+   "output_tokens": 257
+  },
+  "services": {
+   "seconds": 55.83,
+   "prompt_tokens": 4419,
+   "output_tokens": 668
+  },
+  "examples": {
+   "seconds": 28.0,
+   "prompt_tokens": 1394,
+   "output_tokens": 446
+  }
+ },
+ "doc_id": "tn-copay-2027",
+ "sha256": "17c16d9f307c3177a1ccf510274b66955e0e61e9895265181d653ea242276326",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

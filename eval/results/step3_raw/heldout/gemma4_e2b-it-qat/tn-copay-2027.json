@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "State of Tennessee Copay Plan: BCBST",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type:PPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$0/$9,600 employee only",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$0/$19,200 employee + child(ren)",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. In-network services eligible for coverage under this plan are covered before deductible. This plan covers some items and services even if you haven\u2019t met the deductible amount. But a copayment or coinsurance may apply. For example, this plan covers certain preventive services without cost sharing and before you meet your deductible. See a list of covered preventive services at https://www.healthcare.gov/coverage/preventive-care\ufffebenefits.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$2,400/ $9,600/ $19,200 employee only",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$4,800/ $19,200/ $38,400 employee + child(ren)",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$30 copay/visit Tier 1",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$50 copay/visit Tier 1",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge 50% coinsurance",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "$50 copay/test 50% coinsurance",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$750 copay/test 50% coinsurance",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$14 copay/prescription 30-day supply; $14 copay/prescription 90-day supply of some maintenance drugs; $28 copay/prescription 90-day supply of other drugs copay/prescription plus charges exceeding the allowed amount for 30-day supply; No benefit for 90- day supply Deductible does not apply. 90-day supply must be obtained from a Retail-90 network pharmacy or mail order. There is no out-of\ufffenetwork benefit for a 90- day supply. Maintenance drugs include some medications for high blood pressure, high cholesterol, coronary artery disease (CAD), congestive heart failure (CHF), depression, osteoporosis, asthma/chronic obstructive pulmonary disease (COPD), and diabetes (oral medications, insulins, needles, test strips and lancets). Does not include any specialty drugs. Certain low-dose generic statins received in- network may be covered at no charge. Members do not have to pay for specific medications used to treat opioid dependency.",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "$50 copay/prescription 30-day supply; $50 copay/ 90-day supply of some maintenance drugs; $100 copay per prescription 90-day supply of other drugs",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "Not covered",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "25% coinsurance",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "$1,000 copay Ambulatory Surgical Center / $2,500 copay Outpatient Hospital",
+    "page": 4
+   },
+   "outpatient_physician": {
+    "quote": "No charge 50% coinsurance",
+    "page": 4
+   },
+   "emergency_room": {
+    "quote": "$1,000 copay/visit $1,000 copay/visit Additional cost for services like advanced imaging \u2013 CT/PET Scans, MRI, etc.",
+    "page": 4
+   },
+   "emergency_transport": {
+    "quote": "$1,000 copay $1,000 copay None",
+    "page": 4
+   },
+   "urgent_care": {
+    "quote": "$80 copay/visit 50% coinsurance",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "$2,500 copay/visit 50% coinsurance",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "No charge 50% coinsurance",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "$30 copay/office visit $250 copay/other outpatient services (per day, per service type - $2,500 copay maximum per service type); 50% coinsurance",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "$2,500 copay 50% coinsurance",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "Office visits $30 copay/visit Tier 1 $80 copay/visit Tier 2 50% coinsurance Global billing for labor and delivery and routine services beyond the initial office visit. Cost sharing does not apply for preventive services. Depending on the type of services, a copayment, coinsurance, or deductible may apply. Maternity care may include tests and services described elsewhere in the SBC (i.e., ultrasound).",
+    "page": 5
+   },
+   "childbirth_professional": {
+    "quote": "No charge 50% coinsurance",
+    "page": 5
+   },
+   "childbirth_facility": {
+    "quote": "$2,500 copay 50% coinsurance",
+    "page": 5
+   },
+   "home_health": {
+    "quote": "$50 copay/day 50% coinsurance",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "$30 copay/visit 50% coinsurance",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "$30 copay/visit 50% coinsurance",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "$2,500 copay 50% coinsurance",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "$250 copay 50% coinsurance",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "No charge 50% coinsurance Deductible applies out-of-network.",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not Covered",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$0",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "$50",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "$2,500",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "$250",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$3,200",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$60",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$3,260",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$1,600",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$20",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$1,620",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$2,000",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$2000",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$2,000",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 16.78,
+   "prompt_tokens": 2009,
+   "output_tokens": 450
+  },
+  "services": {
+   "seconds": 50.18,
+   "prompt_tokens": 4419,
+   "output_tokens": 1468
+  },
+  "examples": {
+   "seconds": 19.28,
+   "prompt_tokens": 1394,
+   "output_tokens": 647
+  }
+ },
+ "doc_id": "tn-copay-2027",
+ "sha256": "17c16d9f307c3177a1ccf510274b66955e0e61e9895265181d653ea242276326",
+ "model": "gemma4:e2b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

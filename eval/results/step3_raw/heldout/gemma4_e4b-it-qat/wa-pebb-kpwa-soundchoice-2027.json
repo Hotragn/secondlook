@@ -1,0 +1,290 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "examples": [
+   5
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "PEBB SoundChoice Plan",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "HMO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$125 Individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$375 Family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care and services indicated in chart starting on page 2.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$2,000 Individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$4,000 Family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$20 / visit, deductible does not apply.",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "15% coinsurance",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "15% coinsurance",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "15% coinsurance",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$5 (retail); $10 (mail order) / prescription, deductible does not apply.",
+    "page": 2
+   },
+   "preferred_brand_drugs": {
+    "quote": "$60 (retail); $120 (mail order) / prescription",
+    "page": 2
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "50% coinsurance (retail & mail order) / prescription",
+    "page": 2
+   },
+   "specialty_drugs": {
+    "quote": "Preferred: $150 (retail) / prescription",
+    "page": 2
+   },
+   "outpatient_facility": {
+    "quote": "15% coinsurance",
+    "page": 2
+   },
+   "outpatient_physician": {
+    "quote": "15% coinsurance",
+    "page": 2
+   },
+   "emergency_room": {
+    "quote": "$75 / visit then 15% coinsurance",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "20% coinsurance, deductible does not apply.",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "inpatient_facility": {
+    "quote": "$500 / admission",
+    "page": 3
+   },
+   "inpatient_physician": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "mental_health_outpatient": {
+    "quote": "$20 / visit",
+    "page": 3
+   },
+   "mental_health_inpatient": {
+    "quote": "$500 / admission",
+    "page": 3
+   },
+   "pregnancy_office_visits": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 3
+   },
+   "childbirth_professional": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "childbirth_facility": {
+    "quote": "$500 / admission",
+    "page": 3
+   },
+   "home_health": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "rehabilitation": {
+    "quote": "Outpatient: 15% coinsurance",
+    "page": 3
+   },
+   "habilitation": {
+    "quote": "Outpatient: 15% coinsurance",
+    "page": 3
+   },
+   "skilled_nursing": {
+    "quote": "$500 / admission",
+    "page": 4
+   },
+   "durable_medical_equipment": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "hospice": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 4
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 4
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "The plan\u2019s overall deductible $125",
+    "page": 6
+   },
+   "ex_specialist": {
+    "quote": "Specialist cost sharing 15%",
+    "page": 6
+   },
+   "ex_hospital": {
+    "quote": "Hospital (facility) cost sharing $500",
+    "page": 6
+   },
+   "ex_other": {
+    "quote": "Other (blood work) coinsurance 15%",
+    "page": 6
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 6
+   },
+   "peg_deductibles": {
+    "quote": "$125",
+    "page": 6
+   },
+   "peg_copayments": {
+    "quote": "$500",
+    "page": 6
+   },
+   "peg_coinsurance": {
+    "quote": "$60",
+    "page": 6
+   },
+   "peg_limits": {
+    "quote": "$20",
+    "page": 6
+   },
+   "peg_total": {
+    "quote": "$705",
+    "page": 6
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 6
+   },
+   "joe_deductibles": {
+    "quote": "$225",
+    "page": 6
+   },
+   "joe_copayments": {
+    "quote": "$1,200",
+    "page": 6
+   },
+   "joe_coinsurance": {
+    "quote": "$30",
+    "page": 6
+   },
+   "joe_limits": {
+    "quote": "$0",
+    "page": 6
+   },
+   "joe_total": {
+    "quote": "$1,455",
+    "page": 6
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 6
+   },
+   "mia_deductibles": {
+    "quote": "$125",
+    "page": 6
+   },
+   "mia_copayments": {
+    "quote": "$80",
+    "page": 6
+   },
+   "mia_coinsurance": {
+    "quote": "$400",
+    "page": 6
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 6
+   },
+   "mia_total": {
+    "quote": "$605",
+    "page": 6
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 22.46,
+   "prompt_tokens": 2053,
+   "output_tokens": 250
+  },
+  "services": {
+   "seconds": 50.47,
+   "prompt_tokens": 3392,
+   "output_tokens": 704
+  },
+  "examples": {
+   "seconds": 27.6,
+   "prompt_tokens": 1440,
+   "output_tokens": 474
+  }
+ },
+ "doc_id": "wa-pebb-kpwa-soundchoice-2027",
+ "sha256": "d8eca742b2f44929f7c7979b25a8c09faec1b078ee70f0bf927d4b2f4daac351",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

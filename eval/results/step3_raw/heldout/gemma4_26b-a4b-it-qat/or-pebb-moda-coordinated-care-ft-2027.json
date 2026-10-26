@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "PEBB \u2013 Coordinated Care Full Time",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: PPO CCM",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$500 individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$1,500 family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$6,850 individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$13,700 family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$10 copay/visits; deductible does not apply to first 4 visits",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$25 copay/visit for all other visits",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "No charge",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$100 copay/per service",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$10 copay/retail, $25 copay/mail-order",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "$30 copay/retail, $75 copay mail-order, $100 copay and specialty deductible does not apply",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "$30 copay/retail, $75 copay mail-order, $100 copay and specialty deductible does not apply",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "$30 copay/retail, $75 copay mail-order, $100 copay and specialty deductible does not apply",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "$25 copay/visit",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "$25 copay/visit",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "$150 copay/visit",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "$75 copay/per trip",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "$25 copay/office visit",
+    "page": 3
+   },
+   "inpatient_facility": {
+    "quote": "$50 copay per day / $250 copay per admission",
+    "page": 3
+   },
+   "inpatient_physician": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "mental_health_outpatient": {
+    "quote": "$10 copay/visit, deductible does not apply.",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "$50 copay per day / $250 copay per admission",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "No charge",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "No charge",
+    "page": 4
+   },
+   "childbirth_facility": {
+    "quote": "$50 copay per day / $250 copay per admission",
+    "page": 4
+   },
+   "home_health": {
+    "quote": "$25 copay/visit",
+    "page": 4
+   },
+   "rehabilitation": {
+    "quote": "$25 copay/visit outpatient; $50 copay per day / $250 copay per admission for inpatient",
+    "page": 4
+   },
+   "habilitation": {
+    "quote": "$25 copay/visit outpatient; $50 copay per day / $250 copay per admission for inpatient",
+    "page": 4
+   },
+   "skilled_nursing": {
+    "quote": "$50 copay per day / $250 copay per admission for inpatient",
+    "page": 4
+   },
+   "durable_medical_equipment": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "hospice": {
+    "quote": "No charge",
+    "page": 4
+   },
+   "children_eye_exam": {
+    "quote": "No charge",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$500",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "$25",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "$50",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "15%",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$250",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$10",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "$1,300",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$50",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$1,610",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$200",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$900",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "$100",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$20",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$1,220",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$250",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$200",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "$400",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$850",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 22.57,
+   "prompt_tokens": 2032,
+   "output_tokens": 277
+  },
+  "services": {
+   "seconds": 57.19,
+   "prompt_tokens": 3974,
+   "output_tokens": 824
+  },
+  "examples": {
+   "seconds": 32.27,
+   "prompt_tokens": 1422,
+   "output_tokens": 563
+  }
+ },
+ "doc_id": "or-pebb-moda-coordinated-care-ft-2027",
+ "sha256": "558d4be9096c3e57a494245db0376bfc95e9331f1f8584ec2dd839a00016dba6",
+ "model": "gemma4:26b-a4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

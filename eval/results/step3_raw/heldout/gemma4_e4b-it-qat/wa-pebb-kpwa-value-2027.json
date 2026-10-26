@@ -1,0 +1,290 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "examples": [
+   5
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "PEBB Value Plan",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "HMO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$250 Individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$750 Family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care and services indicated in chart starting on page 2.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$3,000 Individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$6,000 Family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$30 / visit",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$50 / visit",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "No charge",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$50 / visit",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$5 (retail); $10 (mail order) / prescription, deductible does not apply.",
+    "page": 2
+   },
+   "preferred_brand_drugs": {
+    "quote": "$50 (retail); $100 (mail order) / prescription, deductible does not apply.",
+    "page": 2
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "50% coinsurance (retail & mail order) / prescription",
+    "page": 2
+   },
+   "specialty_drugs": {
+    "quote": "Preferred: $150 (retail) / prescription",
+    "page": 2
+   },
+   "outpatient_facility": {
+    "quote": "$200 / visit",
+    "page": 2
+   },
+   "outpatient_physician": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "$300 / visit",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "20% coinsurance, deductible does not apply.",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "$30 / visit",
+    "page": 3
+   },
+   "inpatient_facility": {
+    "quote": "$250 / day up to $1,250 / admission",
+    "page": 3
+   },
+   "inpatient_physician": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "mental_health_outpatient": {
+    "quote": "$30 / visit",
+    "page": 3
+   },
+   "mental_health_inpatient": {
+    "quote": "$250 / day up to $1,250 / admission",
+    "page": 3
+   },
+   "pregnancy_office_visits": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "childbirth_professional": {
+    "quote": "No charge",
+    "page": 3
+   },
+   "childbirth_facility": {
+    "quote": "$250 / day up to $1,250 / admission",
+    "page": 3
+   },
+   "home_health": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 3
+   },
+   "rehabilitation": {
+    "quote": "Outpatient: $50 / visit",
+    "page": 3
+   },
+   "habilitation": {
+    "quote": "Outpatient: $50 / visit",
+    "page": 4
+   },
+   "skilled_nursing": {
+    "quote": "$250 / day up to $1,250 / admission",
+    "page": 4
+   },
+   "durable_medical_equipment": {
+    "quote": "20% coinsurance, deductible does not apply.",
+    "page": 4
+   },
+   "hospice": {
+    "quote": "No charge, deductible does not apply.",
+    "page": 4
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 4
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$250",
+    "page": 6
+   },
+   "ex_specialist": {
+    "quote": "$50",
+    "page": 6
+   },
+   "ex_hospital": {
+    "quote": "$250",
+    "page": 6
+   },
+   "ex_other": {
+    "quote": "$0",
+    "page": 6
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 6
+   },
+   "peg_deductibles": {
+    "quote": "$300",
+    "page": 6
+   },
+   "peg_copayments": {
+    "quote": "$300",
+    "page": 6
+   },
+   "peg_coinsurance": {
+    "quote": "$0",
+    "page": 6
+   },
+   "peg_limits": {
+    "quote": "$20",
+    "page": 6
+   },
+   "peg_total": {
+    "quote": "$620",
+    "page": 6
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 6
+   },
+   "joe_deductibles": {
+    "quote": "$350",
+    "page": 6
+   },
+   "joe_copayments": {
+    "quote": "$1,400",
+    "page": 6
+   },
+   "joe_coinsurance": {
+    "quote": "$0",
+    "page": 6
+   },
+   "joe_limits": {
+    "quote": "$0",
+    "page": 6
+   },
+   "joe_total": {
+    "quote": "$1,750",
+    "page": 6
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 6
+   },
+   "mia_deductibles": {
+    "quote": "$300",
+    "page": 6
+   },
+   "mia_copayments": {
+    "quote": "$600",
+    "page": 6
+   },
+   "mia_coinsurance": {
+    "quote": "$200",
+    "page": 6
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 6
+   },
+   "mia_total": {
+    "quote": "$1,100",
+    "page": 6
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 22.26,
+   "prompt_tokens": 2043,
+   "output_tokens": 249
+  },
+  "services": {
+   "seconds": 52.17,
+   "prompt_tokens": 3451,
+   "output_tokens": 729
+  },
+  "examples": {
+   "seconds": 26.14,
+   "prompt_tokens": 1399,
+   "output_tokens": 447
+  }
+ },
+ "doc_id": "wa-pebb-kpwa-value-2027",
+ "sha256": "a2eb64fc0636c646a519454755109f67bca537073ee637c6fd6a5330e81e710c",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

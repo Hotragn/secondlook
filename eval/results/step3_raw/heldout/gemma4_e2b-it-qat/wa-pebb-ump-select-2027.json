@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "Washington State \u2013 Uniform Medical Plan (UMP) Select (PEBB)",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: PPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$750 individual / $2,250 family per calendar year.",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$750 family per calendar year.",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Certain preventive care and those services listed below as \"deductible does not apply.\" \"No charge\" means $0 copayment or 0% coinsurance, regardless of deductible applicability",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$3,500 individual / $7,000 family per calendar year.",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$7,000 family per calendar year.",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "20% coinsurance",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "20% coinsurance",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge, deductible does not apply",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "20% coinsurance",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "20% coinsurance",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "10% coinsurance or $25 copay, whichever is less / prescription, deductible does not apply",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "30% coinsurance or $75 copay, whichever is less, up to 30 day supply / prescription*",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "30% coinsurance",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "Refer to Value Tier, Tier 1, and Tier 2 drugs above.",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "20% coinsurance",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "20% coinsurance",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "20% coinsurance after $75 copay / visit",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "20% coinsurance",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "inpatient_facility": {
+    "quote": "$200 copay per day up to $600 per individual per calendar year",
+    "page": 4
+   },
+   "inpatient_physician": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "mental_health_outpatient": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "$200 copay per day up to $600 per individual per calendar year",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "childbirth_facility": {
+    "quote": "$200 copay per day up to $600 per individual per calendar year",
+    "page": 4
+   },
+   "home_health": {
+    "quote": "20% coinsurance",
+    "page": 5
+   },
+   "rehabilitation": {
+    "quote": "Inpatient: $200 copay per day up to $600 per individual per calendar year",
+    "page": 5
+   },
+   "habilitation": {
+    "quote": "20% coinsurance",
+    "page": 5
+   },
+   "skilled_nursing": {
+    "quote": "Inpatient: $200 copay per day up to $600 per individual per calendar year",
+    "page": 5
+   },
+   "durable_medical_equipment": {
+    "quote": "20% coinsurance",
+    "page": 5
+   },
+   "hospice": {
+    "quote": "No charge 40% coinsurance",
+    "page": 5
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 5
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 5
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "$750",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "20%",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "$200",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "20%",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$750",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$200",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "20%",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$60",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$1,910",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$750",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "20%",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$200",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$2,150",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$750",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$80",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "400",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$1,230",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 14.1,
+   "prompt_tokens": 1943,
+   "output_tokens": 335
+  },
+  "services": {
+   "seconds": 38.68,
+   "prompt_tokens": 4069,
+   "output_tokens": 1050
+  },
+  "examples": {
+   "seconds": 20.79,
+   "prompt_tokens": 1399,
+   "output_tokens": 692
+  }
+ },
+ "doc_id": "wa-pebb-ump-select-2027",
+ "sha256": "ed37878637d6a8a61a54394456c0059c44693b5b3d739a8959f9256071e3428d",
+ "model": "gemma4:e2b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}

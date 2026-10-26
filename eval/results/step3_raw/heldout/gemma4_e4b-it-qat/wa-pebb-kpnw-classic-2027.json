@@ -1,0 +1,291 @@
+{
+ "sections": {
+  "summary": [
+   0,
+   1
+  ],
+  "services": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "examples": [
+   6
+  ]
+ },
+ "raw": {
+  "summary": {
+   "plan_name": {
+    "quote": "PEBB",
+    "page": 1
+   },
+   "network_type": {
+    "quote": "Plan Type: EPO",
+    "page": 1
+   },
+   "deductible_individual": {
+    "quote": "$300 Individual",
+    "page": 1
+   },
+   "deductible_family": {
+    "quote": "$900 Family",
+    "page": 1
+   },
+   "deductible_family_rule": {
+    "quote": "If you have other family members on the plan, each family member must meet their own individual deductible until the total amount of deductible expenses paid by all family members meets the overall family deductible.",
+    "page": 1
+   },
+   "services_before_deductible": {
+    "quote": "Yes. Preventive care and services indicated in chart starting on page 2.",
+    "page": 1
+   },
+   "oop_individual": {
+    "quote": "$2,500 Individual",
+    "page": 1
+   },
+   "oop_family": {
+    "quote": "$5,000 Family",
+    "page": 1
+   },
+   "hsa": {
+    "quote": "",
+    "page": 0
+   }
+  },
+  "services": {
+   "primary_care": {
+    "quote": "$25 / visit, deductible does not apply",
+    "page": 2
+   },
+   "specialist": {
+    "quote": "$35 / visit, deductible does not apply",
+    "page": 2
+   },
+   "preventive": {
+    "quote": "No charge, deductible does not apply",
+    "page": 2
+   },
+   "diagnostic_test": {
+    "quote": "Xray: $10 / visit, deductible does not apply. Lab tests: $10 / visit, deductible does not apply.",
+    "page": 2
+   },
+   "imaging": {
+    "quote": "$10 / visit, deductible does not apply",
+    "page": 2
+   },
+   "generic_drugs": {
+    "quote": "$15 (retail) & $30 (mail order) / prescription, deductible does not apply.",
+    "page": 3
+   },
+   "preferred_brand_drugs": {
+    "quote": "$40 (retail) & $80 (mail order) / prescription, deductible does not apply.",
+    "page": 3
+   },
+   "non_preferred_brand_drugs": {
+    "quote": "$75 (retail) & $150 (mail order) / prescription, deductible does not apply.",
+    "page": 3
+   },
+   "specialty_drugs": {
+    "quote": "50% coinsurance up to $150 (retail) / prescription, deductible does not apply.",
+    "page": 3
+   },
+   "outpatient_facility": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "outpatient_physician": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "emergency_room": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "emergency_transport": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "urgent_care": {
+    "quote": "$45 / visit, deductible does not apply",
+    "page": 3
+   },
+   "inpatient_facility": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "inpatient_physician": {
+    "quote": "15% coinsurance",
+    "page": 3
+   },
+   "mental_health_outpatient": {
+    "quote": "$25 / visit, deductible does not apply",
+    "page": 4
+   },
+   "mental_health_inpatient": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "pregnancy_office_visits": {
+    "quote": "No charge, deductible does not apply",
+    "page": 4
+   },
+   "childbirth_professional": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "childbirth_facility": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "home_health": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "rehabilitation": {
+    "quote": "Outpatient: $35 / visit, deductible does not apply Inpatient: 15% coinsurance.",
+    "page": 4
+   },
+   "habilitation": {
+    "quote": "$35 / visit, deductible does not apply",
+    "page": 4
+   },
+   "skilled_nursing": {
+    "quote": "15% coinsurance",
+    "page": 4
+   },
+   "durable_medical_equipment": {
+    "quote": "20% coinsurance",
+    "page": 4
+   },
+   "hospice": {
+    "quote": "No charge, deductible does not apply",
+    "page": 4
+   },
+   "children_eye_exam": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_glasses": {
+    "quote": "Not covered",
+    "page": 4
+   },
+   "children_dental": {
+    "quote": "Not covered",
+    "page": 4
+   }
+  },
+  "examples": {
+   "ex_plan_deductible": {
+    "quote": "The plan's overall deductible $300",
+    "page": 7
+   },
+   "ex_specialist": {
+    "quote": "Specialist copayment $35",
+    "page": 7
+   },
+   "ex_hospital": {
+    "quote": "Hospital (facility) coinsurance 15%",
+    "page": 7
+   },
+   "ex_other": {
+    "quote": "Other (blood work) copayment $10",
+    "page": 7
+   },
+   "peg_total_cost": {
+    "quote": "$12,700",
+    "page": 7
+   },
+   "peg_deductibles": {
+    "quote": "$300",
+    "page": 7
+   },
+   "peg_copayments": {
+    "quote": "$70",
+    "page": 7
+   },
+   "peg_coinsurance": {
+    "quote": "$1,200",
+    "page": 7
+   },
+   "peg_limits": {
+    "quote": "$60",
+    "page": 7
+   },
+   "peg_total": {
+    "quote": "$1,630",
+    "page": 7
+   },
+   "joe_total_cost": {
+    "quote": "$5,600",
+    "page": 7
+   },
+   "joe_deductibles": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_copayments": {
+    "quote": "$900",
+    "page": 7
+   },
+   "joe_coinsurance": {
+    "quote": "$10",
+    "page": 7
+   },
+   "joe_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "joe_total": {
+    "quote": "$910",
+    "page": 7
+   },
+   "mia_total_cost": {
+    "quote": "$2,800",
+    "page": 7
+   },
+   "mia_deductibles": {
+    "quote": "$300",
+    "page": 7
+   },
+   "mia_copayments": {
+    "quote": "$300",
+    "page": 7
+   },
+   "mia_coinsurance": {
+    "quote": "$300",
+    "page": 7
+   },
+   "mia_limits": {
+    "quote": "$0",
+    "page": 7
+   },
+   "mia_total": {
+    "quote": "$900",
+    "page": 7
+   }
+  }
+ },
+ "timing": {
+  "summary": {
+   "seconds": 20.03,
+   "prompt_tokens": 1746,
+   "output_tokens": 231
+  },
+  "services": {
+   "seconds": 54.56,
+   "prompt_tokens": 3485,
+   "output_tokens": 776
+  },
+  "examples": {
+   "seconds": 27.32,
+   "prompt_tokens": 1382,
+   "output_tokens": 472
+  }
+ },
+ "doc_id": "wa-pebb-kpnw-classic-2027",
+ "sha256": "6a8938169d5013b4375c5e63fb7b39ac5d7d92d64bd134e09322053ec6538a72",
+ "model": "gemma4:e4b-it-qat",
+ "fingerprint": "cc2fe40164a07f57"
+}
